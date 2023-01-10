@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\bin\Debug\QuadratRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\bin\Debug\QuadratRechner.pdb
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\obj\Debug\QuadratRechner.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\obj\Debug\QuadratRechner.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\obj\Debug\QuadratRechner.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\obj\Debug\QuadratRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\QuadratRechner\QuadratRechner\obj\Debug\QuadratRechner.pdb

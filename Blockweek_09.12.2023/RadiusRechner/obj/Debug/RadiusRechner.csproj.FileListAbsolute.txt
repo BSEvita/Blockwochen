@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\bin\Debug\RadiusRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\bin\Debug\RadiusRechner.pdb
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\obj\Debug\RadiusRechner.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\obj\Debug\RadiusRechner.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\obj\Debug\RadiusRechner.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\obj\Debug\RadiusRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\RadiusRechner\obj\Debug\RadiusRechner.pdb

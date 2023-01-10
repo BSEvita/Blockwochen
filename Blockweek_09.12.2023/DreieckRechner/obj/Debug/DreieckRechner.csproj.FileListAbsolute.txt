@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\bin\Debug\DreieckRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\bin\Debug\DreieckRechner.pdb
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\obj\Debug\DreieckRechner.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\obj\Debug\DreieckRechner.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\obj\Debug\DreieckRechner.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\obj\Debug\DreieckRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\DreieckRechner\obj\Debug\DreieckRechner.pdb

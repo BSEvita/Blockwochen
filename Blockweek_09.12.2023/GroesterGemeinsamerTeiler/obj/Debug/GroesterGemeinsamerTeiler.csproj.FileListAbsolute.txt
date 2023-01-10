@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\bin\Debug\GroesterGemeinsamerTeiler.exe
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\bin\Debug\GroesterGemeinsamerTeiler.pdb
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\obj\Debug\GroesterGemeinsamerTeiler.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\obj\Debug\GroesterGemeinsamerTeiler.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\obj\Debug\GroesterGemeinsamerTeiler.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\obj\Debug\GroesterGemeinsamerTeiler.exe
+C:\Users\mally\OneDrive\Desktop\BS\GroesterGemeinsamerTeiler\obj\Debug\GroesterGemeinsamerTeiler.pdb

@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\obj\Debug\BruttoVsNetto.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\obj\Debug\BruttoVsNetto.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\obj\Debug\BruttoVsNetto.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\bin\Debug\BruttoVsNetto.exe
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\bin\Debug\BruttoVsNetto.pdb
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\obj\Debug\BruttoVsNetto.exe
+C:\Users\mally\OneDrive\Desktop\BS\BruttoVsNetto\obj\Debug\BruttoVsNetto.pdb

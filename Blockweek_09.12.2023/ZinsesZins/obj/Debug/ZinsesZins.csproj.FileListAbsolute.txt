@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\bin\Debug\ZinsesZins.exe
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\bin\Debug\ZinsesZins.pdb
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\obj\Debug\ZinsesZins.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\obj\Debug\ZinsesZins.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\obj\Debug\ZinsesZins.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\obj\Debug\ZinsesZins.exe
+C:\Users\mally\OneDrive\Desktop\BS\ZinsesZins\obj\Debug\ZinsesZins.pdb

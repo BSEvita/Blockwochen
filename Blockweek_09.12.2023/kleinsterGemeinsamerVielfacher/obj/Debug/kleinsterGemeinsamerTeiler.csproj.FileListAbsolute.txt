@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\bin\Debug\kleinsterGemeinsamerTeiler.exe
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\bin\Debug\kleinsterGemeinsamerTeiler.pdb
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\obj\Debug\kleinsterGemeinsamerTeiler.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\obj\Debug\kleinsterGemeinsamerTeiler.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\obj\Debug\kleinsterGemeinsamerTeiler.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\obj\Debug\kleinsterGemeinsamerTeiler.exe
+C:\Users\mally\OneDrive\Desktop\BS\kleinsterGemeinsamerTeiler\obj\Debug\kleinsterGemeinsamerTeiler.pdb

@@ -1,0 +1,7 @@
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\bin\Debug\RechteckRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\bin\Debug\RechteckRechner.pdb
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\obj\Debug\RechteckRechner.csproj.AssemblyReference.cache
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\obj\Debug\RechteckRechner.csproj.SuggestedBindingRedirects.cache
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\obj\Debug\RechteckRechner.csproj.CoreCompileInputs.cache
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\obj\Debug\RechteckRechner.exe
+C:\Users\mally\OneDrive\Desktop\BS\RechteckRechner\obj\Debug\RechteckRechner.pdb
