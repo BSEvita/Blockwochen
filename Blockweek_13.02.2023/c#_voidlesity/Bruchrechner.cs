@@ -1,170 +1,185 @@
-﻿class Bruch
+﻿using System;
+
+class Bruch
 {
-    private int zaehler;
-    private int nenner;
+    private int zähler; // Zähler des Bruchs
+    private int nenner; // Nenner des Bruchs
 
-    public Bruch(int zaehler, int nenner)
+    public Bruch(int zähler, int nenner) // Konstruktor des Bruchs
     {
-        this.zaehler = zaehler;
+        if (nenner == 0) // Überprüfung, ob der Nenner 0 ist
+        {
+            throw new ArgumentException("Nenner darf nicht 0 sein!");
+        }
+
+        this.zähler = zähler;
         this.nenner = nenner;
-        this.Kuerzen();
+        Kürzen(); // Kürze den Bruch, um ihn so weit wie möglich zu vereinfachen
     }
 
-    public int Zaehler
+    private void Kürzen() // Methode, um den Bruch zu kürzen
     {
-        get { return zaehler; }
+        int ggt = GGT(Math.Abs(zähler), Math.Abs(nenner)); // Berechne den größten gemeinsamen Teiler des Zählers und des Nenners
+        zähler /= ggt; // Teile den Zähler durch den größten gemeinsamen Teiler
+        nenner /= ggt; // Teile den Nenner durch den größten gemeinsamen Teiler
+        if (nenner < 0) // Wenn der Nenner negativ ist, dann mache den Zähler negativ
+        {
+            zähler = -zähler;
+            nenner = -nenner;
+        }
     }
 
-    public int Nenner
+    private int GGT(int a, int b) // Methode, um den größten gemeinsamen Teiler zweier Zahlen zu berechnen
     {
-        get { return nenner; }
+        while (b != 0) // Solange b nicht 0 ist
+        {
+            int rest = a % b; // Berechne den Rest der Division von a durch b
+            a = b; // Setze a auf b
+            b = rest; // Setze b auf den Rest
+        }
+        return a; // Gib a zurück, der jetzt den größten gemeinsamen Teiler enthält
     }
 
+    // Operatorüberladung für die Addition von zwei Brüchen
     public static Bruch operator +(Bruch a, Bruch b)
     {
-        int zaehler = a.zaehler * b.nenner + b.zaehler * a.nenner;
-        int nenner = a.nenner * b.nenner;
-        return new Bruch(zaehler, nenner);
+        int neuerNenner = a.nenner * b.nenner; // Multipliziere die Nenner, um den neuen Nenner zu erhalten
+        int neuerZähler = a.zähler * b.nenner + b.zähler * a.nenner; // Multipliziere die Zähler mit dem jeweils anderen Nenner und addiere sie, um den neuen Zähler zu erhalten
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Addition ist
     }
 
+    // Operatorüberladung für die Subtraktion von zwei Brüchen
     public static Bruch operator -(Bruch a, Bruch b)
     {
-        int zaehler = a.zaehler * b.nenner - b.zaehler * a.nenner;
-        int nenner = a.nenner * b.nenner;
-        return new Bruch(zaehler, nenner);
+        int neuerNenner = a.nenner * b.nenner; // Multipliziere die Nenner, um den neuen Nenner zu erhalten
+        int neuerZähler = a.zähler * b.nenner - b.zähler * a.nenner; // Multipliziere die Zähler mit dem jeweils anderen Nenner und subtrahiere sie, um den neuen Zähler zu erhalten
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Subtraktion ist
     }
-
+    // Operatorüberladung für die Multiplikation von zwei Brüchen
     public static Bruch operator *(Bruch a, Bruch b)
     {
-        int zaehler = a.zaehler * b.zaehler;
-        int nenner = a.nenner * b.nenner;
-        return new Bruch(zaehler, nenner);
+        int neuerZähler = a.zähler * b.zähler; // Multipliziere die Zähler, um den neuen Zähler zu erhalten
+        int neuerNenner = a.nenner * b.nenner; // Multipliziere die Nenner, um den neuen Nenner zu erhalten
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Multiplikation ist
     }
 
+    // Operatorüberladung für die Division von zwei Brüchen
     public static Bruch operator /(Bruch a, Bruch b)
     {
-        int zaehler = a.zaehler * b.nenner;
-        int nenner = a.nenner * b.zaehler;
-        return new Bruch(zaehler, nenner);
+        int neuerZähler = a.zähler * b.nenner; // Multipliziere den Zähler des ersten Bruchs mit dem Nenner des zweiten Bruchs, um den neuen Zähler zu erhalten
+        int neuerNenner = a.nenner * b.zähler; // Multipliziere den Nenner des ersten Bruchs mit dem Zähler des zweiten Bruchs, um den neuen Nenner zu erhalten
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Division ist
     }
 
-    public static Bruch operator ^(Bruch a, int exponent)
+    // Methode zum Potenzieren eines Bruchs
+    public Bruch Power(int exponent)
     {
-        int zaehler = (int)Math.Pow(a.zaehler, exponent);
-        int nenner = (int)Math.Pow(a.nenner, exponent);
-        return new Bruch(zaehler, nenner);
-    }
-
-    public static Bruch operator *(int skalar, Bruch a)
-    {
-        int zaehler = skalar * a.zaehler;
-        int nenner = a.nenner;
-        return new Bruch(zaehler, nenner);
-    }
-
-    private void Kuerzen()
-    {
-        int teiler = this.GgT(this.zaehler, this.nenner);
-        this.zaehler /= teiler;
-        this.nenner /= teiler;
-
-        if (this.nenner < 0)
+        if (exponent < 0) // Wenn der Exponent negativ ist, werfe eine Ausnahme
         {
-            this.zaehler *= -1;
-            this.nenner *= -1;
-        }
-    }
-
-    private int GgT(int a, int b)
-    {
-        a = Math.Abs(a);
-        b = Math.Abs(b);
-
-        while (b != 0)
-        {
-            int temp = b;
-            b = a % b;
-            a = temp;
+            throw new ArgumentException("Exponent darf nicht negativ sein!");
         }
 
-        return a;
+        int neuerZähler = (int)Math.Pow(zähler, exponent); // Potenziere den Zähler auf den Exponenten
+        int neuerNenner = (int)Math.Pow(nenner, exponent); // Potenziere den Nenner auf den Exponenten
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Potenzierung ist
     }
 
+    // Methode zum Ziehen einer Wurzel aus einem Bruch
+    public Bruch Root(int n)
+    {
+        if (n < 0) // Wenn der Wurzelexponent negativ ist, werfe eine Ausnahme
+        {
+            throw new ArgumentException("Wurzelexponent darf nicht negativ sein!");
+        }
+
+        // Bringe den Nenner auf eine Potenz von n
+        int neuerNenner = (int)Math.Pow(nenner, (double)n / 2);
+
+        // Potenziere den Zähler und den Nenner auf die n-te Wurzel
+        int neuerZähler = (int)Math.Pow(zähler, 1.0 / n);
+        neuerNenner = (int)Math.Pow(neuerNenner, 1.0 / n);
+
+        return new Bruch(neuerZähler, neuerNenner); // Gib einen neuen Bruch zurück, der das Ergebnis der Wurzelziehung ist
+    }
+
+    // Methode zur Darstellung des Bruchs als Zeichenkette
     public override string ToString()
     {
-        if (nenner == 1)
+        if (nenner == 1) // Wenn der Nenner 1 ist, gib nur den Zähler aus
         {
-            return zaehler.ToString();
+            return zähler.ToString();
         }
-        else
+        else // Ansonsten gib den Bruch als "Zähler/Nenner" aus
         {
-            return zaehler.ToString() + "/" + nenner.ToString();
+        return $"{zähler}/{nenner}";
         }
     }
 }
 
-class Bruchrechner
+class Program
 {
     static void Main(string[] args)
     {
-        do {
-Console.WriteLine(@"
-Welche Rechenoperation möchtest du ausführen?:
-1. [+]
-2. [-]
-3. [*]
-4. [/]
-5. [^]
-6. [√]
---------------------------------------");
-        string operation = Console.ReadLine();
-
-        Console.WriteLine("Geben Sie den ersten Bruch ein (Zähler/Nenner):");
-        string[] bruch1String = Console.ReadLine().Split('/');
-        int zaehler1 = int.Parse(bruch1String[0]);
-        int nenner1 = int.Parse(bruch1String[1]);
-        Bruch bruch1 = new Bruch(zaehler1, nenner1);
-
-        Console.WriteLine("Geben Sie den zweiten Bruch ein (Zähler/Nenner):");
-        string[] bruch2String = Console.ReadLine().Split('/');
-        int zaehler2 = int.Parse(bruch2String[0]);
-        int nenner2 = int.Parse(bruch2String[1]);
-        Bruch bruch2 = new Bruch(zaehler2, nenner2);
-
-        Bruch ergebnis = new Bruch(0, 1);
-
-        switch (operation)
+        Console.Clear();
+Console.Write(@"
+  ___             _    ___        _                 
+ | _ )_ _ _  _ __| |_ | _ \___ __| |_  _ _  ___ _ _ 
+ | _ \ '_| || / _| ' \|   / -_) _| ' \| ' \/ -_) '_|
+ |___/_|  \_,_\__|_||_|_|_\___\__|_||_|_||_\___|_|  
+ ---------------------------------------------------
+");
+        do 
         {
-            case "1":
-                ergebnis = bruch1 + bruch2;
-                break;
-            case "2":
-                ergebnis = bruch1 - bruch2;
-                break;
-            case "3":
-                ergebnis = bruch1 * bruch2;
-                break;
-            case "4":
-                ergebnis = bruch1 / bruch2;
-                break;
-            case "5":
-                Console.WriteLine("Geben Sie den Exponenten ein:");
-                int exponent = int.Parse(Console.ReadLine());
-                ergebnis = bruch1 ^ exponent;
-                break;
-            case "6":
-                ergebnis = new Bruch((int)Math.Sqrt(bruch1.Zaehler), (int)Math.Sqrt(bruch1.Nenner));
-                break;
-            default:
-                Console.WriteLine("Ungültige Eingabe!");
-                return;
-        }
+            Console.Clear();
+            // Lese die Eingaben des Benutzers für den ersten Bruch
+            Console.Write("Gib den Zähler des ersten Bruchs ein: ");
+            int z1 = int.Parse(Console.ReadLine());
+            Console.Write("Gib den Nenner des ersten Bruchs ein: ");
+            int n1 = int.Parse(Console.ReadLine());
+            Bruch a = new Bruch(z1, n1);
+
+            // Lese die Eingaben des Benutzers für den zweiten Bruch
+            Console.Write("Gib den Zähler des zweiten Bruchs ein: ");
+            int z2 = int.Parse(Console.ReadLine());
+            Console.Write("Gib den Nenner des zweiten Bruchs ein: ");
+            int n2 = int.Parse(Console.ReadLine());
+            Bruch b = new Bruch(z2, n2);
+
+            // Frage den Benutzer nach dem Exponenten und berechne die Potenz des ersten Bruchs, wenn ein Exponent angegeben wurde
+            Console.Write("Gib den Exponenten ein: ");
+            string exponentString = Console.ReadLine();
+
+            // Führe die verschiedenen Rechenoperationen durch und gib die Ergebnisse aus
+            Bruch c = a + b;
+            Console.WriteLine($"{a} + {b} = {c}");
+
+            c = a - b;
+            Console.WriteLine($"{a} - {b} = {c}");
+
+            c = a * b;
+            Console.WriteLine($"{a} * {b} = {c}");
+
+            c = a / b;
+            Console.WriteLine($"{a} / {b} = {c}");
+
+            if (!string.IsNullOrEmpty(exponentString)) // Wenn der Benutzer einen Exponenten angegeben hat
+            {
+                int exponent = int.Parse(exponentString);
+                c = a.Power(exponent);
+                Console.WriteLine($"{a}^{exponent} = {c}");
+            }
+
+            // Berechne die Wurzel des ersten Bruchs und gib das Ergebnis aus
+            c = a.Root(2);
+            Console.WriteLine($"sqrt({a}) = {c}");
+
+//ask for Restart
 Console.Write(@"
 --------------------------------------
 
-Press Y to run the program again, or any other key to exit: ");
-        Console.WriteLine("Das Ergebnis ist: " + ergebnis);
-        } while (Console.ReadKey(true).Key == ConsoleKey.Y);
-        Console.Clear();
+Press Y to run the program again, or any other key to exit: "); 
+        }
+        while (Console.ReadKey(true).Key == ConsoleKey.Y);
+    Console.Clear();
     }
 }
