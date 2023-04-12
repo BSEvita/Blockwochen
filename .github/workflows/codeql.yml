@@ -13,17 +13,15 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "backup" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "main" ]
-  schedule:
-    - cron: '17 18 * * 5'
+    branches: [ "main", "backup" ]
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     permissions:
       actions: read
       contents: read
@@ -42,7 +40,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - if: matrix.language == "csharp"
+    - if: matrix.language == 'csharp'
       name: Autobuild
       uses: github/codeql-action/autobuild@v2
     - if: matrix.language == 'java'
