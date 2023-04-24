@@ -103,7 +103,7 @@ namespace Taschenrechner
 
         private void btnComma_Click(object sender, EventArgs e)
         {
-            outputField.Text += ".";
+            outputField.Text += ",";
         }
 
         private void btnC_Click(object sender, EventArgs e)
@@ -146,9 +146,51 @@ namespace Taschenrechner
                 return;
             }
 
+            switch (op)
+            {
+                case 'w':
+                {
+                    double number = Convert.ToDouble(Line);
+                    outputField.Clear();
+                    ergebnisBox.Clear();
+                    firstCalculationBox.Clear();
+
+                    outputField.Text += "√(" + number + ")";
+
+                    firstCalculationBox.Text += "√(" + number + ")";
+
+                    calculations.Equate(op, number, 0.0);
+
+                    outputField.Clear();
+                    ergebnisBox.Text += calculations.Result;
+                    lastAnswer = calculations.Result;
+                    return;
+                }
+
+                case 'p':
+                {
+                    double number = Convert.ToDouble(Line);
+                    outputField.Clear();
+                    ergebnisBox.Clear();
+                    firstCalculationBox.Clear();
+
+                    outputField.Text += "sqr(" + number + ")";
+
+                    firstCalculationBox.Text += "sqr(" + number + ")";
+
+                    calculations.Equate(op, number, 0.0);
+
+                    outputField.Clear();
+                    ergebnisBox.Text += calculations.Result;
+                    lastAnswer = calculations.Result;
+                    return;
+                }
+            }
+            
+
             if (lastAnswer != 0.0)
             {
-                double answer = Convert.ToDouble(Line.Replace(".", ","));
+                double answer = Convert.ToDouble(Line);
 
                 calculations.Equate(op, lastAnswer, answer);
 
@@ -164,7 +206,7 @@ namespace Taschenrechner
             {
                 outputField.Clear();
                 isSecondNumber = false;
-                secondnumber = Convert.ToDouble(Line.Replace(".", ","));
+                secondnumber = Convert.ToDouble(Line);
 
                 if (firstCalculationBox.Text.Length < 0)
                     firstCalculationBox.Text += secondnumber + " " + op;
@@ -193,7 +235,7 @@ namespace Taschenrechner
 
                 isSecondNumber = true;
                 secondnumber = new double();
-                firstnumber = Convert.ToDouble(Line.Replace(".", ","));
+                firstnumber = Convert.ToDouble(Line);
                 outputField.Clear();
 
                 if (firstCalculationBox.Text.Length < 0)

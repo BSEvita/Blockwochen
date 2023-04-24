@@ -94,6 +94,11 @@ namespace Taschenrechner
             return Math.Tan(FirstNumber * Math.PI / 180);
         }
 
+        public static double Squareroot(double FirstNumber)
+        {
+            return Math.Sqrt(FirstNumber);
+        }
+
         public void Equate(char Operation, double number1, double number2)
         {
 
@@ -134,6 +139,9 @@ namespace Taschenrechner
                     break;
                 case 't':
                     Result = Tangens(FirstNumber);
+                    break;
+                case 'w':
+                    Result = Squareroot(FirstNumber);
                     break;
                 default:
                     break;
