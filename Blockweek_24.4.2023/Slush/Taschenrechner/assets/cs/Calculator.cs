@@ -18,7 +18,9 @@ namespace Taschenrechner.assets.cs {
         {
             return a * b;
         }
-
+        public static double Power(double a, double b) {
+            return Math.Pow(a, b);
+        }
         public static double Divide(double a, double b)
         {
             if (b != 0 || a != 0)
@@ -43,17 +45,18 @@ namespace Taschenrechner.assets.cs {
             }
         }
 
-        public static double Logarythm(double a, double b)
+        public static double Logarithm(double a, double b)
         {
-            if (a >= 0 || b >= 0)
+            if (a >= 0 && b >= 0)
             {
-                return Math.Log(a);
+                return Math.Log(a, b);
             }
             else
             {
-                throw new ArgumentOutOfRangeException("It is not allowed to use negative Numbers");
+                throw new ArgumentOutOfRangeException("It is not allowed to use negative numbers.");
             }
         }
+
 
         public static double Factorial(int n)
         {
