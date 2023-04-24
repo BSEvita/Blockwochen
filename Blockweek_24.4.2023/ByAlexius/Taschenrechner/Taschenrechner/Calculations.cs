@@ -20,7 +20,7 @@ namespace Taschenrechner
             Calculation cal = new Calculation();
             cal.Character = operation;
             cal.Value = value;
-            this.Add(key, cal);
+            Add(key, cal);
         }
     }
 
@@ -28,11 +28,11 @@ namespace Taschenrechner
     {
         public char Operation;
 
-        private double FirstNumber {  get; set; }
-        private double SecondNumber { get; set; }
-        private double Result { get; set; }
+        public double FirstNumber {  get; set; }
+        public double SecondNumber { get; set; }
+        public double Result { get; set; }
 
-        private HistoryDictionary history = new HistoryDictionary();
+        public HistoryDictionary history = new HistoryDictionary();
 
         public static double Addition(double FirstNumber, double SecondNumber)
         {
