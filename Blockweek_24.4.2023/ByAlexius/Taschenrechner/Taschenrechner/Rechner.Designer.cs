@@ -47,7 +47,6 @@
             btnKehrwert = new Button();
             btn7 = new Button();
             btn4 = new Button();
-            btnProzent = new Button();
             outputField = new RichTextBox();
             btnEquals = new Button();
             btnPlus = new Button();
@@ -58,9 +57,10 @@
             btnSin = new Button();
             btnTan = new Button();
             btnPot2 = new Button();
-            btnKlammerOeffnen = new Button();
-            btnKlammerSchliesen = new Button();
             credits = new Label();
+            button5 = new Button();
+            firstCalculationBox = new RichTextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btn1
@@ -98,12 +98,13 @@
             // 
             // btnDelete
             // 
-            btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(280, 220);
+            btnDelete.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.ImageAlign = ContentAlignment.TopCenter;
+            btnDelete.Location = new Point(372, 220);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(73, 51);
             btnDelete.TabIndex = 5;
-            btnDelete.Text = "<=";
+            btnDelete.Text = "←";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -116,6 +117,7 @@
             btnDividieren.TabIndex = 5;
             btnDividieren.Text = "÷";
             btnDividieren.UseVisualStyleBackColor = true;
+            btnDividieren.Click += btnDividieren_Click;
             // 
             // btnMulitplizieren
             // 
@@ -126,6 +128,7 @@
             btnMulitplizieren.TabIndex = 6;
             btnMulitplizieren.Text = "×";
             btnMulitplizieren.UseVisualStyleBackColor = true;
+            btnMulitplizieren.Click += btnMulitplizieren_Click;
             // 
             // btnMinus
             // 
@@ -136,6 +139,7 @@
             btnMinus.TabIndex = 7;
             btnMinus.Text = "–";
             btnMinus.UseVisualStyleBackColor = true;
+            btnMinus.Click += btnMinus_Click;
             // 
             // btn8
             // 
@@ -163,12 +167,13 @@
             // btnC
             // 
             btnC.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnC.Location = new Point(188, 220);
+            btnC.Location = new Point(100, 220);
             btnC.Name = "btnC";
             btnC.Size = new Size(73, 51);
             btnC.TabIndex = 4;
             btnC.Text = "C";
             btnC.UseVisualStyleBackColor = true;
+            btnC.Click += btnC_Click;
             // 
             // btnWurzel
             // 
@@ -179,6 +184,7 @@
             btnWurzel.TabIndex = 8;
             btnWurzel.Text = "²√x";
             btnWurzel.UseVisualStyleBackColor = true;
+            btnWurzel.Click += btnWurzel_Click;
             // 
             // btn9
             // 
@@ -212,16 +218,18 @@
             btnPot.TabIndex = 7;
             btnPot.Text = "x²";
             btnPot.UseVisualStyleBackColor = true;
+            btnPot.Click += btnPot_Click;
             // 
             // bntCE
             // 
             bntCE.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            bntCE.Location = new Point(100, 220);
+            bntCE.Location = new Point(12, 220);
             bntCE.Name = "bntCE";
             bntCE.Size = new Size(73, 51);
             bntCE.TabIndex = 3;
             bntCE.Text = "CE";
             bntCE.UseVisualStyleBackColor = true;
+            bntCE.Click += bntCE_Click;
             // 
             // btnKehrwert
             // 
@@ -232,6 +240,7 @@
             btnKehrwert.TabIndex = 6;
             btnKehrwert.Text = "1/x";
             btnKehrwert.UseVisualStyleBackColor = true;
+            btnKehrwert.Click += btnKehrwert_Click;
             // 
             // btn7
             // 
@@ -255,25 +264,15 @@
             btn4.UseVisualStyleBackColor = true;
             btn4.Click += btn4_Click;
             // 
-            // btnProzent
-            // 
-            btnProzent.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProzent.Location = new Point(12, 220);
-            btnProzent.Name = "btnProzent";
-            btnProzent.Size = new Size(73, 51);
-            btnProzent.TabIndex = 2;
-            btnProzent.Text = "%";
-            btnProzent.UseVisualStyleBackColor = true;
-            // 
             // outputField
             // 
             outputField.BackColor = SystemColors.Window;
             outputField.BorderStyle = BorderStyle.FixedSingle;
-            outputField.Font = new Font("Segoe UI", 19F, FontStyle.Regular, GraphicsUnit.Point);
-            outputField.Location = new Point(36, 51);
+            outputField.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            outputField.Location = new Point(41, 104);
             outputField.Name = "outputField";
             outputField.ReadOnly = true;
-            outputField.Size = new Size(403, 112);
+            outputField.Size = new Size(404, 65);
             outputField.TabIndex = 1;
             outputField.Text = "";
             outputField.TextChanged += outputField_TextChanged;
@@ -330,8 +329,9 @@
             btnLog.Name = "btnLog";
             btnLog.Size = new Size(73, 51);
             btnLog.TabIndex = 23;
-            btnLog.Text = "LOG";
+            btnLog.Text = "Log";
             btnLog.UseVisualStyleBackColor = true;
+            btnLog.Click += btnLog_Click;
             // 
             // btnCos
             // 
@@ -340,8 +340,9 @@
             btnCos.Name = "btnCos";
             btnCos.Size = new Size(73, 51);
             btnCos.TabIndex = 24;
-            btnCos.Text = "COS";
+            btnCos.Text = "Cos";
             btnCos.UseVisualStyleBackColor = true;
+            btnCos.Click += btnCos_Click;
             // 
             // btnSin
             // 
@@ -350,8 +351,9 @@
             btnSin.Name = "btnSin";
             btnSin.Size = new Size(73, 51);
             btnSin.TabIndex = 25;
-            btnSin.Text = "SIN";
+            btnSin.Text = "Sin";
             btnSin.UseVisualStyleBackColor = true;
+            btnSin.Click += btnSin_Click;
             // 
             // btnTan
             // 
@@ -360,40 +362,20 @@
             btnTan.Name = "btnTan";
             btnTan.Size = new Size(73, 51);
             btnTan.TabIndex = 26;
-            btnTan.Text = "TAN";
+            btnTan.Text = "Tan";
             btnTan.UseVisualStyleBackColor = true;
+            btnTan.Click += btnTan_Click;
             // 
             // btnPot2
             // 
             btnPot2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPot2.Location = new Point(372, 220);
+            btnPot2.Location = new Point(12, 600);
             btnPot2.Name = "btnPot2";
             btnPot2.Size = new Size(73, 51);
             btnPot2.TabIndex = 27;
-            btnPot2.Text = "POT";
+            btnPot2.Text = "Pot";
             btnPot2.UseVisualStyleBackColor = true;
-            // 
-            // btnKlammerOeffnen
-            // 
-            btnKlammerOeffnen.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnKlammerOeffnen.Location = new Point(12, 600);
-            btnKlammerOeffnen.Name = "btnKlammerOeffnen";
-            btnKlammerOeffnen.Size = new Size(34, 51);
-            btnKlammerOeffnen.TabIndex = 28;
-            btnKlammerOeffnen.Text = "(";
-            btnKlammerOeffnen.UseVisualStyleBackColor = true;
-            btnKlammerOeffnen.Click += btnKlammerOeffnen_Click;
-            // 
-            // btnKlammerSchliesen
-            // 
-            btnKlammerSchliesen.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnKlammerSchliesen.Location = new Point(51, 600);
-            btnKlammerSchliesen.Name = "btnKlammerSchliesen";
-            btnKlammerSchliesen.Size = new Size(34, 51);
-            btnKlammerSchliesen.TabIndex = 29;
-            btnKlammerSchliesen.Text = ")";
-            btnKlammerSchliesen.UseVisualStyleBackColor = true;
-            btnKlammerSchliesen.Click += btnKlammerSchliesen_Click;
+            btnPot2.Click += btnPot2_Click;
             // 
             // credits
             // 
@@ -404,14 +386,49 @@
             credits.TabIndex = 30;
             credits.Text = "(C) Alexander Rziha 2023";
             // 
+            // button5
+            // 
+            button5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button5.Location = new Point(188, 220);
+            button5.Name = "button5";
+            button5.Size = new Size(73, 51);
+            button5.TabIndex = 31;
+            button5.Text = "Ln";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // firstCalculationBox
+            // 
+            firstCalculationBox.BackColor = SystemColors.ScrollBar;
+            firstCalculationBox.BorderStyle = BorderStyle.FixedSingle;
+            firstCalculationBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            firstCalculationBox.Location = new Point(12, 50);
+            firstCalculationBox.Name = "firstCalculationBox";
+            firstCalculationBox.ReadOnly = true;
+            firstCalculationBox.Size = new Size(433, 48);
+            firstCalculationBox.TabIndex = 32;
+            firstCalculationBox.Text = "";
+            firstCalculationBox.TextChanged += firstCalculationBox_TextChanged;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(280, 220);
+            button1.Name = "button1";
+            button1.Size = new Size(73, 51);
+            button1.TabIndex = 33;
+            button1.Text = "n!";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Default
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(451, 663);
+            ClientSize = new Size(459, 663);
+            Controls.Add(button1);
+            Controls.Add(firstCalculationBox);
+            Controls.Add(button5);
             Controls.Add(credits);
-            Controls.Add(btnKlammerSchliesen);
-            Controls.Add(btnKlammerOeffnen);
             Controls.Add(btnPot2);
             Controls.Add(btnTan);
             Controls.Add(btnSin);
@@ -422,7 +439,6 @@
             Controls.Add(btnPlus);
             Controls.Add(btnEquals);
             Controls.Add(outputField);
-            Controls.Add(btnProzent);
             Controls.Add(btn4);
             Controls.Add(btn7);
             Controls.Add(btnKehrwert);
@@ -471,7 +487,6 @@
         private Button btnKehrwert;
         private Button btn7;
         private Button btn4;
-        private Button btnProzent;
         private RichTextBox outputField;
         private Button btnEquals;
         private Button btnPlus;
@@ -482,8 +497,9 @@
         private Button btnSin;
         private Button btnTan;
         private Button btnPot2;
-        private Button btnKlammerOeffnen;
-        private Button btnKlammerSchliesen;
         private Label credits;
+        private Button button5;
+        private RichTextBox firstCalculationBox;
+        private Button button1;
     }
 }

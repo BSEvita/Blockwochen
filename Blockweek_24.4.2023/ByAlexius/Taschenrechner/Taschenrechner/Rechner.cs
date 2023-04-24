@@ -1,11 +1,13 @@
+using System.Diagnostics.Eventing.Reader;
+
 namespace Taschenrechner
 {
     public partial class Default : Form
     {
         private Calculations calculations = new Calculations();
-        private char lastOperation;
         private double firstnumber;
         private double secondnumber;
+        private bool isSecondNumber = false;
 
         public Default()
         {
@@ -38,6 +40,12 @@ namespace Taschenrechner
         {
             outputField.SelectionStart = outputField.Text.Length;
             outputField.ScrollToCaret();
+        }
+
+        private void firstCalculationBox_TextChanged(object sender, EventArgs e)
+        {
+            firstCalculationBox.SelectionStart = firstCalculationBox.Text.Length;
+            firstCalculationBox.ScrollToCaret();
         }
 
         private void btn0_Click(object sender, EventArgs e)
@@ -90,19 +98,75 @@ namespace Taschenrechner
             outputField.Text += "9";
         }
 
-        private void btnKlammerSchliesen_Click(object sender, EventArgs e)
-        {
-            outputField.Text += ")";
-        }
-
-        private void btnKlammerOeffnen_Click(object sender, EventArgs e)
-        {
-            outputField.Text += "(";
-        }
-
         private void btnComma_Click(object sender, EventArgs e)
         {
             outputField.Text += ".";
+        }
+
+        private void btnC_Click(object sender, EventArgs e)
+        {
+            outputField.Clear();
+            firstCalculationBox.Clear();
+            firstnumber = new double();
+            secondnumber = new double();
+        }
+
+        private void bntCE_Click(object sender, EventArgs e)
+        {
+            outputField.Clear();
+
+            if (isSecondNumber)
+            {
+                secondnumber = new double();
+            }
+            else
+            {
+                firstnumber = new double();
+            }
+        }
+
+        private void OnOperation(char op)
+        {
+            string Line;
+
+            try
+            {
+                Line = outputField.Lines[0];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
+            if (isSecondNumber)
+            {
+                outputField.Clear();
+                isSecondNumber = false;
+                secondnumber = Convert.ToDouble(Line.Replace(".", ","));
+
+                if (firstCalculationBox.Text.Length < 0)
+                    firstCalculationBox.Text += secondnumber + " " + op;
+                else
+                    firstCalculationBox.Text += " " + secondnumber + " " + op;
+                Calculations calculations = new Calculations();
+                calculations.Equate(op, firstnumber, secondnumber);
+
+                outputField.Clear();
+                outputField.Text += calculations.Result;
+            }
+            else
+            {
+                isSecondNumber = true;
+                secondnumber = new double();
+                firstnumber = Convert.ToDouble(Line.Replace(".", ","));
+                outputField.Clear();
+
+                if (firstCalculationBox.Text.Length < 0)
+                    firstCalculationBox.Text += firstnumber + " " + op;
+                else
+                    firstCalculationBox.Text += " " + firstnumber + " " + op;
+            }
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
@@ -110,22 +174,64 @@ namespace Taschenrechner
             OnOperation('+');
         }
 
-        private bool checkLastOperation()
+        private void btnDividieren_Click(object sender, EventArgs e)
         {
-            if (lastOperation != null)
-                return true;
-            else
-                return false;
+            OnOperation('/');
         }
 
-        private void OnOperation(char op)
+        private void btnMulitplizieren_Click(object sender, EventArgs e)
         {
-            outputField.Text += " " + op + "\n";
+            OnOperation('*');
+        }
 
-            string firstLine = outputField.Lines[0];
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            OnOperation('-');
+        }
 
-            outputField.Select(outputField.GetFirstCharIndexFromLine(0), firstLine.Length);
-            outputField.SelectionColor = Color.Gray;
+        private void btnPot2_Click(object sender, EventArgs e)
+        {
+            OnOperation('2');
+        }
+
+        private void btnTan_Click(object sender, EventArgs e)
+        {
+            OnOperation('t');
+        }
+
+        private void btnCos_Click(object sender, EventArgs e)
+        {
+            OnOperation('c');
+        }
+
+        private void btnSin_Click(object sender, EventArgs e)
+        {
+            OnOperation('s');
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            OnOperation('l');
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OnOperation('n');
+        }
+
+        private void btnKehrwert_Click(object sender, EventArgs e)
+        {
+            OnOperation('k');
+        }
+
+        private void btnPot_Click(object sender, EventArgs e)
+        {
+            OnOperation('p');
+        }
+
+        private void btnWurzel_Click(object sender, EventArgs e)
+        {
+            OnOperation('w');
         }
     }
 }
