@@ -8,6 +8,8 @@ namespace Taschenrechner
         private double firstnumber;
         private double secondnumber;
         private bool isSecondNumber = false;
+        private double lastAnswer;
+        private char lastOperator;
 
         public Default()
         {
@@ -21,6 +23,7 @@ namespace Taschenrechner
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
+            OnOperation('=');
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -109,6 +112,7 @@ namespace Taschenrechner
             firstCalculationBox.Clear();
             firstnumber = new double();
             secondnumber = new double();
+            lastAnswer = new double();
         }
 
         private void bntCE_Click(object sender, EventArgs e)
@@ -129,6 +133,8 @@ namespace Taschenrechner
         {
             string Line;
 
+            Calculations calculations = new Calculations();
+
             try
             {
                 Line = outputField.Lines[0];
@@ -139,6 +145,19 @@ namespace Taschenrechner
                 return;
             }
 
+            if (lastAnswer != 0.0)
+            {
+                double answer = Convert.ToDouble(Line.Replace(".", ","));
+
+                calculations.Equate(op, lastAnswer, answer);
+
+                outputField.Clear();
+                ergebnisBox.Clear();
+
+                ergebnisBox.Text += calculations.Result;
+                lastAnswer = calculations.Result;
+            }
+
             if (isSecondNumber)
             {
                 outputField.Clear();
@@ -147,16 +166,29 @@ namespace Taschenrechner
 
                 if (firstCalculationBox.Text.Length < 0)
                     firstCalculationBox.Text += secondnumber + " " + op;
+                else if (op == '=')
+                {
+                    firstCalculationBox.Text += " " + secondnumber;
+                    op = lastOperator;
+                }
                 else
                     firstCalculationBox.Text += " " + secondnumber + " " + op;
-                Calculations calculations = new Calculations();
                 calculations.Equate(op, firstnumber, secondnumber);
 
                 outputField.Clear();
-                outputField.Text += calculations.Result;
+                ergebnisBox.Clear();
+
+                ergebnisBox.Text += calculations.Result;
+                lastAnswer = calculations.Result;
             }
             else
             {
+                if (lastOperator != null)
+                {
+                    firstCalculationBox.Clear();
+                    lastOperator = new char();
+                }
+
                 isSecondNumber = true;
                 secondnumber = new double();
                 firstnumber = Convert.ToDouble(Line.Replace(".", ","));
@@ -166,6 +198,8 @@ namespace Taschenrechner
                     firstCalculationBox.Text += firstnumber + " " + op;
                 else
                     firstCalculationBox.Text += " " + firstnumber + " " + op;
+
+                lastOperator = op;
             }
         }
 
