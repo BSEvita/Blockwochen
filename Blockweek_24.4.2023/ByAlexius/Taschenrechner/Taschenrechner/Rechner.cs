@@ -110,6 +110,7 @@ namespace Taschenrechner
         {
             outputField.Clear();
             firstCalculationBox.Clear();
+            ergebnisBox.Clear();
             firstnumber = new double();
             secondnumber = new double();
             lastAnswer = new double();
@@ -152,6 +153,7 @@ namespace Taschenrechner
                 calculations.Equate(op, lastAnswer, answer);
 
                 outputField.Clear();
+
                 ergebnisBox.Clear();
 
                 ergebnisBox.Text += calculations.Result;
@@ -266,6 +268,11 @@ namespace Taschenrechner
         private void btnWurzel_Click(object sender, EventArgs e)
         {
             OnOperation('w');
+        }
+
+        private void ergebnisBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
