@@ -1,112 +1,106 @@
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace WinForm_Taschenrechner
 {
-	public partial class Taschenrechner : Form
-	{
-		//Boolean Flags, um zu Überprüfen, ob zuletzt ein Operator oder eine Zahl gedrückt wurde.
-		bool LastClickedIsNumber = true;
-		bool LastClickedIsOperator;
+    public partial class Taschenrechner : Form
+    {
+        //Boolean Flags, um zu Überprüfen, ob zuletzt ein Operator oder eine Zahl gedrückt wurde.
+        bool LastClickedIsNumber = true;
+        bool LastClickedKomma = false;
+        bool LastClickedIsOperator;
 
-		double Num1;
-		double Num2;
+        double Eingabe;
 
-		int PrecedencePrevOp;
-		int PrecedenceCurOp;
-		string LastOperator;
+        double Zwischensumme; //selbsterklärend
+        double Endsumme;      //selbsterklärend
 
-		private int get_Precedence(string Operator)
-		{
-			switch(Operator)
-			{
-				case "+":
-				case "-":
-					return 1;
-				case "*":
-				case "/":
-					return 2;
-				case "x^(y)":
-					return 3;
-				default:
-					return -1;
-			}
-		}
-		public Taschenrechner()
-		{
-			InitializeComponent();
-		}
+        int PrecedencePrevOp;
+        int PrecedenceCurOp;
 
-		private void OperatorIstGleich_Click(object sender, EventArgs e)
-		{
+        //Neuer Operator ersetzt bei Eingabe den vorherigen. Alter Operator wird zum Entfernen in Anzeige benötigt.
+        string LastOperator;
 
-		}
+        public Taschenrechner()
+        {
+            InitializeComponent();
+        }
 
-		private void AuthorsNote_Click(object sender, EventArgs e)
-		{
+        private void OperatorIstGleich_Click(object sender, EventArgs e)
+        {
 
-		}
+        }
 
-		private void Number_Click(object sender, EventArgs e)
-		{
-			Button Number = (Button)sender;
+        private void AuthorsNote_Click(object sender, EventArgs e)
+        {
 
-			if (LastClickedIsNumber)
-			{
-				OutputField.Text += Number.Text;
-			}
-			else if (LastClickedIsOperator)
-			{
-				OutputField.Text = OutputField.Text.Remove(0, OutputField.Text.Length);
-				OutputField.Text += Number.Text;
-			}
+        }
 
-			LastClickedIsNumber = true;
-			LastClickedIsOperator = false;
-		}
+        private void Number_Click(object sender, EventArgs e)
+        {
+            Button Number = (Button)sender;
 
-		private void EingabeRückgängig_Click(object sender, EventArgs e)
-		{
-			switch (OutputField.Text.Length)
-			{
-				case 0:
-					break;
-				default:
-					OutputField.Text = OutputField.Text.Substring(0, OutputField.Text.Length - 1);
-					break;
-			}
-		}
+            if (LastClickedIsNumber || OutputField.Text.Length == 0)
+            {
+                OutputField.Text += Number.Text;
+            }
+            else if (LastClickedIsOperator && OutputField.Text.Length > 0)
+            {
+                OutputField.Text = OutputField.Text.Remove(0, OutputField.Text.Length);
+                OutputField.Text += Number.Text;
+            }
 
-		private void Operator_Click(object sender, EventArgs e)
-		{
-			Button Operator = (Button)sender;
-			PrecedenceCurOp = get_Precedence(Operator.Text);
+            LastClickedIsNumber = true;
+            LastClickedIsOperator = false;
+        }
+        private void SymbolKomma_Click(object sender, EventArgs e)
+        {
+            Button Komma = (Button)sender;
+            if (LastClickedIsNumber && OutputField.Text.Length > 0 && LastClickedKomma == false)
+            {
+                OutputField.Text += Komma.Text;
+                LastClickedKomma = true;
+            }
+        }
 
-			if (LastClickedIsNumber)
-			{
-				if(PrecedenceCurOp < PrecedencePrevOp || PrecedenceCurOp == PrecedencePrevOp)
-				{
+        private void Operator_Click(object sender, EventArgs e)
+        {
+            Button Operator = (Button)sender;
 
-				}
+            if (LastClickedIsNumber && OutputField.Text.Length > 0)
+            {
+                AllPreviouslyEntered.Text += " " + OutputField.Text + " " + Operator.Text;
+            }
+            else if (LastClickedIsOperator && AllPreviouslyEntered.Text.Length > 0)
+            {
+                AllPreviouslyEntered.Text = AllPreviouslyEntered.Text.Substring(0, AllPreviouslyEntered.Text.Length - LastOperator.Length) + Operator.Text;
+            }
 
-				PreviouslyEntered.Text += " " + OutputField.Text + " " + Operator.Text;
-				LastOperator = Operator.Text;
-			}
-			else if (LastClickedIsOperator)
-			{
-				OutputField.Text = OutputField.Text.Substring(0, OutputField.Text.Length - LastOperator.Length) + Operator.Text;
-				LastOperator = Operator.Text;
-			}
+            LastOperator = Operator.Text;
+            LastClickedIsNumber = false;
+            LastClickedIsOperator = true;
+            LastClickedKomma = false;
+        }
 
-			LastClickedIsNumber = false;
-			LastClickedIsOperator = true;
-		}
+        private void EingabeRückgängig_Click(object sender, EventArgs e)
+        {
+            switch (OutputField.Text.Length)
+            {
+                case 0:
+                    break;
+                default:
+                    OutputField.Text = OutputField.Text.Remove(OutputField.Text.Length - 1, 1);
+                    break;
+            }
+        }
 
-		private void LöschenCE_Click(object sender, EventArgs e)
-		{
-			if (OutputField.Text.Length == 0)
-			{
-				PreviouslyEntered.Text = PreviouslyEntered.Text.Remove(0, PreviouslyEntered.Text.Length);
-			}
-			OutputField.Text = OutputField.Text.Remove(0, OutputField.Text.Length);
+        private void LöschenCE_Click(object sender, EventArgs e)
+        {
+            if (OutputField.Text.Length == 0)
+            {
+                AllPreviouslyEntered.Text = AllPreviouslyEntered.Text.Remove(0, AllPreviouslyEntered.Text.Length);
+            }
+            OutputField.Text = OutputField.Text.Remove(0, OutputField.Text.Length);
 
-		}
-	}
+        }
+    }
 }
