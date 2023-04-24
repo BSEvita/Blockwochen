@@ -69,7 +69,7 @@
             btn1.Location = new Point(12, 533);
             btn1.Name = "btn1";
             btn1.Size = new Size(73, 51);
-            btn1.TabIndex = 1;
+            btn1.TabIndex = 27;
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = true;
             btn1.Click += btn1_Click;
@@ -80,7 +80,7 @@
             btn2.Location = new Point(100, 533);
             btn2.Name = "btn2";
             btn2.Size = new Size(73, 51);
-            btn2.TabIndex = 2;
+            btn2.TabIndex = 28;
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = true;
             btn2.Click += btn2_Click;
@@ -91,7 +91,7 @@
             btn3.Location = new Point(188, 533);
             btn3.Name = "btn3";
             btn3.Size = new Size(73, 51);
-            btn3.TabIndex = 3;
+            btn3.TabIndex = 29;
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = true;
             btn3.Click += btn3_Click;
@@ -103,7 +103,7 @@
             btnDelete.Location = new Point(372, 220);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(73, 51);
-            btnDelete.TabIndex = 5;
+            btnDelete.TabIndex = 6;
             btnDelete.Text = "←";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
@@ -114,7 +114,7 @@
             btnDividieren.Location = new Point(280, 299);
             btnDividieren.Name = "btnDividieren";
             btnDividieren.Size = new Size(73, 51);
-            btnDividieren.TabIndex = 5;
+            btnDividieren.TabIndex = 10;
             btnDividieren.Text = "÷";
             btnDividieren.UseVisualStyleBackColor = true;
             btnDividieren.Click += btnDividieren_Click;
@@ -125,7 +125,7 @@
             btnMulitplizieren.Location = new Point(280, 380);
             btnMulitplizieren.Name = "btnMulitplizieren";
             btnMulitplizieren.Size = new Size(73, 51);
-            btnMulitplizieren.TabIndex = 6;
+            btnMulitplizieren.TabIndex = 15;
             btnMulitplizieren.Text = "×";
             btnMulitplizieren.UseVisualStyleBackColor = true;
             btnMulitplizieren.Click += btnMulitplizieren_Click;
@@ -136,7 +136,7 @@
             btnMinus.Location = new Point(280, 458);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new Size(73, 51);
-            btnMinus.TabIndex = 7;
+            btnMinus.TabIndex = 20;
             btnMinus.Text = "–";
             btnMinus.UseVisualStyleBackColor = true;
             btnMinus.Click += btnMinus_Click;
@@ -147,7 +147,7 @@
             btn8.Location = new Point(100, 380);
             btn8.Name = "btn8";
             btn8.Size = new Size(73, 51);
-            btn8.TabIndex = 8;
+            btn8.TabIndex = 13;
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = true;
             btn8.Click += btn8_Click;
@@ -159,7 +159,7 @@
             btn5.Name = "btn5";
             btn5.RightToLeft = RightToLeft.Yes;
             btn5.Size = new Size(73, 51);
-            btn5.TabIndex = 9;
+            btn5.TabIndex = 19;
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = true;
             btn5.Click += btn5_Click;
@@ -170,7 +170,7 @@
             btnC.Location = new Point(100, 220);
             btnC.Name = "btnC";
             btnC.Size = new Size(73, 51);
-            btnC.TabIndex = 4;
+            btnC.TabIndex = 3;
             btnC.Text = "C";
             btnC.UseVisualStyleBackColor = true;
             btnC.Click += btnC_Click;
@@ -181,7 +181,7 @@
             btnWurzel.Location = new Point(188, 299);
             btnWurzel.Name = "btnWurzel";
             btnWurzel.Size = new Size(73, 51);
-            btnWurzel.TabIndex = 8;
+            btnWurzel.TabIndex = 9;
             btnWurzel.Text = "²√x";
             btnWurzel.UseVisualStyleBackColor = true;
             btnWurzel.Click += btnWurzel_Click;
@@ -192,7 +192,7 @@
             btn9.Location = new Point(188, 380);
             btn9.Name = "btn9";
             btn9.Size = new Size(73, 51);
-            btn9.TabIndex = 12;
+            btn9.TabIndex = 14;
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = true;
             btn9.Click += btn9_Click;
@@ -204,7 +204,7 @@
             btn6.Name = "btn6";
             btn6.RightToLeft = RightToLeft.Yes;
             btn6.Size = new Size(73, 51);
-            btn6.TabIndex = 13;
+            btn6.TabIndex = 20;
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = true;
             btn6.Click += btn6_Click;
@@ -215,7 +215,7 @@
             btnPot.Location = new Point(100, 299);
             btnPot.Name = "btnPot";
             btnPot.Size = new Size(73, 51);
-            btnPot.TabIndex = 7;
+            btnPot.TabIndex = 8;
             btnPot.Text = "x²";
             btnPot.UseVisualStyleBackColor = true;
             btnPot.Click += btnPot_Click;
@@ -226,7 +226,7 @@
             bntCE.Location = new Point(12, 220);
             bntCE.Name = "bntCE";
             bntCE.Size = new Size(73, 51);
-            bntCE.TabIndex = 3;
+            bntCE.TabIndex = 2;
             bntCE.Text = "CE";
             bntCE.UseVisualStyleBackColor = true;
             bntCE.Click += bntCE_Click;
@@ -237,7 +237,7 @@
             btnKehrwert.Location = new Point(12, 299);
             btnKehrwert.Name = "btnKehrwert";
             btnKehrwert.Size = new Size(73, 51);
-            btnKehrwert.TabIndex = 6;
+            btnKehrwert.TabIndex = 7;
             btnKehrwert.Text = "1/x";
             btnKehrwert.UseVisualStyleBackColor = true;
             btnKehrwert.Click += btnKehrwert_Click;
@@ -248,7 +248,7 @@
             btn7.Location = new Point(12, 380);
             btn7.Name = "btn7";
             btn7.Size = new Size(73, 51);
-            btn7.TabIndex = 17;
+            btn7.TabIndex = 12;
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = true;
             btn7.Click += btn7_Click;
@@ -259,7 +259,7 @@
             btn4.Location = new Point(12, 458);
             btn4.Name = "btn4";
             btn4.Size = new Size(73, 51);
-            btn4.TabIndex = 18;
+            btn4.TabIndex = 17;
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = true;
             btn4.Click += btn4_Click;
@@ -284,7 +284,7 @@
             btnEquals.Location = new Point(280, 600);
             btnEquals.Name = "btnEquals";
             btnEquals.Size = new Size(165, 51);
-            btnEquals.TabIndex = 19;
+            btnEquals.TabIndex = 35;
             btnEquals.Text = "=";
             btnEquals.UseVisualStyleBackColor = false;
             btnEquals.Click += btnEquals_Click;
@@ -295,7 +295,7 @@
             btnPlus.Location = new Point(280, 533);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new Size(73, 51);
-            btnPlus.TabIndex = 20;
+            btnPlus.TabIndex = 30;
             btnPlus.Text = "+";
             btnPlus.UseVisualStyleBackColor = true;
             btnPlus.Click += btnPlus_Click;
@@ -306,7 +306,7 @@
             btn0.Location = new Point(100, 600);
             btn0.Name = "btn0";
             btn0.Size = new Size(73, 51);
-            btn0.TabIndex = 21;
+            btn0.TabIndex = 33;
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = true;
             btn0.Click += btn0_Click;
@@ -317,7 +317,7 @@
             btnComma.Location = new Point(188, 600);
             btnComma.Name = "btnComma";
             btnComma.Size = new Size(73, 51);
-            btnComma.TabIndex = 22;
+            btnComma.TabIndex = 34;
             btnComma.Text = ",";
             btnComma.UseVisualStyleBackColor = true;
             btnComma.Click += btnComma_Click;
@@ -328,7 +328,7 @@
             btnLog.Location = new Point(372, 299);
             btnLog.Name = "btnLog";
             btnLog.Size = new Size(73, 51);
-            btnLog.TabIndex = 23;
+            btnLog.TabIndex = 11;
             btnLog.Text = "Log";
             btnLog.UseVisualStyleBackColor = true;
             btnLog.Click += btnLog_Click;
@@ -339,7 +339,7 @@
             btnCos.Location = new Point(372, 458);
             btnCos.Name = "btnCos";
             btnCos.Size = new Size(73, 51);
-            btnCos.TabIndex = 24;
+            btnCos.TabIndex = 21;
             btnCos.Text = "Cos";
             btnCos.UseVisualStyleBackColor = true;
             btnCos.Click += btnCos_Click;
@@ -350,7 +350,7 @@
             btnSin.Location = new Point(372, 380);
             btnSin.Name = "btnSin";
             btnSin.Size = new Size(73, 51);
-            btnSin.TabIndex = 25;
+            btnSin.TabIndex = 16;
             btnSin.Text = "Sin";
             btnSin.UseVisualStyleBackColor = true;
             btnSin.Click += btnSin_Click;
@@ -361,7 +361,7 @@
             btnTan.Location = new Point(372, 533);
             btnTan.Name = "btnTan";
             btnTan.Size = new Size(73, 51);
-            btnTan.TabIndex = 26;
+            btnTan.TabIndex = 31;
             btnTan.Text = "Tan";
             btnTan.UseVisualStyleBackColor = true;
             btnTan.Click += btnTan_Click;
@@ -372,7 +372,7 @@
             btnPot2.Location = new Point(12, 600);
             btnPot2.Name = "btnPot2";
             btnPot2.Size = new Size(73, 51);
-            btnPot2.TabIndex = 27;
+            btnPot2.TabIndex = 32;
             btnPot2.Text = "Pot";
             btnPot2.UseVisualStyleBackColor = true;
             btnPot2.Click += btnPot2_Click;
@@ -392,7 +392,7 @@
             button5.Location = new Point(188, 220);
             button5.Name = "button5";
             button5.Size = new Size(73, 51);
-            button5.TabIndex = 31;
+            button5.TabIndex = 4;
             button5.Text = "Ln";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
@@ -416,7 +416,7 @@
             button1.Location = new Point(280, 220);
             button1.Name = "button1";
             button1.Size = new Size(73, 51);
-            button1.TabIndex = 33;
+            button1.TabIndex = 5;
             button1.Text = "n!";
             button1.UseVisualStyleBackColor = true;
             // 
