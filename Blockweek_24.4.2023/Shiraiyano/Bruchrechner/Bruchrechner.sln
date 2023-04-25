@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bruchrechner", "Bruchrechner.csproj", "{FA88A2B7-CC2E-4BB3-BEC9-F55269F5F32D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA88A2B7-CC2E-4BB3-BEC9-F55269F5F32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA88A2B7-CC2E-4BB3-BEC9-F55269F5F32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA88A2B7-CC2E-4BB3-BEC9-F55269F5F32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA88A2B7-CC2E-4BB3-BEC9-F55269F5F32D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {889863C9-2164-4C89-A68F-9E428BBF38CA}
+	EndGlobalSection
+EndGlobal

@@ -31,7 +31,7 @@ namespace Taschenrechner
                 firstNumber = Convert.ToDouble(firstNumberInput.Text);
                 secondNumber = Convert.ToDouble(secondNumberInput.Text);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Bitte überprüfen Sie ihrer Eingabe!", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -41,6 +41,9 @@ namespace Taschenrechner
             Default.receivedNumberOne = firstNumber;
             Default.receivedNumberTwo = secondNumber;
             Default.dataReceived = true;
+
+            // Das Form schließen
+            this.Close();
         }
 
         // Hier wird überprüft ob die letzte eingebe eh eine Nummer / ein . oder ein - ist.
