@@ -58,11 +58,10 @@
             btnTan = new Button();
             btnPot2 = new Button();
             credits = new Label();
-            button5 = new Button();
             firstCalculationBox = new RichTextBox();
-            btnFactorial = new Button();
             ergebnisBox = new RichTextBox();
             Ergebnis = new Label();
+            btnFactorial = new Button();
             SuspendLayout();
             // 
             // btn1
@@ -102,9 +101,9 @@
             // 
             btnDelete.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelete.ImageAlign = ContentAlignment.TopCenter;
-            btnDelete.Location = new Point(372, 333);
+            btnDelete.Location = new Point(280, 333);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(73, 51);
+            btnDelete.Size = new Size(165, 51);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "←";
             btnDelete.UseVisualStyleBackColor = true;
@@ -388,17 +387,6 @@
             credits.TabIndex = 30;
             credits.Text = "(C) Alexander Rziha 2023";
             // 
-            // button5
-            // 
-            button5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.Location = new Point(188, 333);
-            button5.Name = "button5";
-            button5.Size = new Size(73, 51);
-            button5.TabIndex = 4;
-            button5.Text = "Ln";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
             // firstCalculationBox
             // 
             firstCalculationBox.BackColor = SystemColors.ScrollBar;
@@ -412,17 +400,6 @@
             firstCalculationBox.Text = "";
             firstCalculationBox.TextChanged += firstCalculationBox_TextChanged;
             // 
-            // btnFactorial
-            // 
-            btnFactorial.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnFactorial.Location = new Point(280, 333);
-            btnFactorial.Name = "btnFactorial";
-            btnFactorial.Size = new Size(73, 51);
-            btnFactorial.TabIndex = 5;
-            btnFactorial.Text = "n!";
-            btnFactorial.UseVisualStyleBackColor = true;
-            btnFactorial.Click += btnFactorial_Click;
-            // 
             // ergebnisBox
             // 
             ergebnisBox.BackColor = SystemColors.GradientActiveCaption;
@@ -434,7 +411,6 @@
             ergebnisBox.Size = new Size(273, 57);
             ergebnisBox.TabIndex = 36;
             ergebnisBox.Text = "";
-            ergebnisBox.TextChanged += ergebnisBox_TextChanged;
             // 
             // Ergebnis
             // 
@@ -446,6 +422,17 @@
             Ergebnis.TabIndex = 37;
             Ergebnis.Text = "Ergebnis:";
             // 
+            // btnFactorial
+            // 
+            btnFactorial.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFactorial.Location = new Point(188, 333);
+            btnFactorial.Name = "btnFactorial";
+            btnFactorial.Size = new Size(73, 51);
+            btnFactorial.TabIndex = 5;
+            btnFactorial.Text = "n!";
+            btnFactorial.UseVisualStyleBackColor = true;
+            btnFactorial.Click += btnFactorial_Click;
+            // 
             // Default
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -455,7 +442,6 @@
             Controls.Add(ergebnisBox);
             Controls.Add(btnFactorial);
             Controls.Add(firstCalculationBox);
-            Controls.Add(button5);
             Controls.Add(credits);
             Controls.Add(btnPot2);
             Controls.Add(btnTan);
@@ -525,10 +511,9 @@
         private Button btnTan;
         private Button btnPot2;
         private Label credits;
-        private Button button5;
         private RichTextBox firstCalculationBox;
-        private Button btnFactorial;
         private RichTextBox ergebnisBox;
         private Label Ergebnis;
+        private Button btnFactorial;
     }
 }

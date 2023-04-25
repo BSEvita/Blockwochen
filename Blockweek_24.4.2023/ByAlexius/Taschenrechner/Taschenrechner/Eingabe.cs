@@ -17,52 +17,49 @@ namespace Taschenrechner
         {
             InitializeComponent();
 
+            // Der Title der Seite wird auf die Global variable gesetzt
             titleLabel.Text = Default.Title;
-        }
-
-        private void titleLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRechnen_Click(object sender, EventArgs e)
         {
-            double firstNumber = Convert.ToDouble(firstNumberInput.Text);
-            double secondNumber = Convert.ToDouble(secondNumberInput.Text);
+            double firstNumber;
+            double secondNumber;
+            try
+            {
+                // Die Eingaben werden Convertiert.
+                firstNumber = Convert.ToDouble(firstNumberInput.Text);
+                secondNumber = Convert.ToDouble(secondNumberInput.Text);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Bitte überprüfen Sie ihrer Eingabe!", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Die globalen variablen werden gesetzt
             Default.receivedNumberOne = firstNumber;
             Default.receivedNumberTwo = secondNumber;
             Default.dataReceived = true;
         }
 
-        private void firstNumberInput_TextChanged(object sender, EventArgs e)
+        // Hier wird überprüft ob die letzte eingebe eh eine Nummer / ein . oder ein - ist.
+        private void NumberInput_KeyPressed(object sender, KeyPressEventArgs e)
         {
-            if (!IsDigit(firstNumberInput.Text))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
-                firstNumberInput.Text.Remove(firstNumberInput.Text.Length - 1);
-            }
-        }
-
-        private void secondNumberInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private bool IsDigit(string s)
-        {
-            if (s == null || s == " ")
-                return false;
-
-            for (int i = 0; i < s.Length; i++)
-            {
-                if (s[i] == ',' || s[i] == '-')
-                    continue;
-
-                if ((s[i] ^ '0') > 9)
-                    return false;
+                e.Handled = true;
             }
 
-            return true;
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
