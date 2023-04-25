@@ -272,11 +272,11 @@
             outputField.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             outputField.Location = new Point(43, 183);
             outputField.Name = "outputField";
-            outputField.ReadOnly = true;
             outputField.Size = new Size(404, 105);
             outputField.TabIndex = 1;
             outputField.Text = "";
             outputField.TextChanged += outputField_TextChanged;
+            outputField.KeyPress += outputField_KeyPress;
             // 
             // btnEquals
             // 

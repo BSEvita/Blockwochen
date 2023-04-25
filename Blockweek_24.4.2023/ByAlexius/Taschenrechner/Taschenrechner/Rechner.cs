@@ -53,6 +53,24 @@ namespace Taschenrechner
             outputField.ScrollToCaret();
         }
 
+        public void outputField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as RichTextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as RichTextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
         // Auto Scroll für die Ausgabe der Rechnung
         private void firstCalculationBox_TextChanged(object sender, EventArgs e)
         {

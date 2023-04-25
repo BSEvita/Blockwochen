@@ -91,7 +91,6 @@
             secondNumberInput.Name = "secondNumberInput";
             secondNumberInput.Size = new Size(305, 23);
             secondNumberInput.TabIndex = 7;
-            firstNumberInput.KeyPress += NumberInput_KeyPressed;
             // 
             // Eingabe
             // 
