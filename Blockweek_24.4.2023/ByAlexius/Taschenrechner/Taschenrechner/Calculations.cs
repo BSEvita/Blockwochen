@@ -59,14 +59,14 @@ namespace Taschenrechner
             return Math.Pow(FirstNumber, SecondNumber);
         }
 
-        public static double WurzelZiehen(double FirstNumber, double SecondNumber)
-        {
-            return Math.Pow(FirstNumber, 1.0 / SecondNumber);
-        }
-
-        public static double Logarithmus(double FirstNumber, double SecondNumber)
+        public static double Logarithmus2(double FirstNumber, double SecondNumber)
         {
             return Math.Log(FirstNumber, SecondNumber);
+        }
+
+        public static double Logarithmus(double FirstNumber)
+        {
+            return Math.Log10(FirstNumber);
         }
 
         public static double Factorial(double FirstNumber)
@@ -99,6 +99,16 @@ namespace Taschenrechner
             return Math.Sqrt(FirstNumber);
         }
 
+        public static double Quadrat(double FirstNumber)
+        {
+            return Math.Pow(FirstNumber, 2);
+        }
+
+        public static double Kehrwert(double FirstNumber)
+        {
+            return (1.0 / FirstNumber);
+        }
+
         public void Equate(char Operation, double number1, double number2)
         {
 
@@ -122,11 +132,11 @@ namespace Taschenrechner
                 case 'p':
                     Result = Potenzieren(FirstNumber, SecondNumber);
                     break;
-                case 'r':
-                    Result = WurzelZiehen(FirstNumber, SecondNumber);
-                    break;
                 case 'l':
-                    Result = Logarithmus(FirstNumber, SecondNumber);
+                    Result = Logarithmus(FirstNumber);
+                    break;
+                case '2':
+                    Result = Logarithmus2(FirstNumber, SecondNumber);
                     break;
                 case '!':
                     Result = Factorial(FirstNumber);
@@ -143,6 +153,12 @@ namespace Taschenrechner
                 case 'w':
                     Result = Squareroot(FirstNumber);
                     break;
+                case 'q':
+                    Result = Quadrat(FirstNumber);
+                    break;
+                case 'k':
+                    Result = Kehrwert(FirstNumber);
+                    break;
                 default:
                     break;
             }
@@ -156,7 +172,6 @@ namespace Taschenrechner
                 "* [*] für Multiplikation \n" +
                 "* [/] für Division \n" +
                 "* [p] für Potenzieren \n" +
-                "* [r] für Wurzel ziehen \n" +
                 "* [l] für Logarithmus \n" +
                 "* [!] für Fakultät \n" +
                 "* [s] für Sinus \n" +
