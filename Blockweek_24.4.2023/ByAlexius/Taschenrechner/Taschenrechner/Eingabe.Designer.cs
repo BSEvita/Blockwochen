@@ -30,10 +30,10 @@
         {
             titleLabel = new Label();
             btnRechnen = new Button();
-            firstNumberInput = new TextBox();
-            secondNumberInput = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            firstNumberInput = new TextBox();
+            secondNumberInput = new TextBox();
             SuspendLayout();
             // 
             // titleLabel
@@ -45,7 +45,6 @@
             titleLabel.Size = new Size(195, 46);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Placeholder";
-            titleLabel.Click += titleLabel_Click;
             // 
             // btnRechnen
             // 
@@ -57,22 +56,6 @@
             btnRechnen.Text = "Rechnen";
             btnRechnen.UseVisualStyleBackColor = true;
             btnRechnen.Click += btnRechnen_Click;
-            // 
-            // firstNumberInput
-            // 
-            firstNumberInput.Location = new Point(41, 146);
-            firstNumberInput.Name = "firstNumberInput";
-            firstNumberInput.Size = new Size(305, 23);
-            firstNumberInput.TabIndex = 2;
-            firstNumberInput.TextChanged += firstNumberInput_TextChanged;
-            // 
-            // secondNumberInput
-            // 
-            secondNumberInput.Location = new Point(41, 244);
-            secondNumberInput.Name = "secondNumberInput";
-            secondNumberInput.Size = new Size(305, 23);
-            secondNumberInput.TabIndex = 3;
-            secondNumberInput.TextChanged += secondNumberInput_TextChanged;
             // 
             // label1
             // 
@@ -94,15 +77,30 @@
             label2.TabIndex = 5;
             label2.Text = "Zweite Zahl";
             // 
+            // firstNumberInput
+            // 
+            firstNumberInput.Location = new Point(41, 146);
+            firstNumberInput.Name = "firstNumberInput";
+            firstNumberInput.Size = new Size(305, 23);
+            firstNumberInput.TabIndex = 6;
+            firstNumberInput.KeyPress += NumberInput_KeyPressed;
+            // 
+            // secondNumberInput
+            // 
+            secondNumberInput.Location = new Point(41, 244);
+            secondNumberInput.Name = "secondNumberInput";
+            secondNumberInput.Size = new Size(305, 23);
+            secondNumberInput.TabIndex = 7;
+            // 
             // Eingabe
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(401, 426);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(secondNumberInput);
             Controls.Add(firstNumberInput);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnRechnen);
             Controls.Add(titleLabel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -119,9 +117,9 @@
 
         private Label titleLabel;
         private Button btnRechnen;
-        private TextBox firstNumberInput;
-        private TextBox secondNumberInput;
         private Label label1;
         private Label label2;
+        private TextBox firstNumberInput;
+        private TextBox secondNumberInput;
     }
 }

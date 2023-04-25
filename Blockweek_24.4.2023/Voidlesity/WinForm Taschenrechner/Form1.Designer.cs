@@ -40,226 +40,273 @@
             this.buttonSin = new System.Windows.Forms.Button();
             this.buttonCos = new System.Windows.Forms.Button();
             this.buttonTan = new System.Windows.Forms.Button();
+            this.buttonComma = new System.Windows.Forms.Button();
+            this.buttonSign = new System.Windows.Forms.Button();
             this.SuspendLayout();
             //
             // textBoxInput
             //
+            this.textBoxInput.Text =  "";
             this.textBoxInput.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxInput.ReadOnly = true;
-            this.textBoxInput.Location = new System.Drawing.Point(12, 12);
-            this.textBoxInput.Size = new System.Drawing.Size(344, 23);
+            this.textBoxInput.ReadOnly =  true;
+            this.textBoxInput.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxInput.Location = new System.Drawing.Point(12,12);
+            this.textBoxInput.Size = new System.Drawing.Size(344,43);
             //
             // button0
             //
-            this.button0.Text = "0";
-            this.button0.Location = new System.Drawing.Point(82, 294);
-            this.button0.Size = new System.Drawing.Size(65, 50);
+            this.button0.Text =  "0";
+            this.button0.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button0.Location = new System.Drawing.Point(12,294);
+            this.button0.Size = new System.Drawing.Size(65,50);
             this.button0.TabIndex = 10;
             this.button0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button0.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button1
             //
-            this.button1.Text = "1";
-            this.button1.Location = new System.Drawing.Point(12, 238);
-            this.button1.Size = new System.Drawing.Size(65, 50);
+            this.button1.Text =  "1";
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(12,238);
+            this.button1.Size = new System.Drawing.Size(65,50);
             this.button1.TabIndex = 1;
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button1.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button2
             //
-            this.button2.Text = "2";
-            this.button2.Location = new System.Drawing.Point(82, 238);
-            this.button2.Size = new System.Drawing.Size(65, 50);
+            this.button2.Text =  "2";
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(82,238);
+            this.button2.Size = new System.Drawing.Size(65,50);
             this.button2.TabIndex = 2;
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button2.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button3
             //
-            this.button3.Text = "3";
-            this.button3.Location = new System.Drawing.Point(152, 238);
-            this.button3.Size = new System.Drawing.Size(65, 50);
+            this.button3.Text =  "3";
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button3.Location = new System.Drawing.Point(152,238);
+            this.button3.Size = new System.Drawing.Size(65,50);
             this.button3.TabIndex = 3;
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button3.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button4
             //
-            this.button4.Text = "4";
-            this.button4.Location = new System.Drawing.Point(12, 182);
-            this.button4.Size = new System.Drawing.Size(65, 50);
+            this.button4.Text =  "4";
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button4.Location = new System.Drawing.Point(12,182);
+            this.button4.Size = new System.Drawing.Size(65,50);
             this.button4.TabIndex = 4;
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button4.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button5
             //
-            this.button5.Text = "5";
-            this.button5.Location = new System.Drawing.Point(82, 182);
-            this.button5.Size = new System.Drawing.Size(65, 50);
+            this.button5.Text =  "5";
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button5.Location = new System.Drawing.Point(82,182);
+            this.button5.Size = new System.Drawing.Size(65,50);
             this.button5.TabIndex = 5;
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button5.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button6
             //
-            this.button6.Text = "6";
-            this.button6.Location = new System.Drawing.Point(152, 182);
-            this.button6.Size = new System.Drawing.Size(65, 50);
+            this.button6.Text =  "6";
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button6.Location = new System.Drawing.Point(152,182);
+            this.button6.Size = new System.Drawing.Size(65,50);
             this.button6.TabIndex = 6;
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button6.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button7
             //
-            this.button7.Text = "7";
-            this.button7.Location = new System.Drawing.Point(12, 126);
-            this.button7.Size = new System.Drawing.Size(65, 50);
+            this.button7.Text =  "7";
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button7.Location = new System.Drawing.Point(12,126);
+            this.button7.Size = new System.Drawing.Size(65,50);
             this.button7.TabIndex = 7;
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button7.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button8
             //
-            this.button8.Text = "8";
-            this.button8.Location = new System.Drawing.Point(82, 126);
-            this.button8.Size = new System.Drawing.Size(65, 50);
+            this.button8.Text =  "8";
+            this.button8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button8.Location = new System.Drawing.Point(82,126);
+            this.button8.Size = new System.Drawing.Size(65,50);
             this.button8.TabIndex = 8;
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button8.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // button9
             //
-            this.button9.Text = "9";
-            this.button9.Location = new System.Drawing.Point(152, 126);
-            this.button9.Size = new System.Drawing.Size(65, 50);
+            this.button9.Text =  "9";
+            this.button9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button9.Location = new System.Drawing.Point(152,126);
+            this.button9.Size = new System.Drawing.Size(65,50);
             this.button9.TabIndex = 9;
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button9.Click += new System.EventHandler(this.buttonNumber_Click);
             //
             // buttonAdd
             //
-            this.buttonAdd.Text = "+";
-            this.buttonAdd.Location = new System.Drawing.Point(222, 238);
-            this.buttonAdd.Size = new System.Drawing.Size(65, 50);
+            this.buttonAdd.Text =  "+";
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonAdd.Location = new System.Drawing.Point(222,238);
+            this.buttonAdd.Size = new System.Drawing.Size(65,50);
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonAdd.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonSubtract
             //
-            this.buttonSubtract.Text = "-";
-            this.buttonSubtract.Location = new System.Drawing.Point(222, 182);
-            this.buttonSubtract.Size = new System.Drawing.Size(65, 50);
+            this.buttonSubtract.Text =  "-";
+            this.buttonSubtract.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSubtract.Location = new System.Drawing.Point(222,182);
+            this.buttonSubtract.Size = new System.Drawing.Size(65,50);
             this.buttonSubtract.TabIndex = 12;
             this.buttonSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonSubtract.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonMultiply
             //
-            this.buttonMultiply.Text = "*";
-            this.buttonMultiply.Location = new System.Drawing.Point(222, 126);
-            this.buttonMultiply.Size = new System.Drawing.Size(65, 50);
+            this.buttonMultiply.Text =  "*";
+            this.buttonMultiply.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonMultiply.Location = new System.Drawing.Point(222,126);
+            this.buttonMultiply.Size = new System.Drawing.Size(65,50);
             this.buttonMultiply.TabIndex = 13;
             this.buttonMultiply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonMultiply.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonDivide
             //
-            this.buttonDivide.Text = "/";
-            this.buttonDivide.Location = new System.Drawing.Point(222, 70);
-            this.buttonDivide.Size = new System.Drawing.Size(65, 50);
+            this.buttonDivide.Text =  "/";
+            this.buttonDivide.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonDivide.Location = new System.Drawing.Point(222,70);
+            this.buttonDivide.Size = new System.Drawing.Size(65,50);
             this.buttonDivide.TabIndex = 14;
             this.buttonDivide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonDivide.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonEquals
             //
-            this.buttonEquals.Text = "=";
-            this.buttonEquals.Location = new System.Drawing.Point(222, 294);
-            this.buttonEquals.Size = new System.Drawing.Size(65, 50);
+            this.buttonEquals.Text =  "=";
+            this.buttonEquals.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonEquals.Location = new System.Drawing.Point(222,294);
+            this.buttonEquals.Size = new System.Drawing.Size(65,50);
             this.buttonEquals.TabIndex = 15;
             this.buttonEquals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonEquals.Click += new System.EventHandler(this.buttonEquals_Click);
             //
             // buttonClear
             //
-            this.buttonClear.Text = "C";
-            this.buttonClear.Location = new System.Drawing.Point(12, 70);
-            this.buttonClear.Size = new System.Drawing.Size(65, 50);
+            this.buttonClear.Text =  "C";
+            this.buttonClear.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonClear.Location = new System.Drawing.Point(12,70);
+            this.buttonClear.Size = new System.Drawing.Size(65,50);
             this.buttonClear.TabIndex = 17;
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             //
             // buttonPower
             //
-            this.buttonPower.Text = "x²";
-            this.buttonPower.Location = new System.Drawing.Point(152, 70);
-            this.buttonPower.Size = new System.Drawing.Size(65, 50);
+            this.buttonPower.Text =  "x²";
+            this.buttonPower.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonPower.Location = new System.Drawing.Point(152,70);
+            this.buttonPower.Size = new System.Drawing.Size(65,50);
             this.buttonPower.TabIndex = 18;
             this.buttonPower.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonPower.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonRoot
             //
-            this.buttonRoot.Text = "√";
-            this.buttonRoot.Location = new System.Drawing.Point(12, 294);
-            this.buttonRoot.Size = new System.Drawing.Size(65, 50);
+            this.buttonRoot.Text =  "√";
+            this.buttonRoot.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRoot.Location = new System.Drawing.Point(292,294);
+            this.buttonRoot.Size = new System.Drawing.Size(65,50);
             this.buttonRoot.TabIndex = 19;
             this.buttonRoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonRoot.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonLog
             //
-            this.buttonLog.Text = "log";
-            this.buttonLog.Location = new System.Drawing.Point(152, 294);
-            this.buttonLog.Size = new System.Drawing.Size(65, 50);
+            this.buttonLog.Text =  "log";
+            this.buttonLog.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLog.Location = new System.Drawing.Point(292,238);
+            this.buttonLog.Size = new System.Drawing.Size(65,50);
             this.buttonLog.TabIndex = 21;
             this.buttonLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonLog.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonFactorial
             //
-            this.buttonFactorial.Text = "!";
-            this.buttonFactorial.Location = new System.Drawing.Point(82, 70);
-            this.buttonFactorial.Size = new System.Drawing.Size(65, 50);
+            this.buttonFactorial.Text =  "!";
+            this.buttonFactorial.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonFactorial.Location = new System.Drawing.Point(82,70);
+            this.buttonFactorial.Size = new System.Drawing.Size(65,50);
             this.buttonFactorial.TabIndex = 22;
             this.buttonFactorial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonFactorial.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonSin
             //
-            this.buttonSin.Text = "sin";
-            this.buttonSin.Location = new System.Drawing.Point(292, 70);
-            this.buttonSin.Size = new System.Drawing.Size(65, 50);
+            this.buttonSin.Text =  "sin";
+            this.buttonSin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSin.Location = new System.Drawing.Point(292,70);
+            this.buttonSin.Size = new System.Drawing.Size(65,50);
             this.buttonSin.TabIndex = 23;
             this.buttonSin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonSin.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonCos
             //
-            this.buttonCos.Text = "cos";
-            this.buttonCos.Location = new System.Drawing.Point(292, 126);
-            this.buttonCos.Size = new System.Drawing.Size(65, 50);
+            this.buttonCos.Text =  "cos";
+            this.buttonCos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCos.Location = new System.Drawing.Point(292,126);
+            this.buttonCos.Size = new System.Drawing.Size(65,50);
             this.buttonCos.TabIndex = 24;
             this.buttonCos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonCos.Click += new System.EventHandler(this.buttonOperation_Click);
             //
             // buttonTan
             //
-            this.buttonTan.Text = "tan";
-            this.buttonTan.Location = new System.Drawing.Point(292, 182);
-            this.buttonTan.Size = new System.Drawing.Size(65, 50);
+            this.buttonTan.Text =  "tan";
+            this.buttonTan.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonTan.Location = new System.Drawing.Point(292,182);
+            this.buttonTan.Size = new System.Drawing.Size(65,50);
             this.buttonTan.TabIndex = 25;
             this.buttonTan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonTan.Click += new System.EventHandler(this.buttonOperation_Click);
             //
-            // form
+            // buttonComma
             //
-            this.Size = new System.Drawing.Size(400, 411);
-            this.Text = "Calculator";
+            this.buttonComma.Text =  ".";
+            this.buttonComma.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonComma.Location = new System.Drawing.Point(82,294);
+            this.buttonComma.Size = new System.Drawing.Size(65,50);
+            this.buttonComma.TabIndex = 24;
+            this.buttonComma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.buttonComma.Click += new System.EventHandler(this.buttonComma_Click);
+            //
+            // buttonSign
+            //
+            this.buttonSign.Text =  "x/-";
+            this.buttonSign.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSign.Location = new System.Drawing.Point(152,294);
+            this.buttonSign.Size = new System.Drawing.Size(65,50);
+            this.buttonSign.TabIndex = 25;
+            this.buttonSign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
+         //
+         // form
+         //
+            this.Size = new System.Drawing.Size(400,411);
+            this.Text =  "Calculator";
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.button0);
@@ -285,8 +332,10 @@
             this.Controls.Add(this.buttonSin);
             this.Controls.Add(this.buttonCos);
             this.Controls.Add(this.buttonTan);
+            this.Controls.Add(this.buttonComma);
+            this.Controls.Add(this.buttonSign);
             this.ResumeLayout(false);
-        }
+        } 
 
         private System.Windows.Forms.TextBox textBoxInput;
         private System.Windows.Forms.Button button0;
@@ -312,5 +361,7 @@
         private System.Windows.Forms.Button buttonSin;
         private System.Windows.Forms.Button buttonCos;
         private System.Windows.Forms.Button buttonTan;
+        private System.Windows.Forms.Button buttonComma;
+        private System.Windows.Forms.Button buttonSign;
     }
 }

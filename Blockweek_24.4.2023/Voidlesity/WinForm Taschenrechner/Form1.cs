@@ -20,6 +20,24 @@ namespace Taschenrechner
             textBoxInput.Text += button.Text;
         }
 
+        private void buttonComma_Click(object sender, EventArgs e)
+        {
+            if (!textBoxInput.Text.Contains("."))
+            {
+                textBoxInput.Text += ".";
+            }
+        }
+
+        private void buttonSign_Click(object sender, EventArgs e)
+        {
+            double currentValue;
+
+            if (double.TryParse(textBoxInput.Text, out currentValue))
+            {
+                textBoxInput.Text = (-currentValue).ToString();
+            }
+        }
+
         private void buttonOperation_Click(object sender, EventArgs e)
         {
             try
@@ -31,7 +49,7 @@ namespace Taschenrechner
             }
             catch
             {
-                MessageBox.Show("Error: Syntax error." , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Syntax error.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxInput.Text = "";
                 return;
             }
