@@ -7,23 +7,6 @@ using System.Threading.Tasks;
 
 namespace Taschenrechner
 {
-    public class Calculation
-    {
-        public char Character;
-        public double Value;
-    }
-
-    public class HistoryDictionary : Dictionary<int, Calculation> 
-    {
-        public void add(int key, char operation, double value)
-        {
-            Calculation cal = new Calculation();
-            cal.Character = operation;
-            cal.Value = value;
-            Add(key, cal);
-        }
-    }
-
     public class Calculations
     {
         public char Operation;
@@ -31,8 +14,6 @@ namespace Taschenrechner
         public double FirstNumber {  get; set; }
         public double SecondNumber { get; set; }
         public double Result { get; set; }
-
-        public HistoryDictionary history = new HistoryDictionary();
 
         public static double Addition(double FirstNumber, double SecondNumber)
         {
@@ -57,11 +38,6 @@ namespace Taschenrechner
         public static double Potenzieren(double FirstNumber, double SecondNumber)
         {
             return Math.Pow(FirstNumber, SecondNumber);
-        }
-
-        public static double Logarithmus2(double FirstNumber, double SecondNumber)
-        {
-            return Math.Log(FirstNumber, SecondNumber);
         }
 
         public static double Logarithmus(double FirstNumber)
@@ -135,9 +111,6 @@ namespace Taschenrechner
                 case 'l':
                     Result = Logarithmus(FirstNumber);
                     break;
-                case '2':
-                    Result = Logarithmus2(FirstNumber, SecondNumber);
-                    break;
                 case '!':
                     Result = Factorial(FirstNumber);
                     break;
@@ -165,16 +138,3 @@ namespace Taschenrechner
         }
     }
 }
-
-/**
-                "* [+] für Addition \n" +
-                "* [-] für Subtraktion \n" +
-                "* [*] für Multiplikation \n" +
-                "* [/] für Division \n" +
-                "* [p] für Potenzieren \n" +
-                "* [l] für Logarithmus \n" +
-                "* [!] für Fakultät \n" +
-                "* [s] für Sinus \n" +
-                "* [c] für Cosinus \n" +
-                "* [t] für Tangens \n\n" +
-**/

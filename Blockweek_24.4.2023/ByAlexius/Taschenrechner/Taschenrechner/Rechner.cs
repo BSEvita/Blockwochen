@@ -11,7 +11,6 @@ namespace Taschenrechner
         private double firstnumber;
         private double secondnumber;
         private bool isSecondNumber = false;
-        private double lastAnswer;
         private char lastOperator;
 
         public static string Title { get; set; }
@@ -117,7 +116,6 @@ namespace Taschenrechner
             ergebnisBox.Clear();
             firstnumber = new double();
             secondnumber = new double();
-            lastAnswer = new double();
         }
 
         private void bntCE_Click(object sender, EventArgs e)
@@ -140,13 +138,46 @@ namespace Taschenrechner
 
             Calculations calculations = new Calculations();
 
+            if (op == 'p')
+            {
+                Eingabe eingabe = new Eingabe();
+                eingabe.Show();
+
+                while (!dataReceived)
+                {
+                    if (eingabe.IsDisposed)
+                        return;
+                    await Task.Delay(25);
+                }
+                eingabe.Hide();
+
+                double firstNumber = receivedNumberOne;
+                double lastNumber = receivedNumberTwo;
+                outputField.Clear();
+                ergebnisBox.Clear();
+                firstCalculationBox.Clear();
+                outputField.Text += firstNumber + " ^ " + lastNumber;
+                firstCalculationBox.Text += firstNumber + " ^ " + lastNumber;
+
+                calculations.Equate(op, firstNumber, lastNumber);
+
+                outputField.Clear();
+                ergebnisBox.Text += calculations.Result;
+
+                receivedNumberOne = new double();
+                receivedNumberTwo = new double();
+                dataReceived = false;
+
+                return;
+            }
+
             try
             {
                 Line = outputField.Lines[0];
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Bitte geben Sie Zahlen ein.", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -167,7 +198,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -186,7 +216,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -204,7 +233,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -222,7 +250,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -240,7 +267,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -258,7 +284,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -276,7 +301,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
                         return;
                     }
 
@@ -294,40 +318,6 @@ namespace Taschenrechner
 
                         outputField.Clear();
                         ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
-                        return;
-                    }
-                case 'p':
-                    {
-                        Eingabe eingabe = new Eingabe();
-                        eingabe.Show();
-
-                        while (!dataReceived)
-                        {
-                            if (eingabe.IsDisposed)
-                                return;
-                            await Task.Delay(25);
-                        }
-                        eingabe.Hide();
-
-                        double firstNumber = receivedNumberOne;
-                        double lastNumber = receivedNumberTwo;
-                        outputField.Clear();
-                        ergebnisBox.Clear();
-                        firstCalculationBox.Clear();
-                        outputField.Text += firstNumber + " ^ " + lastNumber;
-                        firstCalculationBox.Text += firstNumber + " ^ " + lastNumber;
-
-                        calculations.Equate(op, firstNumber, lastNumber);
-
-                        outputField.Clear();
-                        ergebnisBox.Text += calculations.Result;
-                        lastAnswer = calculations.Result;
-
-                        receivedNumberOne = new double();
-                        receivedNumberTwo = new double();
-                        dataReceived = false;
-
                         return;
                     }
             }
