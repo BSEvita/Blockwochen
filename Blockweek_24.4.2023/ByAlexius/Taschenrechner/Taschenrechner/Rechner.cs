@@ -7,12 +7,14 @@ namespace Taschenrechner
 {
     public partial class Default : Form
     {
+        // Inistialization der Variablen
         private Calculations calculations = new Calculations();
         private double firstnumber;
         private double secondnumber;
         private bool isSecondNumber = false;
         private char lastOperator;
 
+        // Globale Variablen
         public static string Title { get; set; }
         public static double receivedNumberOne { get; set; }
         public static double receivedNumberTwo { get; set; }
@@ -34,6 +36,8 @@ namespace Taschenrechner
             OnOperation('=');
         }
 
+        // Code für den Delete button
+        // Löscht ein Zeichen
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (outputField.Text.Length == 0)
@@ -42,73 +46,87 @@ namespace Taschenrechner
             outputField.Text = outputField.Text.Remove(outputField.Text.Length - 1, 1);
         }
 
+        // Auto Scroll für das Große Feld
         private void outputField_TextChanged(object sender, EventArgs e)
         {
             outputField.SelectionStart = outputField.Text.Length;
             outputField.ScrollToCaret();
         }
 
+        // Auto Scroll für die Ausgabe der Rechnung
         private void firstCalculationBox_TextChanged(object sender, EventArgs e)
         {
             firstCalculationBox.SelectionStart = firstCalculationBox.Text.Length;
             firstCalculationBox.ScrollToCaret();
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn0_Click(object sender, EventArgs e)
         {
             outputField.Text += "0";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn1_Click(object sender, EventArgs e)
         {
             outputField.Text += "1";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn2_Click(object sender, EventArgs e)
         {
             outputField.Text += "2";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn3_Click(object sender, EventArgs e)
         {
             outputField.Text += "3";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn4_Click(object sender, EventArgs e)
         {
             outputField.Text += "4";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn5_Click(object sender, EventArgs e)
         {
             outputField.Text += "5";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn6_Click(object sender, EventArgs e)
         {
             outputField.Text += "6";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn7_Click(object sender, EventArgs e)
         {
             outputField.Text += "7";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn8_Click(object sender, EventArgs e)
         {
             outputField.Text += "8";
         }
 
+        // Fügt eine Zahl um OutputField hinzu
         private void btn9_Click(object sender, EventArgs e)
         {
             outputField.Text += "9";
         }
 
+        // Fügt ein Komma um OutputField hinzu
         private void btnComma_Click(object sender, EventArgs e)
         {
             outputField.Text += ",";
         }
 
+        // Löscht alle Felder und setzt fistnumber und secondnumber zurück
         private void btnC_Click(object sender, EventArgs e)
         {
             outputField.Clear();
@@ -118,6 +136,7 @@ namespace Taschenrechner
             secondnumber = new double();
         }
 
+        // Löscht nur das OutputField und entweder die secondnumber oder die firstnumber zurück
         private void bntCE_Click(object sender, EventArgs e)
         {
             outputField.Clear();
@@ -132,25 +151,33 @@ namespace Taschenrechner
             }
         }
 
+        // Die methode handelt alle aufgerufenen Operationen
         private async void OnOperation(char op)
         {
             string Line;
 
+            // Neue instanz der Klasse Calculations
             Calculations calculations = new Calculations();
 
+            // Das Potenzieren wir vor allen anderen gehandelt weil Sie keine eigentragenen wert in dem OutputField braucht.
             if (op == 'p')
             {
+                // Neues forms window öffnen
                 Eingabe eingabe = new Eingabe();
-                eingabe.Show();
+                eingabe.ShowDialog();
 
+                // while loop bis im anderen Fenster auf den "Rechnen" button gedrückt wird.
                 while (!dataReceived)
                 {
                     if (eingabe.IsDisposed)
                         return;
+                    // Ein Delay, ich weiß nicht mehr ganz warum aber ich glaub irgendwas wegen der Performance
                     await Task.Delay(25);
                 }
+                // forms window schliesen
                 eingabe.Hide();
 
+                // Hier wird gerechnet und die Texte in die Felder eingefügt.
                 double firstNumber = receivedNumberOne;
                 double lastNumber = receivedNumberTwo;
                 outputField.Clear();
@@ -173,30 +200,39 @@ namespace Taschenrechner
 
             try
             {
+                // Hier wird die erste Zahl auf dem OutputField geholt.
                 Line = outputField.Lines[0];
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bitte geben Sie Zahlen ein.", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bitte geben Sie eine Rechnung ein.", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Hier noch ein switch case weil ich manche funktionen anders Handel muss als die Normal wie zbs. Dividieren, etc.
+            // Der code ist nur beim ersten Case dokumentiert weil er überal gleich ist
             switch (op)
             {
                 case 'w':
                     {
+                        // Hier wird die nummer convertiert.
                         double number = Convert.ToDouble(Line);
+                        // Die Felder werden geCleared
                         outputField.Clear();
                         ergebnisBox.Clear();
                         firstCalculationBox.Clear();
 
+                        // Es wird die Rechnung in die Felder eingetragen
                         outputField.Text += "√(" + number + ")";
 
                         firstCalculationBox.Text += "√(" + number + ")";
 
+                        // Das Ergebnis wird errechnet
                         calculations.Equate(op, number, 0.0);
 
                         outputField.Clear();
+
+                        // Das Ergebnis wird eingetragen
                         ergebnisBox.Text += calculations.Result;
                         return;
                     }
@@ -322,12 +358,17 @@ namespace Taschenrechner
                     }
             }
 
+            // Hier ist das Handling für Plus, Minus, Dividiert, Mal und alle anderen die kein Spezielles handling brauchen.
+
             if (isSecondNumber)
             {
                 outputField.Clear();
                 isSecondNumber = false;
+
+                // Die nummer wird convertiert.
                 secondnumber = Convert.ToDouble(Line);
 
+                // Hier wird geschaut ob am ende der Operator angehängt wird oder nicht
                 if (firstCalculationBox.Text.Length < 0)
                     firstCalculationBox.Text += secondnumber + " " + op;
                 else if (op == '=')
@@ -337,11 +378,14 @@ namespace Taschenrechner
                 }
                 else
                     firstCalculationBox.Text += " " + secondnumber + " " + op;
+
+                // Hier wird gerechnet
                 calculations.Equate(op, firstnumber, secondnumber);
 
                 outputField.Clear();
                 ergebnisBox.Clear();
 
+                // Das Ergebnis wird gesetzt.
                 ergebnisBox.Text += calculations.Result;
             }
             else
@@ -350,6 +394,7 @@ namespace Taschenrechner
                 firstCalculationBox.Clear();
                 isSecondNumber = true;
                 secondnumber = new double();
+                // Die nummer wird convertiert.
                 firstnumber = Convert.ToDouble(Line);
                 outputField.Clear();
 
@@ -358,9 +403,15 @@ namespace Taschenrechner
                 else
                     firstCalculationBox.Text += " " + firstnumber + " " + op;
 
+                // lastOperator wird gesetzt (Ich weiß nicht mehr für was der Verwendet wird.)
                 lastOperator = op;
             }
         }
+
+        /*
+         * Hier sind jetzt die OnButton Click methoden.
+         * Sie rufen alle die OnOperation Methode mit dem dazugehörigen Operator auf.
+         */
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
@@ -425,11 +476,6 @@ namespace Taschenrechner
         private void btnWurzel_Click(object sender, EventArgs e)
         {
             OnOperation('w');
-        }
-
-        private void ergebnisBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnFactorial_Click(object sender, EventArgs e)

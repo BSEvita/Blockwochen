@@ -9,42 +9,50 @@ namespace Taschenrechner
 {
     public class Calculations
     {
+        // Hier werden Variablen Initsialisiert
         public char Operation;
 
         public double FirstNumber {  get; set; }
         public double SecondNumber { get; set; }
         public double Result { get; set; }
 
+        // Die Rechnung für Additionen
         public static double Addition(double FirstNumber, double SecondNumber)
         {
             return FirstNumber + SecondNumber;
         }
 
+        // Die Rechnung für Subtraktionen
         public static double Subtraction(double FirstNumber, double SecondNumber)
         {
             return FirstNumber - SecondNumber;
         }
 
+        // Die Rechnung für Multiplikationen
         public static double Multiplikation(double FirstNumber, double SecondNumber)
         {
             return FirstNumber * SecondNumber;
         }
 
+        // Die Rechnung für Divisionen
         public static double Division(double FirstNumber, double SecondNumber)
         {
             return FirstNumber / SecondNumber;
         }
 
+        // Die Rechnung für das Potenzieren
         public static double Potenzieren(double FirstNumber, double SecondNumber)
         {
             return Math.Pow(FirstNumber, SecondNumber);
         }
 
+        // Die Rechnung für den Logarithmus 
         public static double Logarithmus(double FirstNumber)
         {
             return Math.Log10(FirstNumber);
         }
 
+        // Die Rechnung für das Factoral
         public static double Factorial(double FirstNumber)
         {
             double Factorial = FirstNumber;
@@ -55,36 +63,45 @@ namespace Taschenrechner
             return FirstNumber;
         }
 
+        // Die Rechnung für den Sinus
         public static double Sinus(double FirstNumber)
         {
             return Math.Sin(FirstNumber * Math.PI / 180);
         }
 
+        // Die Rechnung für den Cosinus
         public static double Cosinus(double FirstNumber)
         {
             return Math.Cos(FirstNumber * Math.PI / 180);
         }
 
+        // Die Rechnung für den Tanges
         public static double Tangens(double FirstNumber)
         {
             return Math.Tan(FirstNumber * Math.PI / 180);
         }
 
+        // Die Rechnung für die Quadratwurzel
         public static double Squareroot(double FirstNumber)
         {
             return Math.Sqrt(FirstNumber);
         }
 
+        // Die Rechnung für das Quadrat
         public static double Quadrat(double FirstNumber)
         {
             return Math.Pow(FirstNumber, 2);
         }
 
+        // Die Rechnung für den Kehrwert
         public static double Kehrwert(double FirstNumber)
         {
             return (1.0 / FirstNumber);
         }
 
+        // Diese Methode wird aufgerufen wenn man Rechnen möchte.
+        // Es wird der Operator und zwei nummern übergeben.
+        // Sollte nur eine benötigt werden hat die zweiten den wert 0.0
         public void Equate(char Operation, double number1, double number2)
         {
 

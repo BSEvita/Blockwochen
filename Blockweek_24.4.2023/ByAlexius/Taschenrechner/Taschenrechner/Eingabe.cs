@@ -17,6 +17,7 @@ namespace Taschenrechner
         {
             InitializeComponent();
 
+            // Der Title der Seite wird auf die Global variable gesetzt
             titleLabel.Text = Default.Title;
         }
 
@@ -26,6 +27,7 @@ namespace Taschenrechner
             double secondNumber;
             try
             {
+                // Die Eingaben werden Convertiert.
                 firstNumber = Convert.ToDouble(firstNumberInput.Text);
                 secondNumber = Convert.ToDouble(secondNumberInput.Text);
             }
@@ -35,11 +37,13 @@ namespace Taschenrechner
                 return;
             }
 
+            // Die globalen variablen werden gesetzt
             Default.receivedNumberOne = firstNumber;
             Default.receivedNumberTwo = secondNumber;
             Default.dataReceived = true;
         }
 
+        // Hier wird überprüft ob die letzte eingebe eh eine Nummer / ein . oder ein - ist.
         private void NumberInput_KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))

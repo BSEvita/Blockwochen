@@ -411,7 +411,6 @@
             ergebnisBox.Size = new Size(273, 57);
             ergebnisBox.TabIndex = 36;
             ergebnisBox.Text = "";
-            ergebnisBox.TextChanged += ergebnisBox_TextChanged;
             // 
             // Ergebnis
             // 
