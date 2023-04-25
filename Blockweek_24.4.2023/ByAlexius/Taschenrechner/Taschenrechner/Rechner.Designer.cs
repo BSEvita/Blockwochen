@@ -489,7 +489,6 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Default";
-            Opacity = 0.93D;
             Text = "Taschenrechner";
             Load += Form1_Load;
             ResumeLayout(false);
