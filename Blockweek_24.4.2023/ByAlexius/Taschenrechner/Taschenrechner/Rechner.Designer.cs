@@ -60,7 +60,7 @@
             credits = new Label();
             button5 = new Button();
             firstCalculationBox = new RichTextBox();
-            button1 = new Button();
+            btnFactorial = new Button();
             ergebnisBox = new RichTextBox();
             Ergebnis = new Label();
             SuspendLayout();
@@ -220,7 +220,7 @@
             btnPot.TabIndex = 8;
             btnPot.Text = "x²";
             btnPot.UseVisualStyleBackColor = true;
-            btnPot.Click += btnPot_Click;
+            btnPot.Click += btnQuadrat_Click;
             // 
             // bntCE
             // 
@@ -375,7 +375,7 @@
             btnPot2.Name = "btnPot2";
             btnPot2.Size = new Size(73, 51);
             btnPot2.TabIndex = 32;
-            btnPot2.Text = "Pot";
+            btnPot2.Text = "x^y";
             btnPot2.UseVisualStyleBackColor = true;
             btnPot2.Click += btnPot2_Click;
             // 
@@ -412,15 +412,16 @@
             firstCalculationBox.Text = "";
             firstCalculationBox.TextChanged += firstCalculationBox_TextChanged;
             // 
-            // button1
+            // btnFactorial
             // 
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(280, 333);
-            button1.Name = "button1";
-            button1.Size = new Size(73, 51);
-            button1.TabIndex = 5;
-            button1.Text = "n!";
-            button1.UseVisualStyleBackColor = true;
+            btnFactorial.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFactorial.Location = new Point(280, 333);
+            btnFactorial.Name = "btnFactorial";
+            btnFactorial.Size = new Size(73, 51);
+            btnFactorial.TabIndex = 5;
+            btnFactorial.Text = "n!";
+            btnFactorial.UseVisualStyleBackColor = true;
+            btnFactorial.Click += btnFactorial_Click;
             // 
             // ergebnisBox
             // 
@@ -452,7 +453,7 @@
             ClientSize = new Size(459, 770);
             Controls.Add(Ergebnis);
             Controls.Add(ergebnisBox);
-            Controls.Add(button1);
+            Controls.Add(btnFactorial);
             Controls.Add(firstCalculationBox);
             Controls.Add(button5);
             Controls.Add(credits);
@@ -527,7 +528,7 @@
         private Label credits;
         private Button button5;
         private RichTextBox firstCalculationBox;
-        private Button button1;
+        private Button btnFactorial;
         private RichTextBox ergebnisBox;
         private Label Ergebnis;
     }

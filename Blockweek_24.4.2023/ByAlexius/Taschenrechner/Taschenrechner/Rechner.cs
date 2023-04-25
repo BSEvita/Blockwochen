@@ -1,4 +1,7 @@
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
+using System.Runtime.CompilerServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Taschenrechner
 {
@@ -11,6 +14,11 @@ namespace Taschenrechner
         private double lastAnswer;
         private char lastOperator;
 
+        public static string Title { get; set; }
+        public static double receivedNumberOne { get; set; }
+        public static double receivedNumberTwo { get; set; }
+        public static bool dataReceived { get; set; }
+
         public Default()
         {
             InitializeComponent();
@@ -19,6 +27,7 @@ namespace Taschenrechner
         private void Form1_Load(object sender, EventArgs e)
         {
             btnEquals.BackColor = Color.DeepSkyBlue;
+            Title = "Bitte Zahlen Eingeben";
         }
 
         private void btnEquals_Click(object sender, EventArgs e)
@@ -32,11 +41,6 @@ namespace Taschenrechner
                 return;
 
             outputField.Text = outputField.Text.Remove(outputField.Text.Length - 1, 1);
-        }
-
-        public String getRechnerValue()
-        {
-            return outputField.Text;
         }
 
         private void outputField_TextChanged(object sender, EventArgs e)
@@ -130,7 +134,7 @@ namespace Taschenrechner
             }
         }
 
-        private void OnOperation(char op)
+        private async void OnOperation(char op)
         {
             string Line;
 
@@ -149,57 +153,183 @@ namespace Taschenrechner
             switch (op)
             {
                 case 'w':
-                {
-                    double number = Convert.ToDouble(Line);
-                    outputField.Clear();
-                    ergebnisBox.Clear();
-                    firstCalculationBox.Clear();
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
 
-                    outputField.Text += "√(" + number + ")";
+                        outputField.Text += "√(" + number + ")";
 
-                    firstCalculationBox.Text += "√(" + number + ")";
+                        firstCalculationBox.Text += "√(" + number + ")";
 
-                    calculations.Equate(op, number, 0.0);
+                        calculations.Equate(op, number, 0.0);
 
-                    outputField.Clear();
-                    ergebnisBox.Text += calculations.Result;
-                    lastAnswer = calculations.Result;
-                    return;
-                }
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
 
+                case 'q':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+
+                        outputField.Text += "sqr(" + number + ")";
+
+                        firstCalculationBox.Text += "sqr(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case 'l':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "log(" + number + ")";
+
+                        firstCalculationBox.Text += "log(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case 's':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "sin₀(" + number + ")";
+
+                        firstCalculationBox.Text += "sin₀(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case 'c':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "cos₀(" + number + ")";
+
+                        firstCalculationBox.Text += "cos₀(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case 't':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "tan₀(" + number + ")";
+
+                        firstCalculationBox.Text += "tan₀(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case '!':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "fact(" + number + ")";
+
+                        firstCalculationBox.Text += "fact(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
+
+                case 'k':
+                    {
+                        double number = Convert.ToDouble(Line);
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += "1/(" + number + ")";
+
+                        firstCalculationBox.Text += "1/(" + number + ")";
+
+                        calculations.Equate(op, number, 0.0);
+
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
+                        return;
+                    }
                 case 'p':
-                {
-                    double number = Convert.ToDouble(Line);
-                    outputField.Clear();
-                    ergebnisBox.Clear();
-                    firstCalculationBox.Clear();
+                    {
+                        Eingabe eingabe = new Eingabe();
+                        eingabe.Show();
 
-                    outputField.Text += "sqr(" + number + ")";
+                        while (!dataReceived)
+                        {
+                            if (eingabe.IsDisposed)
+                                return;
+                            await Task.Delay(25);
+                        }
+                        eingabe.Hide();
 
-                    firstCalculationBox.Text += "sqr(" + number + ")";
+                        double firstNumber = receivedNumberOne;
+                        double lastNumber = receivedNumberTwo;
+                        outputField.Clear();
+                        ergebnisBox.Clear();
+                        firstCalculationBox.Clear();
+                        outputField.Text += firstNumber + " ^ " + lastNumber;
+                        firstCalculationBox.Text += firstNumber + " ^ " + lastNumber;
 
-                    calculations.Equate(op, number, 0.0);
+                        calculations.Equate(op, firstNumber, lastNumber);
 
-                    outputField.Clear();
-                    ergebnisBox.Text += calculations.Result;
-                    lastAnswer = calculations.Result;
-                    return;
-                }
-            }
-            
+                        outputField.Clear();
+                        ergebnisBox.Text += calculations.Result;
+                        lastAnswer = calculations.Result;
 
-            if (lastAnswer != 0.0)
-            {
-                double answer = Convert.ToDouble(Line);
+                        receivedNumberOne = new double();
+                        receivedNumberTwo = new double();
+                        dataReceived = false;
 
-                calculations.Equate(op, lastAnswer, answer);
-
-                outputField.Clear();
-
-                ergebnisBox.Clear();
-
-                ergebnisBox.Text += calculations.Result;
-                lastAnswer = calculations.Result;
+                        return;
+                    }
             }
 
             if (isSecondNumber)
@@ -223,16 +353,11 @@ namespace Taschenrechner
                 ergebnisBox.Clear();
 
                 ergebnisBox.Text += calculations.Result;
-                lastAnswer = calculations.Result;
             }
             else
             {
-                if (lastOperator != null)
-                {
-                    firstCalculationBox.Clear();
-                    lastOperator = new char();
-                }
 
+                firstCalculationBox.Clear();
                 isSecondNumber = true;
                 secondnumber = new double();
                 firstnumber = Convert.ToDouble(Line);
@@ -269,7 +394,7 @@ namespace Taschenrechner
 
         private void btnPot2_Click(object sender, EventArgs e)
         {
-            OnOperation('2');
+            OnOperation('p');
         }
 
         private void btnTan_Click(object sender, EventArgs e)
@@ -302,9 +427,9 @@ namespace Taschenrechner
             OnOperation('k');
         }
 
-        private void btnPot_Click(object sender, EventArgs e)
+        private void btnQuadrat_Click(object sender, EventArgs e)
         {
-            OnOperation('p');
+            OnOperation('q');
         }
 
         private void btnWurzel_Click(object sender, EventArgs e)
@@ -315,6 +440,11 @@ namespace Taschenrechner
         private void ergebnisBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnFactorial_Click(object sender, EventArgs e)
+        {
+            OnOperation('!');
         }
     }
 }
