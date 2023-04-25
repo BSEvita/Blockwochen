@@ -8,48 +8,55 @@ class Buch
     private int Erscheinungsjahr;
     private String Kommentar;
 
-    public Buch(String titel, String author)
+    public Buch(String title, String author)
     {
-        Titel = titel;
-        Author = author;
+        this.Titel = title;
+        this.Author = author;
+        this.ISBN = "";
+        this.Genre = "";
+        this.Verlag = "";
+        this.Erscheinungsjahr = 0;
+        this.Kommentar = "";
     }
 
-    public Buch(String titel, String author, String isbn, int erscheinungsjahr)
+    public Buch(String title, String author, String isbn, int erscheinungsjahr)
     {
-        Titel = titel;
-        Author = author;
-        ISBN = isbn;
-        Erscheinungsjahr = erscheinungsjahr;
+        this.Titel = title;
+        this.Author = author;
+        this.ISBN = isbn;
+        this.Genre = "";
+        this.Verlag = "";
+        this.Erscheinungsjahr = erscheinungsjahr;
+        this.Kommentar = "";
     }
 
-    public Buch(String titel, String author, String isbn, String genre, String verlag, int erscheinungsjahr, String kommentar)
-    {
-        Titel = titel;
-        Author = author;
-        ISBN = isbn;
-        Genre = genre;
-        Verlag = verlag;
-        Erscheinungsjahr = erscheinungsjahr;
-        Kommentar = kommentar;
+    public Buch(String title, String author, String iSBN, String genre, String verlag, int erscheinungsjahr, String kommentar) {
+        this.Titel = title;
+        this.Author = author;
+        this.ISBN = iSBN;
+        this.Genre = genre;
+        this.Verlag = verlag;
+        this.Erscheinungsjahr = erscheinungsjahr;
+        this.Kommentar = kommentar;
     }
 
     public Buch()
     {
-        Titel = "";
-        Author = "";
-        ISBN = "";
-        Genre = "";
-        Verlag = "";
-        Erscheinungsjahr = 0;
-        Kommentar = "";
+        this.Titel = "";
+        this.Author = "";
+        this.ISBN = "";
+        this.Genre = "";
+        this.Verlag = "";
+        this.Erscheinungsjahr = 0;
+        this.Kommentar = "";
     }
 
     public String get_Titel() {
         return Titel;
     }
 
-    public void set_Titel(String titel) {
-        Titel = titel;
+    public void set_Titel(String title) {
+        Titel = title;
     }
 
     public String get_Author() {
@@ -99,5 +106,4 @@ class Buch
     public void set_Kommentar(String kommentar) {
         Kommentar = kommentar;
     }
-
 }
