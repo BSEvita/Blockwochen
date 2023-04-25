@@ -77,6 +77,10 @@ namespace Taschenrechner
 
         public static double Factorial(double n)
         {
+            if (n > 170)
+            {
+                return double.Parse(("∞").ToString());
+            }
             if (n < 0)
             {
                 throw new ArgumentOutOfRangeException("Factorial of negative number is not allowed.");
