@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bruchrechner));
             btnCalculate = new Button();
             textBoxZählerEins = new TextBox();
             textBoxZählerZwei = new TextBox();
-            label1 = new Label();
+            zaehlerEinsLabel = new Label();
             zaehlerZweiLabel = new Label();
             textBoxErgebnis = new TextBox();
-            label3 = new Label();
-            label4 = new Label();
+            ergebnisLabel = new Label();
+            nennerEinsLabel = new Label();
             textBoxNennerEins = new TextBox();
             NennerZweiLabel = new Label();
             textBoxNennerZwei = new TextBox();
             operations = new ComboBox();
-            label6 = new Label();
+            operationLabel = new Label();
             potenzLabel = new Label();
             textBoxPotenz = new TextBox();
+            creditLabel = new Label();
+            notifyIcon = new NotifyIcon(components);
             SuspendLayout();
             // 
             // btnCalculate
@@ -71,15 +74,15 @@
             textBoxZählerZwei.Size = new Size(144, 23);
             textBoxZählerZwei.TabIndex = 2;
             // 
-            // label1
+            // zaehlerEinsLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(77, 189);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 25);
-            label1.TabIndex = 3;
-            label1.Text = "Zähler 1";
+            zaehlerEinsLabel.AutoSize = true;
+            zaehlerEinsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            zaehlerEinsLabel.Location = new Point(77, 189);
+            zaehlerEinsLabel.Name = "zaehlerEinsLabel";
+            zaehlerEinsLabel.Size = new Size(75, 25);
+            zaehlerEinsLabel.TabIndex = 3;
+            zaehlerEinsLabel.Text = "Zähler 1";
             // 
             // zaehlerZweiLabel
             // 
@@ -93,32 +96,34 @@
             // 
             // textBoxErgebnis
             // 
+            textBoxErgebnis.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             textBoxErgebnis.Location = new Point(117, 59);
             textBoxErgebnis.Multiline = true;
             textBoxErgebnis.Name = "textBoxErgebnis";
             textBoxErgebnis.ReadOnly = true;
             textBoxErgebnis.Size = new Size(181, 40);
             textBoxErgebnis.TabIndex = 5;
+            textBoxErgebnis.Click += textBoxAusgabe_TextClicked;
             // 
-            // label3
+            // ergebnisLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(171, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 28);
-            label3.TabIndex = 6;
-            label3.Text = "Ausgabe";
+            ergebnisLabel.AutoSize = true;
+            ergebnisLabel.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            ergebnisLabel.Location = new Point(171, 28);
+            ergebnisLabel.Name = "ergebnisLabel";
+            ergebnisLabel.Size = new Size(88, 28);
+            ergebnisLabel.TabIndex = 6;
+            ergebnisLabel.Text = "Ausgabe";
             // 
-            // label4
+            // nennerEinsLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(77, 264);
-            label4.Name = "label4";
-            label4.Size = new Size(84, 25);
-            label4.TabIndex = 8;
-            label4.Text = "Nenner 1";
+            nennerEinsLabel.AutoSize = true;
+            nennerEinsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            nennerEinsLabel.Location = new Point(77, 264);
+            nennerEinsLabel.Name = "nennerEinsLabel";
+            nennerEinsLabel.Size = new Size(84, 25);
+            nennerEinsLabel.TabIndex = 8;
+            nennerEinsLabel.Text = "Nenner 1";
             // 
             // textBoxNennerEins
             // 
@@ -144,7 +149,6 @@
             textBoxNennerZwei.Name = "textBoxNennerZwei";
             textBoxNennerZwei.Size = new Size(144, 23);
             textBoxNennerZwei.TabIndex = 9;
-            textBoxNennerZwei.TextChanged += textBox2_TextChanged;
             // 
             // operations
             // 
@@ -155,15 +159,15 @@
             operations.TabIndex = 11;
             operations.SelectedIndexChanged += operations_SelectedIndexChanged;
             // 
-            // label6
+            // operationLabel
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(167, 112);
-            label6.Name = "label6";
-            label6.Size = new Size(92, 25);
-            label6.TabIndex = 12;
-            label6.Text = "Operation";
+            operationLabel.AutoSize = true;
+            operationLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            operationLabel.Location = new Point(167, 112);
+            operationLabel.Name = "operationLabel";
+            operationLabel.Size = new Size(92, 25);
+            operationLabel.TabIndex = 12;
+            operationLabel.Text = "Operation";
             // 
             // potenzLabel
             // 
@@ -182,23 +186,38 @@
             textBoxPotenz.Size = new Size(144, 23);
             textBoxPotenz.TabIndex = 13;
             // 
+            // creditLabel
+            // 
+            creditLabel.AutoSize = true;
+            creditLabel.Location = new Point(278, 9);
+            creditLabel.Name = "creditLabel";
+            creditLabel.Size = new Size(137, 15);
+            creditLabel.TabIndex = 15;
+            creditLabel.Text = "(C) Alexander Rziha 2023";
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.Text = "notifyIcon";
+            notifyIcon.Visible = true;
+            // 
             // Bruchrechner
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 450);
+            Controls.Add(creditLabel);
             Controls.Add(potenzLabel);
             Controls.Add(textBoxPotenz);
-            Controls.Add(label6);
+            Controls.Add(operationLabel);
             Controls.Add(operations);
             Controls.Add(NennerZweiLabel);
             Controls.Add(textBoxNennerZwei);
-            Controls.Add(label4);
+            Controls.Add(nennerEinsLabel);
             Controls.Add(textBoxNennerEins);
-            Controls.Add(label3);
+            Controls.Add(ergebnisLabel);
             Controls.Add(textBoxErgebnis);
             Controls.Add(zaehlerZweiLabel);
-            Controls.Add(label1);
+            Controls.Add(zaehlerEinsLabel);
             Controls.Add(textBoxZählerZwei);
             Controls.Add(textBoxZählerEins);
             Controls.Add(btnCalculate);
@@ -215,17 +234,19 @@
         private Button btnCalculate;
         private TextBox textBoxZählerEins;
         private TextBox textBoxZählerZwei;
-        private Label label1;
+        private Label zaehlerEinsLabel;
         private Label zaehlerZweiLabel;
         private TextBox textBoxErgebnis;
-        private Label label3;
-        private Label label4;
+        private Label ergebnisLabel;
+        private Label nennerEinsLabel;
         private TextBox textBoxNennerEins;
         private Label NennerZweiLabel;
         private TextBox textBoxNennerZwei;
         private ComboBox operations;
-        private Label label6;
+        private Label operationLabel;
         private Label potenzLabel;
         private TextBox textBoxPotenz;
+        private Label creditLabel;
+        private NotifyIcon notifyIcon;
     }
 }
