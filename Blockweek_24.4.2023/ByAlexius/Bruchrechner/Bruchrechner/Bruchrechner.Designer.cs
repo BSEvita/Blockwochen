@@ -44,6 +44,7 @@
             operationLabel = new Label();
             potenzLabel = new Label();
             textBoxPotenz = new TextBox();
+            creditLabel = new Label();
             SuspendLayout();
             // 
             // btnCalculate
@@ -183,11 +184,21 @@
             textBoxPotenz.Size = new Size(144, 23);
             textBoxPotenz.TabIndex = 13;
             // 
+            // creditLabel
+            // 
+            creditLabel.AutoSize = true;
+            creditLabel.Location = new Point(278, 9);
+            creditLabel.Name = "creditLabel";
+            creditLabel.Size = new Size(137, 15);
+            creditLabel.TabIndex = 15;
+            creditLabel.Text = "(C) Alexander Rziha 2023";
+            // 
             // Bruchrechner
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 450);
+            Controls.Add(creditLabel);
             Controls.Add(potenzLabel);
             Controls.Add(textBoxPotenz);
             Controls.Add(operationLabel);
@@ -228,5 +239,6 @@
         private Label operationLabel;
         private Label potenzLabel;
         private TextBox textBoxPotenz;
+        private Label creditLabel;
     }
 }
