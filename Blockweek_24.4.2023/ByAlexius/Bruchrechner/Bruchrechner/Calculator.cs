@@ -78,7 +78,7 @@ namespace Bruchrechner
             }
             else
             {
-                return CalculateGCD(i, i % i2);
+                return CalculateGCD(i2, i % i2);
             }
         }
     }

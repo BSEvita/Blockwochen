@@ -38,7 +38,7 @@ namespace Bruchrechner
             }
 
             string selectedMode = operations.SelectedItem.ToString();
-            int Potenz;
+            int potenz;
 
             try
             {
@@ -51,11 +51,29 @@ namespace Bruchrechner
                 return;
             }
 
-            Calculator calculator1 = new Calculator(nenner1, zaehler1);
+            Calculator calculator1 = new Calculator(zaehler1, nenner1);
 
             if (selectedMode == "Wurzel ziehen")
             {
                 result = Calculator.sqrt(calculator1);
+                textBoxErgebnis.Text = result.ToString();
+                return;
+            }
+
+            if (selectedMode == "Potenzieren")
+            {
+                try
+                {
+                    potenz = Convert.ToInt32(textBoxPotenz.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bitte geben Sie valide Werte ein!", "Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                result = Calculator.Exponentiate(calculator1, potenz);
+                textBoxErgebnis.Text = result.ToString();
                 return;
             }
 
@@ -70,7 +88,7 @@ namespace Bruchrechner
                 return;
             }
 
-            Calculator calculator2 = new Calculator(nenner2, zaehler2);
+            Calculator calculator2 = new Calculator(zaehler2, nenner2);
 
             switch (selectedMode)
             {
@@ -85,10 +103,6 @@ namespace Bruchrechner
                     break;
                 case "Division":
                     result = Calculator.Divide(calculator1, calculator2);
-                    break;
-                case "Potenzieren":
-                    Potenz = Convert.ToInt32(textBoxPotenz.Text);
-                    result = Calculator.Exponentiate(calculator1, Potenz);
                     break;
                 default:
                     MessageBox.Show("Bitte wähle eine valide Operation aus!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);

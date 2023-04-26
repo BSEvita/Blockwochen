@@ -32,7 +32,7 @@
             btnCalculate = new Button();
             textBoxZählerEins = new TextBox();
             textBoxZählerZwei = new TextBox();
-            label1 = new Label();
+            zaehlerEinsLabel = new Label();
             zaehlerZweiLabel = new Label();
             textBoxErgebnis = new TextBox();
             label3 = new Label();
@@ -71,15 +71,15 @@
             textBoxZählerZwei.Size = new Size(144, 23);
             textBoxZählerZwei.TabIndex = 2;
             // 
-            // label1
+            // zaehlerEinsLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(77, 189);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 25);
-            label1.TabIndex = 3;
-            label1.Text = "Zähler 1";
+            zaehlerEinsLabel.AutoSize = true;
+            zaehlerEinsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            zaehlerEinsLabel.Location = new Point(77, 189);
+            zaehlerEinsLabel.Name = "zaehlerEinsLabel";
+            zaehlerEinsLabel.Size = new Size(75, 25);
+            zaehlerEinsLabel.TabIndex = 3;
+            zaehlerEinsLabel.Text = "Zähler 1";
             // 
             // zaehlerZweiLabel
             // 
@@ -93,6 +93,7 @@
             // 
             // textBoxErgebnis
             // 
+            textBoxErgebnis.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             textBoxErgebnis.Location = new Point(117, 59);
             textBoxErgebnis.Multiline = true;
             textBoxErgebnis.Name = "textBoxErgebnis";
@@ -198,7 +199,7 @@
             Controls.Add(label3);
             Controls.Add(textBoxErgebnis);
             Controls.Add(zaehlerZweiLabel);
-            Controls.Add(label1);
+            Controls.Add(zaehlerEinsLabel);
             Controls.Add(textBoxZählerZwei);
             Controls.Add(textBoxZählerEins);
             Controls.Add(btnCalculate);
@@ -215,7 +216,7 @@
         private Button btnCalculate;
         private TextBox textBoxZählerEins;
         private TextBox textBoxZählerZwei;
-        private Label label1;
+        private Label zaehlerEinsLabel;
         private Label zaehlerZweiLabel;
         private TextBox textBoxErgebnis;
         private Label label3;
