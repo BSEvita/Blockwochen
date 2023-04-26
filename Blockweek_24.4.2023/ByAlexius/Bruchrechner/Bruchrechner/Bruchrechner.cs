@@ -119,7 +119,14 @@ namespace Bruchrechner
 
         private void textBoxAusgabe_TextClicked(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxErgebnis.Text);
+            try
+            {
+                Clipboard.SetText(textBoxErgebnis.Text);
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
 
             notifyIcon.Icon = new System.Drawing.Icon(Path.GetFullPath("symbol.ico"));
             notifyIcon.Text = "Copied the output to your Clipboard";
