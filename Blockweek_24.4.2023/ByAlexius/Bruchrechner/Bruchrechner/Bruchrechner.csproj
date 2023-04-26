@@ -20,7 +20,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="symbol.ico" />
+    <Content Include="symbol.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

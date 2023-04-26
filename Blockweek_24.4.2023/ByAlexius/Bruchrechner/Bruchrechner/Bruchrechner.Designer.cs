@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bruchrechner));
             btnCalculate = new Button();
             textBoxZählerEins = new TextBox();
@@ -45,6 +46,7 @@
             potenzLabel = new Label();
             textBoxPotenz = new TextBox();
             creditLabel = new Label();
+            notifyIcon = new NotifyIcon(components);
             SuspendLayout();
             // 
             // btnCalculate
@@ -101,6 +103,7 @@
             textBoxErgebnis.ReadOnly = true;
             textBoxErgebnis.Size = new Size(181, 40);
             textBoxErgebnis.TabIndex = 5;
+            textBoxErgebnis.Click += textBoxAusgabe_TextClicked;
             // 
             // ergebnisLabel
             // 
@@ -146,7 +149,6 @@
             textBoxNennerZwei.Name = "textBoxNennerZwei";
             textBoxNennerZwei.Size = new Size(144, 23);
             textBoxNennerZwei.TabIndex = 9;
-            textBoxNennerZwei.TextChanged += textBox2_TextChanged;
             // 
             // operations
             // 
@@ -192,6 +194,11 @@
             creditLabel.Size = new Size(137, 15);
             creditLabel.TabIndex = 15;
             creditLabel.Text = "(C) Alexander Rziha 2023";
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.Text = "notifyIcon";
+            notifyIcon.Visible = true;
             // 
             // Bruchrechner
             // 
@@ -240,5 +247,6 @@
         private Label potenzLabel;
         private TextBox textBoxPotenz;
         private Label creditLabel;
+        private NotifyIcon notifyIcon;
     }
 }

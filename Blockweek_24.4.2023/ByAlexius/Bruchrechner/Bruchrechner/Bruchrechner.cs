@@ -117,8 +117,17 @@ namespace Bruchrechner
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void textBoxAusgabe_TextClicked(object sender, EventArgs e)
         {
+            Clipboard.SetText(textBoxErgebnis.Text);
+
+            notifyIcon.Icon = new System.Drawing.Icon(Path.GetFullPath("symbol.ico"));
+            notifyIcon.Text = "Copied the output to your Clipboard";
+            notifyIcon.Visible = true;
+            notifyIcon.BalloonTipTitle = "Information";
+            notifyIcon.BalloonTipText = "Das Ergebnis wurde in ihr Clipboard kopiert.";
+            notifyIcon.ShowBalloonTip(100);
+
         }
 
         private void operations_SelectedIndexChanged(object sender, EventArgs e)
