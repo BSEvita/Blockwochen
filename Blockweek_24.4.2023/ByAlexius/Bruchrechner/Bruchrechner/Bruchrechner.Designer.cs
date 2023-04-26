@@ -35,13 +35,13 @@
             zaehlerEinsLabel = new Label();
             zaehlerZweiLabel = new Label();
             textBoxErgebnis = new TextBox();
-            label3 = new Label();
-            label4 = new Label();
+            ergebnisLabel = new Label();
+            nennerEinsLabel = new Label();
             textBoxNennerEins = new TextBox();
             NennerZweiLabel = new Label();
             textBoxNennerZwei = new TextBox();
             operations = new ComboBox();
-            label6 = new Label();
+            operationLabel = new Label();
             potenzLabel = new Label();
             textBoxPotenz = new TextBox();
             SuspendLayout();
@@ -101,25 +101,25 @@
             textBoxErgebnis.Size = new Size(181, 40);
             textBoxErgebnis.TabIndex = 5;
             // 
-            // label3
+            // ergebnisLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(171, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 28);
-            label3.TabIndex = 6;
-            label3.Text = "Ausgabe";
+            ergebnisLabel.AutoSize = true;
+            ergebnisLabel.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            ergebnisLabel.Location = new Point(171, 28);
+            ergebnisLabel.Name = "ergebnisLabel";
+            ergebnisLabel.Size = new Size(88, 28);
+            ergebnisLabel.TabIndex = 6;
+            ergebnisLabel.Text = "Ausgabe";
             // 
-            // label4
+            // nennerEinsLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(77, 264);
-            label4.Name = "label4";
-            label4.Size = new Size(84, 25);
-            label4.TabIndex = 8;
-            label4.Text = "Nenner 1";
+            nennerEinsLabel.AutoSize = true;
+            nennerEinsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            nennerEinsLabel.Location = new Point(77, 264);
+            nennerEinsLabel.Name = "nennerEinsLabel";
+            nennerEinsLabel.Size = new Size(84, 25);
+            nennerEinsLabel.TabIndex = 8;
+            nennerEinsLabel.Text = "Nenner 1";
             // 
             // textBoxNennerEins
             // 
@@ -156,15 +156,15 @@
             operations.TabIndex = 11;
             operations.SelectedIndexChanged += operations_SelectedIndexChanged;
             // 
-            // label6
+            // operationLabel
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(167, 112);
-            label6.Name = "label6";
-            label6.Size = new Size(92, 25);
-            label6.TabIndex = 12;
-            label6.Text = "Operation";
+            operationLabel.AutoSize = true;
+            operationLabel.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            operationLabel.Location = new Point(167, 112);
+            operationLabel.Name = "operationLabel";
+            operationLabel.Size = new Size(92, 25);
+            operationLabel.TabIndex = 12;
+            operationLabel.Text = "Operation";
             // 
             // potenzLabel
             // 
@@ -190,13 +190,13 @@
             ClientSize = new Size(427, 450);
             Controls.Add(potenzLabel);
             Controls.Add(textBoxPotenz);
-            Controls.Add(label6);
+            Controls.Add(operationLabel);
             Controls.Add(operations);
             Controls.Add(NennerZweiLabel);
             Controls.Add(textBoxNennerZwei);
-            Controls.Add(label4);
+            Controls.Add(nennerEinsLabel);
             Controls.Add(textBoxNennerEins);
-            Controls.Add(label3);
+            Controls.Add(ergebnisLabel);
             Controls.Add(textBoxErgebnis);
             Controls.Add(zaehlerZweiLabel);
             Controls.Add(zaehlerEinsLabel);
@@ -219,13 +219,13 @@
         private Label zaehlerEinsLabel;
         private Label zaehlerZweiLabel;
         private TextBox textBoxErgebnis;
-        private Label label3;
-        private Label label4;
+        private Label ergebnisLabel;
+        private Label nennerEinsLabel;
         private TextBox textBoxNennerEins;
         private Label NennerZweiLabel;
         private TextBox textBoxNennerZwei;
         private ComboBox operations;
-        private Label label6;
+        private Label operationLabel;
         private Label potenzLabel;
         private TextBox textBoxPotenz;
     }
