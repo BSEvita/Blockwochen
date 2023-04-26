@@ -77,7 +77,7 @@ namespace Bruchrechner
 			catch (Exception ex)
 			{
 				MessageBox.Show("In den Feldern für Zähler und Nenner dürfen nur Ganze Zahlen verwendet werden!",
-				"Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				"Fehler: " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 
