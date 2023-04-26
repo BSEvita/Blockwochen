@@ -42,18 +42,16 @@
 			Zahl8 = new Button();
 			Zahl9 = new Button();
 			Zahl0 = new Button();
-			OutputField = new RichTextBox();
+			InputField = new RichTextBox();
 			OperatorPotenz = new Button();
 			LöschenCE = new Button();
-			OperatorQuadrat = new Button();
-			OperatorKehrwert = new Button();
 			OperatorQuadratwurzel = new Button();
 			OperatorDivision = new Button();
 			OperatorMultiplikation = new Button();
 			OperatorSubtraktion = new Button();
 			OperatorAddition = new Button();
 			SymbolKomma = new Button();
-			OperatorIstGleich = new Button();
+			IstGleich = new Button();
 			EingabeRückgängig = new Button();
 			OperatorLog = new Button();
 			OperatorFakultät = new Button();
@@ -61,17 +59,17 @@
 			OperatorCos = new Button();
 			OperatorTan = new Button();
 			AuthorsNote = new Label();
-			AllPreviouslyEntered = new RichTextBox();
-			Label_Zwischenstand = new Label();
 			Ergebnis = new RichTextBox();
 			Label_Ergebnis = new Label();
+			VorzeichenSwitch = new Button();
+			PreviousEntries = new RichTextBox();
 			SuspendLayout();
 			// 
 			// Label_Eingabe
 			// 
 			Label_Eingabe.AutoSize = true;
 			Label_Eingabe.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			Label_Eingabe.Location = new Point(14, 133);
+			Label_Eingabe.Location = new Point(14, 142);
 			Label_Eingabe.Name = "Label_Eingabe";
 			Label_Eingabe.Size = new Size(84, 25);
 			Label_Eingabe.TabIndex = 0;
@@ -192,26 +190,25 @@
 			Zahl0.UseVisualStyleBackColor = true;
 			Zahl0.Click += Number_Click;
 			// 
-			// OutputField
+			// InputField
 			// 
-			OutputField.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-			OutputField.Location = new Point(108, 123);
-			OutputField.Name = "OutputField";
-			OutputField.Size = new Size(275, 55);
-			OutputField.TabIndex = 13;
-			OutputField.Text = "";
-			OutputField.TextChanged += OutputField_TextChanged;
+			InputField.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+			InputField.Location = new Point(101, 123);
+			InputField.Name = "InputField";
+			InputField.Size = new Size(282, 55);
+			InputField.TabIndex = 13;
+			InputField.Text = "";
 			// 
 			// OperatorPotenz
 			// 
 			OperatorPotenz.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorPotenz.Location = new Point(14, 495);
+			OperatorPotenz.Location = new Point(14, 375);
 			OperatorPotenz.Name = "OperatorPotenz";
 			OperatorPotenz.Size = new Size(69, 54);
 			OperatorPotenz.TabIndex = 14;
 			OperatorPotenz.Text = "x^y";
 			OperatorPotenz.UseVisualStyleBackColor = true;
-			OperatorPotenz.Click += NumberTransformationClick;
+			OperatorPotenz.Click += Operator_Click;
 			// 
 			// LöschenCE
 			// 
@@ -224,38 +221,16 @@
 			LöschenCE.UseVisualStyleBackColor = true;
 			LöschenCE.Click += LöschenCE_Click;
 			// 
-			// OperatorQuadrat
-			// 
-			OperatorQuadrat.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorQuadrat.Location = new Point(14, 375);
-			OperatorQuadrat.Name = "OperatorQuadrat";
-			OperatorQuadrat.Size = new Size(69, 54);
-			OperatorQuadrat.TabIndex = 16;
-			OperatorQuadrat.Text = "x²";
-			OperatorQuadrat.UseVisualStyleBackColor = true;
-			OperatorQuadrat.Click += NumberTransformationClick;
-			// 
-			// OperatorKehrwert
-			// 
-			OperatorKehrwert.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorKehrwert.Location = new Point(14, 315);
-			OperatorKehrwert.Name = "OperatorKehrwert";
-			OperatorKehrwert.Size = new Size(69, 54);
-			OperatorKehrwert.TabIndex = 17;
-			OperatorKehrwert.Text = "1/x";
-			OperatorKehrwert.UseVisualStyleBackColor = true;
-			OperatorKehrwert.Click += NumberTransformationClick;
-			// 
 			// OperatorQuadratwurzel
 			// 
 			OperatorQuadratwurzel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorQuadratwurzel.Location = new Point(14, 435);
+			OperatorQuadratwurzel.Location = new Point(14, 315);
 			OperatorQuadratwurzel.Name = "OperatorQuadratwurzel";
 			OperatorQuadratwurzel.Size = new Size(69, 54);
 			OperatorQuadratwurzel.TabIndex = 18;
-			OperatorQuadratwurzel.Text = "(x)√y";
+			OperatorQuadratwurzel.Text = "x√y";
 			OperatorQuadratwurzel.UseVisualStyleBackColor = true;
-			OperatorQuadratwurzel.Click += NumberTransformationClick;
+			OperatorQuadratwurzel.Click += Operator_Click;
 			// 
 			// OperatorDivision
 			// 
@@ -308,21 +283,21 @@
 			SymbolKomma.Name = "SymbolKomma";
 			SymbolKomma.Size = new Size(69, 54);
 			SymbolKomma.TabIndex = 23;
-			SymbolKomma.Text = ".";
+			SymbolKomma.Text = ",";
 			SymbolKomma.UseVisualStyleBackColor = true;
-			SymbolKomma.Click += SymbolKomma_Click;
+			SymbolKomma.Click += KommaClick;
 			// 
-			// OperatorIstGleich
+			// IstGleich
 			// 
-			OperatorIstGleich.BackColor = SystemColors.Highlight;
-			OperatorIstGleich.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorIstGleich.Location = new Point(314, 495);
-			OperatorIstGleich.Name = "OperatorIstGleich";
-			OperatorIstGleich.Size = new Size(69, 54);
-			OperatorIstGleich.TabIndex = 24;
-			OperatorIstGleich.Text = "=";
-			OperatorIstGleich.UseVisualStyleBackColor = false;
-			OperatorIstGleich.Click += OperatorIstGleich_Click;
+			IstGleich.BackColor = SystemColors.Highlight;
+			IstGleich.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+			IstGleich.Location = new Point(314, 495);
+			IstGleich.Name = "IstGleich";
+			IstGleich.Size = new Size(69, 54);
+			IstGleich.TabIndex = 24;
+			IstGleich.Text = "=";
+			IstGleich.UseVisualStyleBackColor = false;
+			IstGleich.Click += IstGleich_Click;
 			// 
 			// EingabeRückgängig
 			// 
@@ -339,13 +314,13 @@
 			// OperatorLog
 			// 
 			OperatorLog.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-			OperatorLog.Location = new Point(89, 495);
+			OperatorLog.Location = new Point(14, 435);
 			OperatorLog.Name = "OperatorLog";
 			OperatorLog.Size = new Size(69, 54);
 			OperatorLog.TabIndex = 27;
-			OperatorLog.Text = "log_x(y)";
+			OperatorLog.Text = "log_(x)y";
 			OperatorLog.UseVisualStyleBackColor = true;
-			OperatorLog.Click += NumberTransformationClick;
+			OperatorLog.Click += Operator_Click;
 			// 
 			// OperatorFakultät
 			// 
@@ -356,6 +331,7 @@
 			OperatorFakultät.TabIndex = 28;
 			OperatorFakultät.Text = "!";
 			OperatorFakultät.UseVisualStyleBackColor = true;
+			OperatorFakultät.Click += Operator_Click;
 			// 
 			// OperatorSin
 			// 
@@ -366,7 +342,7 @@
 			OperatorSin.TabIndex = 29;
 			OperatorSin.Text = "Sin";
 			OperatorSin.UseVisualStyleBackColor = true;
-			OperatorSin.Click += NumberTransformationClick;
+			OperatorSin.Click += Operator_Click;
 			// 
 			// OperatorCos
 			// 
@@ -377,7 +353,7 @@
 			OperatorCos.TabIndex = 30;
 			OperatorCos.Text = "Cos";
 			OperatorCos.UseVisualStyleBackColor = true;
-			OperatorCos.Click += NumberTransformationClick;
+			OperatorCos.Click += Operator_Click;
 			// 
 			// OperatorTan
 			// 
@@ -388,7 +364,7 @@
 			OperatorTan.TabIndex = 31;
 			OperatorTan.Text = "Tan";
 			OperatorTan.UseVisualStyleBackColor = true;
-			OperatorTan.Click += NumberTransformationClick;
+			OperatorTan.Click += Operator_Click;
 			// 
 			// AuthorsNote
 			// 
@@ -401,31 +377,11 @@
 			AuthorsNote.Size = new Size(149, 47);
 			AuthorsNote.TabIndex = 33;
 			AuthorsNote.Text = "ACHTUNG:\r\nOperator-Rangfolge muss \r\nselbst eingehalten werden!\r\n";
-			AuthorsNote.Click += AuthorsNote_Click;
-			// 
-			// AllPreviouslyEntered
-			// 
-			AllPreviouslyEntered.BackColor = SystemColors.AppWorkspace;
-			AllPreviouslyEntered.Location = new Point(121, 12);
-			AllPreviouslyEntered.Name = "AllPreviouslyEntered";
-			AllPreviouslyEntered.ReadOnly = true;
-			AllPreviouslyEntered.Size = new Size(262, 26);
-			AllPreviouslyEntered.TabIndex = 34;
-			AllPreviouslyEntered.Text = "";
-			// 
-			// Label_Zwischenstand
-			// 
-			Label_Zwischenstand.AutoSize = true;
-			Label_Zwischenstand.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			Label_Zwischenstand.Location = new Point(6, 13);
-			Label_Zwischenstand.Name = "Label_Zwischenstand";
-			Label_Zwischenstand.Size = new Size(109, 25);
-			Label_Zwischenstand.TabIndex = 35;
-			Label_Zwischenstand.Text = "Zwischenst:";
 			// 
 			// Ergebnis
 			// 
 			Ergebnis.BackColor = SystemColors.InactiveCaption;
+			Ergebnis.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
 			Ergebnis.Location = new Point(101, 44);
 			Ergebnis.Name = "Ergebnis";
 			Ergebnis.ReadOnly = true;
@@ -436,22 +392,43 @@
 			// Label_Ergebnis
 			// 
 			Label_Ergebnis.AutoSize = true;
-			Label_Ergebnis.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-			Label_Ergebnis.Location = new Point(6, 70);
+			Label_Ergebnis.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+			Label_Ergebnis.Location = new Point(-3, 65);
 			Label_Ergebnis.Name = "Label_Ergebnis";
-			Label_Ergebnis.Size = new Size(89, 25);
+			Label_Ergebnis.Size = new Size(101, 30);
 			Label_Ergebnis.TabIndex = 37;
 			Label_Ergebnis.Text = "Ergebnis:";
+			// 
+			// VorzeichenSwitch
+			// 
+			VorzeichenSwitch.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+			VorzeichenSwitch.Location = new Point(89, 495);
+			VorzeichenSwitch.Name = "VorzeichenSwitch";
+			VorzeichenSwitch.Size = new Size(69, 54);
+			VorzeichenSwitch.TabIndex = 38;
+			VorzeichenSwitch.Text = "+/-";
+			VorzeichenSwitch.UseVisualStyleBackColor = true;
+			VorzeichenSwitch.Click += VorzeichenSwitch_Click;
+			// 
+			// PreviousEntries
+			// 
+			PreviousEntries.BackColor = SystemColors.GrayText;
+			PreviousEntries.Location = new Point(101, 12);
+			PreviousEntries.Name = "PreviousEntries";
+			PreviousEntries.ReadOnly = true;
+			PreviousEntries.Size = new Size(282, 26);
+			PreviousEntries.TabIndex = 39;
+			PreviousEntries.Text = "";
 			// 
 			// Taschenrechner
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(395, 555);
+			Controls.Add(PreviousEntries);
+			Controls.Add(VorzeichenSwitch);
 			Controls.Add(Label_Ergebnis);
 			Controls.Add(Ergebnis);
-			Controls.Add(Label_Zwischenstand);
-			Controls.Add(AllPreviouslyEntered);
 			Controls.Add(AuthorsNote);
 			Controls.Add(OperatorTan);
 			Controls.Add(OperatorCos);
@@ -459,18 +436,16 @@
 			Controls.Add(OperatorFakultät);
 			Controls.Add(OperatorLog);
 			Controls.Add(EingabeRückgängig);
-			Controls.Add(OperatorIstGleich);
+			Controls.Add(IstGleich);
 			Controls.Add(SymbolKomma);
 			Controls.Add(OperatorAddition);
 			Controls.Add(OperatorSubtraktion);
 			Controls.Add(OperatorMultiplikation);
 			Controls.Add(OperatorDivision);
 			Controls.Add(OperatorQuadratwurzel);
-			Controls.Add(OperatorKehrwert);
-			Controls.Add(OperatorQuadrat);
 			Controls.Add(LöschenCE);
 			Controls.Add(OperatorPotenz);
-			Controls.Add(OutputField);
+			Controls.Add(InputField);
 			Controls.Add(Zahl0);
 			Controls.Add(Zahl9);
 			Controls.Add(Zahl8);
@@ -485,7 +460,7 @@
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			MaximizeBox = false;
 			Name = "Taschenrechner";
-			Text = "Taschenerchner";
+			Text = "Taschenrechner";
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -507,18 +482,16 @@
 		private Button button6;
 		private Button Zahl9;
 		private Button Zahl0;
-		private RichTextBox OutputField;
+		private RichTextBox InputField;
 		private Button OperatorPotenz;
 		private Button LöschenCE;
-		private Button OperatorQuadrat;
-		private Button OperatorKehrwert;
 		private Button OperatorQuadratwurzel;
 		private Button OperatorDivision;
 		private Button OperatorMultiplikation;
 		private Button OperatorSubtraktion;
 		private Button OperatorAddition;
 		private Button SymbolKomma;
-		private Button OperatorIstGleich;
+		private Button IstGleich;
 		private Button EingabeRückgängig;
 		private Button OperatorLog;
 		private Button OperatorFakultät;
@@ -526,9 +499,9 @@
 		private Button OperatorCos;
 		private Button OperatorTan;
 		private Label AuthorsNote;
-		private RichTextBox AllPreviouslyEntered;
-		private Label Label_Zwischenstand;
 		private RichTextBox Ergebnis;
 		private Label Label_Ergebnis;
+		private Button VorzeichenSwitch;
+		private RichTextBox PreviousEntries;
 	}
 }
