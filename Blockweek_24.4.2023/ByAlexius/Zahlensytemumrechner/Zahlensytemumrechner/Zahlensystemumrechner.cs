@@ -7,6 +7,8 @@ namespace Zahlensytemumrechner
             InitializeComponent();
         }
 
+        // Die Methode wird beim laden des Forms aufgerufen
+        // Es werden die items für die Operationen, etc. werden gesetzt
         private void Zahlensystemumrechner_Load(object sender, EventArgs e)
         {
             comboBoxZahlensystemNeu.Items.Clear();
@@ -35,20 +37,23 @@ namespace Zahlensytemumrechner
             comboBoxRechenungsart.Items.Add("Division");
         }
 
+        // Beim Textchange wird der Text gecentered
         private void textBoxAusgabe_TextChanged(object sender, EventArgs e)
         {
             textBoxAusgabe.SelectAll();
             textBoxAusgabe.SelectionAlignment = HorizontalAlignment.Center;
         }
 
+        // Beim Klicken von rechnen wir die rechen operation gestartet
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+
+            // Die werden die Variablen angelegt
             int currentBase2;
             int currentBase;
             int newBase;
 
-            char calcType;
-
+            // Hier werden variablen der Text aus den Text & Combo Boxen zugewiesen
             string newBaseText = comboBoxZahlensystemNeu.Text;
             string currentBaseText = comboBoxZahlensystemAlt.Text;
             string currentBaseText2 = comboBoxAltesZahlensystem2.Text;
@@ -56,12 +61,15 @@ namespace Zahlensytemumrechner
             string input2 = textBoxEingabe2.Text;
             string rechnungsart = comboBoxRechenungsart.Text;
 
+
+            // Hier ein null / empty check
             if (input == null || input.Length == 0)
             {
                 MessageBox.Show("Bitte geben Sie eine Zahl an.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Hier ein switch in welche Basis convertiert werden soll
             switch (newBaseText)
             {
                 case "Binär":
@@ -81,6 +89,7 @@ namespace Zahlensytemumrechner
                     return;
             }
 
+            // Hier ein switch für den ersten Text von welche Basis convertiert werden soll
             switch (currentBaseText)
             {
                 case "Binär":
@@ -100,8 +109,10 @@ namespace Zahlensytemumrechner
                     return;
             }
 
+            // Das ergebnis wird auf das ergebnis der Rechnungs gestetzt
             string ergebnis = Calculator.ConvertBases(input, currentBase, newBase);
 
+            // Hier wird überprüft ob eine zweite Zahl eingegeben wurde
             if (textBoxEingabe2.Text.Length > 0)
             {
                 string ergebnis1 = Calculator.ConvertBases(input, currentBase, 10);
@@ -111,6 +122,7 @@ namespace Zahlensytemumrechner
                 int ergebnis2I;
                 int ergebnis1I;
 
+                // Hier ein switch für den zweiten Text von welche Basis convertiert werden soll
                 switch (currentBaseText2)
                 {
                     case "Binär":
@@ -129,11 +141,15 @@ namespace Zahlensytemumrechner
                         MessageBox.Show("Bitte wählen Sie einen valide Base aus.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                 }
+
+                // Ergebnis 2 wird wieder auf das ergebnis der rechnung gesetzt
                 ergebnis2 = Calculator.ConvertBases(input2, currentBase2, 10);
 
+                // Wenn das erbegnis gleich error ist wir das program gecancled
                 if (ergebnis2 == "error")
                     return;
 
+                // Es wird versucht zu Int32 zu converten
                 try
                 {
                     ergebnis1I = Convert.ToInt32(ergebnis1);
@@ -145,6 +161,7 @@ namespace Zahlensytemumrechner
                     return;
                 }
 
+                // Hier ein switch für die Rechnungsart
                 switch (rechnungsart)
                 {
                     case "Addition":
@@ -169,12 +186,16 @@ namespace Zahlensytemumrechner
             if (ergebnis == "error")
                 return;
 
+            // Das ergebnis wird in die ausgabe gesetzt
             textBoxAusgabe.Text = ergebnis;
 
+            // der text wird zentriert
             textBoxAusgabe.SelectAll();
             textBoxAusgabe.SelectionAlignment = HorizontalAlignment.Center;
         }
 
+        // Beim Klicken der Ausgabe Box wird der Inhalt in das Clipboard kopiert.
+        // Es wird auch eine windows Toast Notification gesendet
         private void textBoxAusgabe_Clicked(object sender, EventArgs e)
         {
             try
