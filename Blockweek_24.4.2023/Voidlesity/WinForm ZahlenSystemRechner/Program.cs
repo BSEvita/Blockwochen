@@ -1,3 +1,5 @@
+using System;
+
 namespace ZahlenSystemRechner
 {
     static class Program
@@ -7,11 +9,64 @@ namespace ZahlenSystemRechner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var form1 = new Form1();
+            var form2 = new Form2();
+
+            form1.Show();
+            form2.Show();
+            form2.ShowInTaskbar = false;
+
+            Application.Run(form1);
+            Application.Exit();
         }
     }
 
     public class NumberConverter
+    {
+        public static string Convert(string number, int sourceBase, int targetBase)
+        {
+            int decimalNumber = 0;
+            int basePower = 1;
+            bool isNegative = false;
+
+            if (number.StartsWith("-"))
+            {
+                isNegative = true;
+                number = number.Substring(1);
+            }
+
+            for (int i = number.Length - 1; i >= 0; i--)
+            {
+                int digitValue = (number[i] >= '0' && number[i] <= '9') ? (number[i] - '0') : (number[i] - 'A' + 10);
+                decimalNumber += digitValue * basePower;
+                basePower *= sourceBase;
+            }
+
+            string targetNumber = "";
+            while (decimalNumber > 0)
+            {
+                int remainder = decimalNumber % targetBase;
+                if (remainder < 10)
+                {
+                    targetNumber = remainder + targetNumber;
+                }
+                else
+                {
+                    targetNumber = (char)('A' + remainder - 10) + targetNumber;
+                }
+                decimalNumber /= targetBase;
+            }
+
+            if (isNegative)
+            {
+                targetNumber = "-" + targetNumber;
+            }
+
+            return targetNumber;
+        }
+    }
+    public class NumberCalculator
     {
         public static int BinaryToDecimal(string binary)
         {
@@ -27,8 +82,14 @@ namespace ZahlenSystemRechner
             }
             return decimalNumber;
         }
+
         public static string DecimalToBinary(int decimalNumber)
         {
+            if (decimalNumber == 0)
+            {
+                return "0";
+            }
+
             string binary = "";
             while (decimalNumber > 0)
             {
@@ -44,7 +105,8 @@ namespace ZahlenSystemRechner
             int baseValue = 1;
             for (int i = octal.Length - 1; i >= 0; i--)
             {
-                decimalNumber += (octal[i] - '0') * baseValue;
+                int digitValue = octal[i] - '0';
+                decimalNumber += digitValue * baseValue;
                 baseValue *= 8;
             }
             return decimalNumber;
@@ -52,6 +114,11 @@ namespace ZahlenSystemRechner
 
         public static string DecimalToOctal(int decimalNumber)
         {
+            if (decimalNumber == 0)
+            {
+                return "0";
+            }
+
             string octal = "";
             while (decimalNumber > 0)
             {
@@ -67,14 +134,20 @@ namespace ZahlenSystemRechner
             int baseValue = 1;
             for (int i = hexadecimal.Length - 1; i >= 0; i--)
             {
+                int digitValue;
                 if (hexadecimal[i] >= '0' && hexadecimal[i] <= '9')
                 {
-                    decimalNumber += (hexadecimal[i] - '0') * baseValue;
+                    digitValue = hexadecimal[i] - '0';
                 }
                 else if (hexadecimal[i] >= 'A' && hexadecimal[i] <= 'F')
                 {
-                    decimalNumber += (hexadecimal[i] - 'A' + 10) * baseValue;
+                    digitValue = hexadecimal[i] - 'A' + 10;
                 }
+                else
+                {
+                    throw new ArgumentException("Invalid hexadecimal string");
+                }
+                decimalNumber += digitValue * baseValue;
                 baseValue *= 16;
             }
             return decimalNumber;
@@ -82,6 +155,11 @@ namespace ZahlenSystemRechner
 
         public static string DecimalToHexadecimal(int decimalNumber)
         {
+            if (decimalNumber == 0)
+            {
+                return "0";
+            }
+
             string hexadecimal = "";
             while (decimalNumber > 0)
             {
@@ -112,9 +190,10 @@ namespace ZahlenSystemRechner
                 sign2 = -1;
                 number2 = number2.Substring(1);
             }
-            int result = sign1 * ConvertToDecimal(number1, baseValue) + sign2 * ConvertToDecimal(number2, baseValue);
-            string resultString = ConvertFromDecimal(Math.Abs(result), baseValue);
-            if (result < 0)
+            int decimalResult = sign1 * ConvertToDecimal(number1, baseValue) +
+                                sign2 * ConvertToDecimal(number2, baseValue);
+            string resultString = ConvertFromDecimal(decimalResult, baseValue);
+            if (decimalResult < 0)
             {
                 resultString = "-" + resultString;
             }
@@ -123,9 +202,9 @@ namespace ZahlenSystemRechner
 
         public static string Subtract(string number1, string number2, int baseValue)
         {
-            int result = ConvertToDecimal(number1, baseValue) - ConvertToDecimal(number2, baseValue);
-            string resultString = ConvertFromDecimal(Math.Abs(result), baseValue);
-            if (result < 0)
+            int decimalResult = ConvertToDecimal(number1, baseValue) - ConvertToDecimal(number2, baseValue);
+            string resultString = ConvertFromDecimal(decimalResult, baseValue);
+            if (decimalResult < 0)
             {
                 resultString = "-" + resultString;
             }
@@ -145,9 +224,9 @@ namespace ZahlenSystemRechner
                 sign2 = -1;
                 number2 = number2.Substring(1);
             }
-            int result = sign1 * sign2 * ConvertToDecimal(number1, baseValue) * ConvertToDecimal(number2, baseValue);
-            string resultString = ConvertFromDecimal(Math.Abs(result), baseValue);
-            if (result < 0)
+            int decimalResult = sign1 * sign2 * ConvertToDecimal(number1, baseValue) * ConvertToDecimal(number2, baseValue);
+            string resultString = ConvertFromDecimal(decimalResult, baseValue);
+            if (decimalResult < 0)
             {
                 resultString = "-" + resultString;
             }
@@ -167,9 +246,9 @@ namespace ZahlenSystemRechner
                 sign2 = -1;
                 number2 = number2.Substring(1);
             }
-            int result = sign1 * sign2 * ConvertToDecimal(number1, baseValue) / ConvertToDecimal(number2, baseValue);
-            string resultString = ConvertFromDecimal(Math.Abs(result), baseValue);
-            if (result < 0)
+            int decimalResult = sign1 * sign2 * ConvertToDecimal(number1, baseValue) / ConvertToDecimal(number2, baseValue);
+            string resultString = ConvertFromDecimal(decimalResult, baseValue);
+            if (decimalResult < 0)
             {
                 resultString = "-" + resultString;
             }
@@ -183,6 +262,10 @@ namespace ZahlenSystemRechner
             for (int i = number.Length - 1; i >= 0; i--)
             {
                 int digitValue = (number[i] >= '0' && number[i] <= '9') ? (number[i] - '0') : (number[i] - 'A' + 10);
+                if (digitValue >= baseValue)
+                {
+                    throw new ArgumentException("Invalid digit value for the specified base");
+                }
                 decimalNumber += digitValue * basePower;
                 basePower *= baseValue;
             }
@@ -191,6 +274,11 @@ namespace ZahlenSystemRechner
 
         private static string ConvertFromDecimal(int decimalNumber, int baseValue)
         {
+            if (decimalNumber == 0)
+            {
+                return "0";
+            }
+
             string number = "";
             while (decimalNumber > 0)
             {
