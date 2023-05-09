@@ -4,7 +4,7 @@ using static Bruchrechner.Rechner;
 
 namespace Bruchrechner
 {
-    partial class Form1 : Form
+    partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
