@@ -1,6 +1,8 @@
 ﻿using BlockSeite.Data;
+using BlockSeite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlockSeite.Controllers
 {
@@ -34,13 +36,18 @@ namespace BlockSeite.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([FromForm] string UserName, [FromForm] string email)
+        public ActionResult Create(UserForm form)
         {
             try
             {
-                User user = new User();
-                user.UserName = UserName;
-                user.email = email;
+				if (!ModelState.IsValid)
+				{
+					return View(new User(form.UserName, form.email));
+				}
+
+				User user = new User();
+                user.UserName = form.UserName;
+                user.email = form.email;
                 
                 dbCtx.Users.Add(user);
                 dbCtx.SaveChanges();
@@ -62,7 +69,7 @@ namespace BlockSeite.Controllers
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, [FromForm] string UserName, [FromForm] string email)
+        public async Task<ActionResult> Edit(int id, UserForm form)
         {
             try
             {
@@ -73,8 +80,15 @@ namespace BlockSeite.Controllers
                     return NotFound();
                 }
 
-                user.UserName = UserName;
-                user.email = email;
+                if (!ModelState.IsValid)
+                {
+                    user.UserName = form.UserName;
+                    user.email = form.email;
+                    return View(user);
+                }
+
+                user.UserName = form.UserName;
+                user.email = form.email;
 
                 dbCtx.Users.Update(user);
                 dbCtx.SaveChanges();
