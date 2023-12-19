@@ -5,17 +5,17 @@
 }
 
 <p>
-	<a asp-action="Create">Create New</a>
+	<a asp-action="Create" class="btn btn-sm btn-info">Create New</a>
 </p>
 
 <table class="table">
 	<thead>
 		<tr>
 			<th>
-				@Html.DisplayNameFor(model => model.UserName)
+				Username
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.email)
+				E-Mail
 			</th>
 			<th>
 				Actions
@@ -33,9 +33,9 @@
 					@Html.DisplayFor(modelItem => item.email)
 				</td>
 				<td>
-					<a asp-action="Edit" asp-route-id="@item.UserId">Edit</a>
-					<a asp-action="Details" asp-route-id="@item.UserId">Details</a>
-					<a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+					<a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-warning">Edit</a>
+					<a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-sm btn-primary">Details</a>
+					<a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-sm btn-danger">Delete</a>
 				</td>
 			</tr>
 		}
