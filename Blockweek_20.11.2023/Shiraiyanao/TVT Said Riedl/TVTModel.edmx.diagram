@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6a4595c896942a6a5f4b88c8cb6833a" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.addresses" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.meetings" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.patients" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.room_times" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.rooms" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.therapist_treatments" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.therapists" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.times" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Tlocations" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.treatments" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK_locations_table_address_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_patients_table_address_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_meetings_table_patient_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_meetings_table_room_time_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_meetings_table_therapist_treatment_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_room_times_table_room_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_room_times_table_time_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_rooms_table_location_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_therapist_treatments_table_therapist_id" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_therapist_treatments_table_treatment_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

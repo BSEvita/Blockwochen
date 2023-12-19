@@ -18,175 +18,189 @@
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.number1Label = new System.Windows.Forms.Label();
-            this.number2Label = new System.Windows.Forms.Label();
-            this.resultLabel = new System.Windows.Forms.Label();
             this.number1 = new System.Windows.Forms.TextBox();
-            this.number2 = new System.Windows.Forms.TextBox();
-            this.binaryRadioButton = new System.Windows.Forms.RadioButton();
-            this.octalRadioButton = new System.Windows.Forms.RadioButton();
-            this.decimalRadioButton = new System.Windows.Forms.RadioButton();
-            this.hexadecimalRadioButton = new System.Windows.Forms.RadioButton();
-            this.inputNumberSystemLabel = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
-            this.subtractButton = new System.Windows.Forms.Button();
-            this.multiplyButton = new System.Windows.Forms.Button();
-            this.divideButton = new System.Windows.Forms.Button();
+            this.inputGroupBox = new System.Windows.Forms.GroupBox();
+            this.inputHexadecimalRadioButton = new System.Windows.Forms.RadioButton();
+            this.inputDecimalRadioButton = new System.Windows.Forms.RadioButton();
+            this.inputOctalRadioButton = new System.Windows.Forms.RadioButton();
+            this.inputBinaryRadioButton = new System.Windows.Forms.RadioButton();
+            this.outputGroupBox = new System.Windows.Forms.GroupBox();
+            this.outputHexadecimalRadioButton = new System.Windows.Forms.RadioButton();
+            this.outputDecimalRadioButton = new System.Windows.Forms.RadioButton();
+            this.outputOctalRadioButton = new System.Windows.Forms.RadioButton();
+            this.outputBinaryRadioButton = new System.Windows.Forms.RadioButton();
+            this.resultLabel = new System.Windows.Forms.Label();
             this.resultTextBox = new System.Windows.Forms.TextBox();
+            this.inputGroupBox.SuspendLayout();
+            this.outputGroupBox.SuspendLayout();
             this.SuspendLayout();
             //
             // number1Label
             //
             this.number1Label.AutoSize = true;
-            this.number1Label.Text = "Number 1";
-            this.number1Label.Location = new System.Drawing.Point(12, 19);
-            this.number1Label.Size = new System.Drawing.Size(60, 15);
+            this.number1Label.Text = "Number:";
+            this.number1Label.Location = new System.Drawing.Point(12, 11);
+            this.number1Label.Size = new System.Drawing.Size(54, 15);
             //
-            // number2Label
+            // number1
             //
-            this.number2Label.AutoSize = true;
-            this.number2Label.Text = "Number 2";
-            this.number2Label.Location = new System.Drawing.Point(12, 51);
-            this.number2Label.Size = new System.Drawing.Size(60, 15);
-            this.number2Label.TabIndex = 1;
+            this.number1.Location = new System.Drawing.Point(15, 28);
+            this.number1.Size = new System.Drawing.Size(374, 23);
+            this.number1.TabIndex = 1;
+            this.number1.TextChanged += new System.EventHandler(StuffChanged);
+            //
+            // inputGroupBox
+            //
+            this.inputGroupBox.Controls.Add(this.inputHexadecimalRadioButton);
+            this.inputGroupBox.Controls.Add(this.inputDecimalRadioButton);
+            this.inputGroupBox.Controls.Add(this.inputOctalRadioButton);
+            this.inputGroupBox.Controls.Add(this.inputBinaryRadioButton);
+            this.inputGroupBox.Text = "Input in:";
+            this.inputGroupBox.Location = new System.Drawing.Point(11, 59);
+            this.inputGroupBox.Size = new System.Drawing.Size(374, 54);
+            this.inputGroupBox.TabIndex = 8;
+            //
+            // inputHexadecimalRadioButton
+            //
+            this.inputHexadecimalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.inputHexadecimalRadioButton.AutoSize = true;
+            this.inputHexadecimalRadioButton.Text = "Hexadecimal";
+            this.inputHexadecimalRadioButton.Location = new System.Drawing.Point(285, 22);
+            this.inputHexadecimalRadioButton.Size = new System.Drawing.Size(94, 19);
+            this.inputHexadecimalRadioButton.TabIndex = 3;
+            //
+            // inputDecimalRadioButton
+            //
+            this.inputDecimalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.inputDecimalRadioButton.Checked = true;
+            this.inputDecimalRadioButton.TabStop = true;
+            this.inputDecimalRadioButton.AutoSize = true;
+            this.inputDecimalRadioButton.Text = "Decimal";
+            this.inputDecimalRadioButton.Location = new System.Drawing.Point(211, 22);
+            this.inputDecimalRadioButton.Size = new System.Drawing.Size(68, 19);
+            this.inputDecimalRadioButton.TabIndex = 2;
+            //
+            // inputOctalRadioButton
+            //
+            this.inputOctalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.inputOctalRadioButton.TabStop = true;
+            this.inputOctalRadioButton.AutoSize = true;
+            this.inputOctalRadioButton.Text = "Octal";
+            this.inputOctalRadioButton.Location = new System.Drawing.Point(144, 22);
+            this.inputOctalRadioButton.Size = new System.Drawing.Size(53, 19);
+            this.inputOctalRadioButton.TabIndex = 1;
+            //
+            // inputBinaryRadioButton
+            //
+            this.inputBinaryRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.inputBinaryRadioButton.TabStop = true;
+            this.inputBinaryRadioButton.AutoSize = true;
+            this.inputBinaryRadioButton.Text = "Binary";
+            this.inputBinaryRadioButton.Location = new System.Drawing.Point(74, 22);
+            this.inputBinaryRadioButton.Size = new System.Drawing.Size(58, 19);
+            this.inputBinaryRadioButton.TabIndex = 6;
+            //
+            // outputGroupBox
+            //
+            this.outputGroupBox.Controls.Add(this.outputHexadecimalRadioButton);
+            this.outputGroupBox.Controls.Add(this.outputDecimalRadioButton);
+            this.outputGroupBox.Controls.Add(this.outputOctalRadioButton);
+            this.outputGroupBox.Controls.Add(this.outputBinaryRadioButton);
+            this.outputGroupBox.Text = "Output in:";
+            this.outputGroupBox.Location = new System.Drawing.Point(11, 121);
+            this.outputGroupBox.Size = new System.Drawing.Size(374, 54);
+            this.outputGroupBox.TabIndex = 5;
+            //
+            // outputHexadecimalRadioButton
+            //
+            this.outputHexadecimalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.outputHexadecimalRadioButton.AutoSize = true;
+            this.outputHexadecimalRadioButton.Text = "Hexadecimal";
+            this.outputHexadecimalRadioButton.Location = new System.Drawing.Point(285, 22);
+            this.outputHexadecimalRadioButton.Size = new System.Drawing.Size(94, 19);
+            this.outputHexadecimalRadioButton.TabIndex = 3;
+            //
+            // outputDecimalRadioButton
+            //
+            this.outputDecimalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.outputDecimalRadioButton.Checked = true;
+            this.outputDecimalRadioButton.TabStop = true;
+            this.outputDecimalRadioButton.AutoSize = true;
+            this.outputDecimalRadioButton.Text = "Decimal";
+            this.outputDecimalRadioButton.Location = new System.Drawing.Point(211, 22);
+            this.outputDecimalRadioButton.Size = new System.Drawing.Size(68, 19);
+            this.outputDecimalRadioButton.TabIndex = 2;
+            //
+            // outputOctalRadioButton
+            //
+            this.outputOctalRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.outputOctalRadioButton.TabStop = true;
+            this.outputOctalRadioButton.AutoSize = true;
+            this.outputOctalRadioButton.Text = "Octal";
+            this.outputOctalRadioButton.Location = new System.Drawing.Point(144, 22);
+            this.outputOctalRadioButton.Size = new System.Drawing.Size(53, 19);
+            this.outputOctalRadioButton.TabIndex = 1;
+            //
+            // outputBinaryRadioButton
+            //
+            this.outputBinaryRadioButton.CheckedChanged += new System.EventHandler(StuffChanged);
+            this.outputBinaryRadioButton.TabStop = true;
+            this.outputBinaryRadioButton.AutoSize = true;
+            this.outputBinaryRadioButton.Text = "Binary";
+            this.outputBinaryRadioButton.Location = new System.Drawing.Point(74, 22);
+            this.outputBinaryRadioButton.Size = new System.Drawing.Size(58, 19);
+            this.outputBinaryRadioButton.TabIndex = 11;
             //
             // resultLabel
             //
             this.resultLabel.AutoSize = true;
             this.resultLabel.Text = "Result:";
-            this.resultLabel.Location = new System.Drawing.Point(12, 119);
+            this.resultLabel.Location = new System.Drawing.Point(12, 182);
             this.resultLabel.Size = new System.Drawing.Size(42, 15);
-            this.resultLabel.TabIndex = 2;
-            //
-            // number1
-            //
-            this.number1.Location = new System.Drawing.Point(80, 16);
-            this.number1.TabIndex = 6;
-            //
-            // number2
-            //
-            this.number2.Location = new System.Drawing.Point(80, 48);
-            this.number2.TabIndex = 7;
-            //
-            // binaryRadioButton
-            //
-            this.binaryRadioButton.AutoSize = true;
-            this.binaryRadioButton.Text = "Binary";
-            this.binaryRadioButton.Location = new System.Drawing.Point(74, 85);
-            this.binaryRadioButton.Size = new System.Drawing.Size(58, 19);
-            this.binaryRadioButton.TabIndex = 12;
-            //
-            // octalRadioButton
-            //
-            this.octalRadioButton.AutoSize = true;
-            this.octalRadioButton.Text = "Octal";
-            this.octalRadioButton.Location = new System.Drawing.Point(144, 85);
-            this.octalRadioButton.Size = new System.Drawing.Size(53, 19);
-            this.octalRadioButton.TabIndex = 13;
-            //
-            // decimalRadioButton
-            //
-            this.decimalRadioButton.AutoSize = true;
-            this.decimalRadioButton.Text = "Decimal";
-            this.decimalRadioButton.Location = new System.Drawing.Point(211, 85);
-            this.decimalRadioButton.Size = new System.Drawing.Size(68, 19);
-            this.decimalRadioButton.TabIndex = 14;
-            //
-            // hexadecimalRadioButton
-            //
-            this.hexadecimalRadioButton.Checked = true;
-            this.hexadecimalRadioButton.TabStop = true;
-            this.hexadecimalRadioButton.AutoSize = true;
-            this.hexadecimalRadioButton.Text = "Hexadecimal";
-            this.hexadecimalRadioButton.Location = new System.Drawing.Point(295, 85);
-            this.hexadecimalRadioButton.Size = new System.Drawing.Size(94, 19);
-            this.hexadecimalRadioButton.TabIndex = 15;
-            //
-            // inputNumberSystemLabel
-            //
-            this.inputNumberSystemLabel.AutoSize = true;
-            this.inputNumberSystemLabel.Text = "Input in:";
-            this.inputNumberSystemLabel.Location = new System.Drawing.Point(12, 87);
-            this.inputNumberSystemLabel.Size = new System.Drawing.Size(51, 15);
-            this.inputNumberSystemLabel.TabIndex = 16;
-            //
-            // addButton
-            //
-            this.addButton.Text = "Add";
-            this.addButton.Location = new System.Drawing.Point(307, 13);
-            this.addButton.Size = new System.Drawing.Size(100, 30);
-            this.addButton.TabIndex = 18;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            //
-            // subtractButton
-            //
-            this.subtractButton.Text = "Subtract";
-            this.subtractButton.Location = new System.Drawing.Point(203, 13);
-            this.subtractButton.Size = new System.Drawing.Size(100, 30);
-            this.subtractButton.TabIndex = 19;
-            this.subtractButton.Click += new System.EventHandler(this.subtractButton_Click);
-            //
-            // multiplyButton
-            //
-            this.multiplyButton.Text = "Multiply";
-            this.multiplyButton.Location = new System.Drawing.Point(203, 45);
-            this.multiplyButton.Size = new System.Drawing.Size(100, 30);
-            this.multiplyButton.TabIndex = 20;
-            this.multiplyButton.Click += new System.EventHandler(this.multiplyButton_Click);
-            //
-            // divideButton
-            //
-            this.divideButton.Text = "Divide";
-            this.divideButton.Location = new System.Drawing.Point(307, 45);
-            this.divideButton.Size = new System.Drawing.Size(100, 30);
-            this.divideButton.TabIndex = 21;
-            this.divideButton.Click += new System.EventHandler(this.divideButton_Click);
+            this.resultLabel.TabIndex = 6;
             //
             // resultTextBox
             //
-            this.resultTextBox.Location = new System.Drawing.Point(64, 116);
-            this.resultTextBox.Size = new System.Drawing.Size(340, 23);
-            this.resultTextBox.TabIndex = 22;
+            this.resultTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.resultTextBox.ReadOnly = true;
+            this.resultTextBox.Location = new System.Drawing.Point(15, 200);
+            this.resultTextBox.Size = new System.Drawing.Size(374, 23);
+            this.resultTextBox.TabIndex = 7;
             //
             // form
             //
-            this.Size = new System.Drawing.Size(435, 188);
-            this.Text = "Zahlen System Rechner";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.Size = new System.Drawing.Size(420, 280);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Zahlen System Umrechner";
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.number1Label);
-            this.Controls.Add(this.number2Label);
-            this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.number1);
-            this.Controls.Add(this.number2);
-            this.Controls.Add(this.binaryRadioButton);
-            this.Controls.Add(this.octalRadioButton);
-            this.Controls.Add(this.decimalRadioButton);
-            this.Controls.Add(this.hexadecimalRadioButton);
-            this.Controls.Add(this.inputNumberSystemLabel);
-            this.Controls.Add(this.addButton);
-            this.Controls.Add(this.subtractButton);
-            this.Controls.Add(this.multiplyButton);
-            this.Controls.Add(this.divideButton);
+            this.Controls.Add(this.inputGroupBox);
+            this.Controls.Add(this.outputGroupBox);
+            this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.resultTextBox);
+            this.inputGroupBox.ResumeLayout(false);
+            this.outputGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Label number1Label;
-        private System.Windows.Forms.Label number2Label;
-        private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.TextBox number1;
-        private System.Windows.Forms.TextBox number2;
-        private System.Windows.Forms.RadioButton binaryRadioButton;
-        private System.Windows.Forms.RadioButton octalRadioButton;
-        private System.Windows.Forms.RadioButton decimalRadioButton;
-        private System.Windows.Forms.RadioButton hexadecimalRadioButton;
-        private System.Windows.Forms.Label inputNumberSystemLabel;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button subtractButton;
-        private System.Windows.Forms.Button multiplyButton;
-        private System.Windows.Forms.Button divideButton;
+        private System.Windows.Forms.GroupBox inputGroupBox;
+        private System.Windows.Forms.RadioButton inputHexadecimalRadioButton;
+        private System.Windows.Forms.RadioButton inputDecimalRadioButton;
+        private System.Windows.Forms.RadioButton inputOctalRadioButton;
+        private System.Windows.Forms.RadioButton inputBinaryRadioButton;
+        private System.Windows.Forms.GroupBox outputGroupBox;
+        private System.Windows.Forms.RadioButton outputHexadecimalRadioButton;
+        private System.Windows.Forms.RadioButton outputDecimalRadioButton;
+        private System.Windows.Forms.RadioButton outputOctalRadioButton;
+        private System.Windows.Forms.RadioButton outputBinaryRadioButton;
+        private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.TextBox resultTextBox;
     }
 }

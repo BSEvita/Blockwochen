@@ -14,6 +14,9 @@ namespace Bruchrechner
             InitializeComponent();
         }
 
+        // Die Methode wird beim laden des Forms aufgerufen
+        // Es werden zwei Items auf Invisible gestellt
+        // und die items für die Operation werden gesetzt
         private void Bruchrechner_Load(object sender, EventArgs e)
         {
             potenzLabel.Visible = false;
@@ -29,8 +32,10 @@ namespace Bruchrechner
 
         }
 
+        // Beim drücken des Rechnen Buttons wird diese Methode ausgeführt
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            // Null Check für das Item der Operation
             if (operations.SelectedItem == null)
             {
                 MessageBox.Show("Bitte wähle eine valide Operation aus!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -40,6 +45,7 @@ namespace Bruchrechner
             string selectedMode = operations.SelectedItem.ToString();
             int potenz;
 
+            // verucht die zwei Text Boxen zu Int32 zu Convertieren
             try
             {
                 nenner1 = Convert.ToInt32(textBoxNennerEins.Text);
@@ -51,8 +57,10 @@ namespace Bruchrechner
                 return;
             }
 
+            // Hier wird das erste mal gerechnet
             Calculator calculator1 = new Calculator(zaehler1, nenner1);
 
+            // Hier wird das Wurzel Ziehen berechnet und in das result eingesetzt.
             if (selectedMode == "Wurzel ziehen")
             {
                 result = Calculator.sqrt(calculator1);
@@ -60,8 +68,10 @@ namespace Bruchrechner
                 return;
             }
 
+            // Hier wird das Potenzieren berechnet und in das result eingesetzt.
             if (selectedMode == "Potenzieren")
             {
+                // Es wird versucht die Potenz in Int32 zu Convertieren
                 try
                 {
                     potenz = Convert.ToInt32(textBoxPotenz.Text);
@@ -77,6 +87,7 @@ namespace Bruchrechner
                 return;
             }
 
+            // verucht die zwei Text Boxen zu Int32 zu Convertieren
             try
             {
                 zaehler2 = Convert.ToInt32(textBoxZählerZwei.Text);
@@ -88,8 +99,11 @@ namespace Bruchrechner
                 return;
             }
 
+            //Hier wird die zweite Rechnung gerechnet
             Calculator calculator2 = new Calculator(zaehler2, nenner2);
 
+            // Switch case für die restlichen Operationen
+            // das ergebnis wird dann in die result variable eingesetzt.
             switch (selectedMode)
             {
                 case "Addition":
@@ -109,14 +123,12 @@ namespace Bruchrechner
                     return;
             }
 
+            // Die Ergebnis wird auf den Text des Results gesetzt
             textBoxErgebnis.Text = result.ToString();
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // Beim Klicken der Ausgabe Box wird der Inhalt in das Clipboard kopiert.
+        // Es wird auch eine windows Toast Notification gesendet
         private void textBoxAusgabe_TextClicked(object sender, EventArgs e)
         {
             try
@@ -137,6 +149,7 @@ namespace Bruchrechner
 
         }
 
+        // Wenn man die Operationen wechseln werden nur noch bestimmte felder angezeigt.
         private void operations_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (operations.Text == "Potenzieren")

@@ -10,57 +10,42 @@ namespace ZahlenSystemRechner
             InitializeComponent();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void StuffChanged(object sender, EventArgs e)
         {
-            ConvertAndDisplayResult(() =>
-            {
-                var result = NumberConverter.Add(number1.Text, number2.Text, GetBaseValue());
-                return result.ToString();
-            });
+            CalculateResult();
         }
 
-        private void subtractButton_Click(object sender, EventArgs e)
+        private void CalculateResult()
         {
-            ConvertAndDisplayResult(() =>
+            if (outputBinaryRadioButton.Checked || outputOctalRadioButton.Checked || outputDecimalRadioButton.Checked || outputHexadecimalRadioButton.Checked)
             {
-                var result = NumberConverter.Subtract(number1.Text, number2.Text, GetBaseValue());
-                return result.ToString();
-            });
+                ConvertAndDisplayResult(() =>
+                {
+                    var result = NumberConverter.Convert(number1.Text, GetInputBaseValue(), GetOutputBaseValue());
+                    return result;
+                });
+            }
+            else
+            {
+                resultTextBox.Text = string.Empty;
+            }
         }
 
-        private void multiplyButton_Click(object sender, EventArgs e)
+        private int GetInputBaseValue()
         {
-            ConvertAndDisplayResult(() =>
-            {
-                var result = NumberConverter.Multiply(number1.Text, number2.Text, GetBaseValue());
-                return result.ToString();
-            });
-        }
-
-        private void divideButton_Click(object sender, EventArgs e)
-        {
-            ConvertAndDisplayResult(() =>
-            {
-                var result = NumberConverter.Divide(number1.Text, number2.Text, GetBaseValue());
-                return result.ToString();
-            });
-        }
-
-        private int GetBaseValue()
-        {
-            if (binaryRadioButton.Checked)
+            if (inputBinaryRadioButton.Checked)
             {
                 return 2;
             }
-            else if (octalRadioButton.Checked)
+            else if (inputOctalRadioButton.Checked)
             {
                 return 8;
             }
-            else if (decimalRadioButton.Checked)
+            else if (inputDecimalRadioButton.Checked)
             {
                 return 10;
             }
-            else if (hexadecimalRadioButton.Checked)
+            else if (inputHexadecimalRadioButton.Checked)
             {
                 return 16;
             }
@@ -70,11 +55,35 @@ namespace ZahlenSystemRechner
             }
         }
 
-        private void ConvertAndDisplayResult(Func<string> calculation)
+        private int GetOutputBaseValue()
+        {
+            if (outputBinaryRadioButton.Checked)
+            {
+                return 2;
+            }
+            else if (outputOctalRadioButton.Checked)
+            {
+                return 8;
+            }
+            else if (outputDecimalRadioButton.Checked)
+            {
+                return 10;
+            }
+            else if (outputHexadecimalRadioButton.Checked)
+            {
+                return 16;
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid number system.");
+            }
+        }
+
+        private void ConvertAndDisplayResult(Func<string> conversion)
         {
             try
             {
-                var result = calculation();
+                var result = conversion();
                 resultTextBox.Text = result;
             }
             catch (Exception ex)

@@ -141,7 +141,6 @@
             NennerZweiLabel.Size = new Size(84, 25);
             NennerZweiLabel.TabIndex = 10;
             NennerZweiLabel.Text = "Nenner 2";
-            NennerZweiLabel.Click += label5_Click;
             // 
             // textBoxNennerZwei
             // 
