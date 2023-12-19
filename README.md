@@ -9,6 +9,3 @@ Solltest du deine Datei Hochladen wollen erstelle einfach ein Pull Request und w
 dann ob es Hochgeladen wird oder nicht.
 
 <small>Wichtig: Nutzt das nicht um im Unterricht zu Schummeln ![](https://cdn.discordapp.com/emojis/699622545019633705.webp?size=32&quality=lossless)</small>
-<br>
-## Push hier rein and get some gasoline!
-![Get some gasoline!](https://img1.ak.crunchyroll.com/i/spire3/d2fd7ac899d01ff43b8acf8b46391d641497098949_fwide.jpg)
