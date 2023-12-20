@@ -73,7 +73,7 @@ namespace BlockSeite.Controllers
         {
             try
             {
-				User user = await dbCtx.Users.FindAsync(id);
+				User? user = await dbCtx.Users.FindAsync(id);
 
                 if (user == null)
                 {
@@ -114,7 +114,14 @@ namespace BlockSeite.Controllers
         {
             try
             {
-                dbCtx.Users.Remove(await dbCtx.Users.FindAsync(id));
+                User? user = await dbCtx.Users.FindAsync(id);
+
+				if (user == null)
+				{
+					return NotFound();
+				}
+
+				dbCtx.Users.Remove(user);
                 dbCtx.SaveChanges();
 
 				return RedirectToAction(nameof(Index));
