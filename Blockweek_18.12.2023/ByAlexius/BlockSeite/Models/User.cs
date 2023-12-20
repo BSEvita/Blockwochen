@@ -1,13 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlockSeite.Models
 {
     [Table(name: "Users")]
     public class User
     {
-        public User(String name, String email) {
+        public User(string name, string email, Role? role) {
             this.UserName = name;
-            this.email = email;
+            this.Email = email;
+
+            if (role != null)
+                this.Role = role;
         }
 
         public User() { }
@@ -20,6 +24,9 @@ namespace BlockSeite.Models
         public string UserName { get; set; }
 
         [Column(name: "email")]
-        public string email { get; set; }
+        public string Email { get; set; }
+
+        [ForeignKey("roleid")]
+        public Role Role { get; set; }
     }
 }

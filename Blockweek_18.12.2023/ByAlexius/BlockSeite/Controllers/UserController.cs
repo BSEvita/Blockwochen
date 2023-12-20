@@ -1,6 +1,7 @@
 ﻿using BlockSeite.Data;
 using BlockSeite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,49 +9,69 @@ namespace BlockSeite.Controllers
 {
     public class UserController : Controller
     {
-        private readonly MyDbContext dbCtx;
+        private readonly MyDbContext _ctx;
 
-        public UserController(MyDbContext dbCtx)
+        public UserController(MyDbContext context)
         {
-            this.dbCtx = dbCtx;
+            this._ctx = context;
         }
 
         // GET: UserController
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await dbCtx.Users.ToListAsync());
+            var users = await _ctx.Users
+                .Include(u => u.Role)
+                .ToListAsync();
+
+			if (!string.IsNullOrEmpty(search))
+            {
+                users = users.Where(s => s.UserName!.Contains(search)).ToList();
+            }
+
+            return View(users);
         }
 
         // GET: UserController/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            return View(await dbCtx.Users.FindAsync(id));
+            return View(await _ctx.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.UserId == id));
         }
 
         // GET: UserController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            ViewBag.Roles = new SelectList(_ctx.Role, "RoleId", "RoleName"); ;
+
             return View();
         }
 
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserForm form)
+        public async Task<ActionResult> CreateAsync(UserForm form)
         {
             try
             {
-				if (!ModelState.IsValid)
+                Role? role = await _ctx.Role.FindAsync(form.Role);
+
+                if (role == null)
+                {
+                    return View(new User(form.UserName, form.Email, null));
+                }
+
+                if (!ModelState.IsValid)
 				{
-					return View(new User(form.UserName, form.email));
+					return View(new User(form.UserName, form.Email, role));
 				}
+
 
 				User user = new User();
                 user.UserName = form.UserName;
-                user.email = form.email;
+                user.Email = form.Email;
+                user.Role = role;
                 
-                dbCtx.Users.Add(user);
-                dbCtx.SaveChanges();
+                _ctx.Users.Add(user);
+                _ctx.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -63,7 +84,20 @@ namespace BlockSeite.Controllers
         // GET: UserController/Edit/5
         public async Task<ActionResult> EditAsync(int id)
         {
-            return View(await dbCtx.Users.FindAsync(id));
+            SelectList list = new SelectList(_ctx.Role, "RoleId", "RoleName");
+
+            foreach (var item in list)
+            {
+                if (item.Value == id.ToString())
+                {
+                    item.Selected = true;
+                    break;
+                }
+            }
+
+            ViewBag.Roles = list;
+
+            return View(await _ctx.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.UserId == id));
         }
 
         // POST: UserController/Edit/5
@@ -73,25 +107,34 @@ namespace BlockSeite.Controllers
         {
             try
             {
-				User? user = await dbCtx.Users.FindAsync(id);
+				User? user = await _ctx.Users.FindAsync(id);
+
+                Role? role = await _ctx.Role.FindAsync(form.Role);
+
+                if (role == null)
+                {
+                    return View(new User(form.UserName, form.Email, null));
+                }
 
                 if (user == null)
                 {
-                    return NotFound();
+                    return View(new User(form.UserName, form.Email, role));
                 }
 
                 if (!ModelState.IsValid)
                 {
                     user.UserName = form.UserName;
-                    user.email = form.email;
+                    user.Email = form.Email;
+                    user.Role = role;
                     return View(user);
                 }
 
                 user.UserName = form.UserName;
-                user.email = form.email;
+                user.Email = form.Email;
+                user.Role = role;
 
-                dbCtx.Users.Update(user);
-                dbCtx.SaveChanges();
+                _ctx.Users.Update(user);
+                _ctx.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -104,7 +147,7 @@ namespace BlockSeite.Controllers
         // GET: UserController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            return View(await dbCtx.Users.FindAsync(id));
+            return View(await _ctx.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.UserId == id));
         }
 
         // POST: UserController/Delete/5
@@ -114,15 +157,15 @@ namespace BlockSeite.Controllers
         {
             try
             {
-                User? user = await dbCtx.Users.FindAsync(id);
+                User? user = await _ctx.Users.FindAsync(id);
 
 				if (user == null)
 				{
 					return NotFound();
 				}
 
-				dbCtx.Users.Remove(user);
-                dbCtx.SaveChanges();
+				_ctx.Users.Remove(user);
+                _ctx.SaveChanges();
 
 				return RedirectToAction(nameof(Index));
             }
