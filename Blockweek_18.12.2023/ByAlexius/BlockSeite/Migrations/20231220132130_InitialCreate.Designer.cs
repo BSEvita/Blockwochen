@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlockSeite.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231220081029_InitialCreate")]
+    [Migration("20231220132130_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -74,13 +74,13 @@ namespace BlockSeite.Migrations
 
             modelBuilder.Entity("BlockSeite.Models.User", b =>
                 {
-                    b.HasOne("BlockSeite.Models.Role", "Roles")
+                    b.HasOne("BlockSeite.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("roleid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Roles");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("BlockSeite.Models.Role", b =>

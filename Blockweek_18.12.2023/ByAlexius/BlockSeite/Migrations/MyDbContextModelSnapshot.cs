@@ -71,13 +71,13 @@ namespace BlockSeite.Migrations
 
             modelBuilder.Entity("BlockSeite.Models.User", b =>
                 {
-                    b.HasOne("BlockSeite.Models.Role", "Roles")
+                    b.HasOne("BlockSeite.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("roleid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Roles");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("BlockSeite.Models.Role", b =>
