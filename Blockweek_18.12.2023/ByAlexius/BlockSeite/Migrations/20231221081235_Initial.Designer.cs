@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlockSeite.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20231220132130_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231221081235_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,9 +38,13 @@ namespace BlockSeite.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
 
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("bit")
+                        .HasColumnName("admin");
+
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("BlockSeite.Models.User", b =>

@@ -16,6 +16,12 @@
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
             <p />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    Admin <input class="form-check-input" asp-for="isAdmin" />
+                </label>
+            </div>
+            <p />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

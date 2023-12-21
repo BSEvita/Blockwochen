@@ -61,7 +61,7 @@ namespace BlockSeite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoleName")] Role role)
+        public async Task<IActionResult> Create([Bind("RoleName,isAdmin")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace BlockSeite.Controllers
         // POST: Roles/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoleId,RoleName")] Role role)
+        public async Task<IActionResult> Edit(int id, [Bind("RoleId,RoleName,isAdmin")] Role role)
         {
             if (id != role.RoleId)
             {

@@ -35,9 +35,13 @@ namespace BlockSeite.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
 
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("bit")
+                        .HasColumnName("admin");
+
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("BlockSeite.Models.User", b =>

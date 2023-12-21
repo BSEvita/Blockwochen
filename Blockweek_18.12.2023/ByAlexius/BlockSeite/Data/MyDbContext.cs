@@ -9,11 +9,12 @@ namespace BlockSeite.Data
         public MyDbContext (DbContextOptions options) : base (options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Role { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Role>().ToTable("Roles");
         }
-        public DbSet<BlockSeite.Models.Role> Role { get; set; } = default!;
     }
 }
