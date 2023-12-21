@@ -146,11 +146,10 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Delete/6
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int? id, bool notUsed)
+        // GET: Movies/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
