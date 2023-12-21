@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Movie] (
+    [Id]             INT             IDENTITY (1, 1) NOT NULL,
+    [Title]          NVARCHAR (MAX)  NULL,
+    [ReleaseDate]    DATETIME2 (7)   NULL,
+    [Genre]          NVARCHAR (MAX)  NULL,
+    [ProductionCost] BIGINT NULL,
+    [Rating]         NVARCHAR (MAX)  NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
