@@ -18,9 +18,10 @@ namespace MvcMovie.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ProductionCost = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Rating = table.Column<string>(type:"nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

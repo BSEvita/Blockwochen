@@ -4,9 +4,19 @@
 	ViewData["Title"] = "Users";
 }
 
-<p>
-	<a asp-action="Create" class="btn btn-sm btn-info">Create New</a>
-</p>
+<div>
+	<p style="float: left">
+		<a asp-action="Create" class="btn btn-sm btn-info">Create New</a>
+	</p>
+
+
+	<form asp-controller="User" asp-action="Index" style="float: right">
+		<p>
+			Username: <input input="text" name="search" />
+			<input type="submit" value="Filter" />
+		</p>
+	</form>
+</div>
 
 <table class="table">
 	<thead>
@@ -16,6 +26,9 @@
 			</th>
 			<th>
 				E-Mail
+			</th>
+			<th>
+				Role
 			</th>
 			<th>
 				Actions
@@ -30,7 +43,10 @@
 					@Html.DisplayFor(modelItem => item.UserName)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.email)
+					@Html.DisplayFor(modelItem => item.Email)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Role.RoleName)
 				</td>
 				<td>
 					<a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-warning">Edit</a>

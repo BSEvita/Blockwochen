@@ -14,5 +14,6 @@ namespace BlockSeite.Data
         {
             modelBuilder.Entity<User>().ToTable("Users");
         }
+        public DbSet<BlockSeite.Models.Role> Role { get; set; } = default!;
     }
 }

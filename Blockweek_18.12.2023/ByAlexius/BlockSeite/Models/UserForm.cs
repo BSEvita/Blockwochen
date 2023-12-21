@@ -8,6 +8,8 @@ namespace BlockSeite.Models
 
 		[Required(ErrorMessage = "The email address is required")]
 		[EmailAddress(ErrorMessage = "Invalid Email Address")]
-		public string email { get; set; }
+		public string Email { get; set; }
+
+		public int Role { get; set; }
 	}
 }

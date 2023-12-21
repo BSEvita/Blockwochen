@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BlockSeite.Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <p style="float: left">
+        <a asp-action="Create" class="btn btn-sm btn-info">Create New</a>
+    </p>
+
+
+    <form asp-controller="User" asp-action="Index" style="float: right">
+        <p>
+            Name: <input input="text" name="search" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.RoleId" class="btn btn-sm btn-primary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
