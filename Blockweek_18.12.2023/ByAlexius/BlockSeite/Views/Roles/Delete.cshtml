@@ -15,6 +15,14 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RoleName)
         </dd>
+        <dt class="col-sm-2">
+            Admin
+        </dt>
+        <dd class="col-sm-10">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="isAdmin" disabled />
+            </label>
+        </dd>
     </dl>
     
     <form asp-action="Delete">

@@ -2,6 +2,7 @@
 using BlockSeite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,18 +18,35 @@ namespace BlockSeite.Controllers
         }
 
         // GET: UserController
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index(string search, int role = -1)
         {
-            var users = await _ctx.Users
-                .Include(u => u.Role)
-                .ToListAsync();
+            var users = _ctx.Users.Include(u => u.Role).AsQueryable();
+
+			var roleList = await _ctx.Role.ToListAsync();
+
+            roleList.Insert(0, new Role(-1, "Select Role"));
+
+            SelectList roles = new SelectList(roleList, "RoleId", "RoleName");
 
 			if (!string.IsNullOrEmpty(search))
             {
-                users = users.Where(s => s.UserName!.Contains(search)).ToList();
+                users = users.Where(s => s.UserName!.Contains(search));
             }
 
-            return View(users);
+            if (role > -1)
+            {
+                Role? _role = await _ctx.Role.FindAsync(role);
+
+                if (_role == null)
+                {
+                    return NotFound();
+                }
+                users = users.Where(s => s.Role == _role);
+            }
+
+            ViewBag.Roles = roles;
+
+            return View(await users.ToListAsync());
         }
 
         // GET: UserController/Details/5

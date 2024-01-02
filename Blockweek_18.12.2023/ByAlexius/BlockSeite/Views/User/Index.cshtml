@@ -2,6 +2,15 @@
 
 @{
 	ViewData["Title"] = "Users";
+
+	string hostName = Context.Request.Host.Host;
+
+	bool isLocal = hostName.Equals("localhost", StringComparison.OrdinalIgnoreCase) || hostName.Equals("127.0.0.1", StringComparison.OrdinalIgnoreCase);
+
+	string port = isLocal ? (Context.Request.Host.Port ?? 7128).ToString() : string.Empty;
+
+	if (isLocal)
+		hostName = $"{hostName}:{port}";
 }
 
 <div>
@@ -9,11 +18,15 @@
 		<a asp-action="Create" class="btn btn-sm btn-info">Create New</a>
 	</p>
 
-
 	<form asp-controller="User" asp-action="Index" style="float: right">
-		<p>
+		<p style="float: left; margin-right: 20px">
+			<select asp-items="ViewBag.Roles" name="role" class="form-select-sm"> </select>
+		</p>
+		<p style="float: left; margin-right: 5px">
 			Username: <input input="text" name="search" />
-			<input type="submit" value="Filter" />
+		</p>
+		<p style="float: left">
+			<input type="submit" class="btn btn-sm btn-secondary" value="Filter" />
 		</p>
 	</form>
 </div>
@@ -46,7 +59,7 @@
 					@Html.DisplayFor(modelItem => item.Email)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Role.RoleName)
+					@Html.ActionLink(item.Role.RoleName, "Details", "Roles", "https", hostName, null, new { id = item.Role.RoleId}, null)
 				</td>
 				<td>
 					<a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-sm btn-warning">Edit</a>

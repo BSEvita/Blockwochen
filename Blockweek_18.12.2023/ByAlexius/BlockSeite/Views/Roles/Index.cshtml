@@ -10,7 +10,7 @@
     </p>
 
 
-    <form asp-controller="User" asp-action="Index" style="float: right">
+    <form asp-controller="Roles" asp-action="Index" style="float: right">
         <p>
             Name: <input input="text" name="search" />
             <input type="submit" value="Filter" />
@@ -25,6 +25,9 @@
                 Name
             </th>
             <th>
+                Admin Role
+            </th>
+            <th>
                 Actions
             </th>
         </tr>
@@ -34,6 +37,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                    <input type="checkbox" class="form-check-input" disabled @(item.isAdmin ? "checked" : "") />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-sm btn-warning">Edit</a>
