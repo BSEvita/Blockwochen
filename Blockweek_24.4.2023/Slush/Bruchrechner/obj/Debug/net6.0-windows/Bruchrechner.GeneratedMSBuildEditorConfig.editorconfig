@@ -14,4 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Bruchrechner
-build_property.ProjectDir = C:\Users\App15a2\Desktop\Blockwoche\Blockweek_24.4.2023\Slush\Bruchrechner\
+build_property.ProjectDir = C:\Users\Student\Source\Repos\BSEvita\Blockweek_24.4.2023\Slush\Bruchrechner\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
