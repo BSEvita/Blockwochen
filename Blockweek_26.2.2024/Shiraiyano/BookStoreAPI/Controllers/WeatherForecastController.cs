@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bookstore_Übungs_API___SAID_RIEDL.Controllers
+namespace BookStoreAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

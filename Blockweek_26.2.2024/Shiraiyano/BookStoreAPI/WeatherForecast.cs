@@ -1,4 +1,4 @@
-namespace Bookstore_Übungs_API___SAID_RIEDL
+namespace BookStoreAPI
 {
     public class WeatherForecast
     {
