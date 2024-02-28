@@ -17,13 +17,13 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Book>> GetAllBooks()
+    public ActionResult<IEnumerable<Books>> GetAllBooks()
     {
         return Ok(_bookRepository.GetAllBooks());
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Book> GetBook(int id)
+    public ActionResult<Books> GetBook(int id)
     {
         var book = _bookRepository.GetBook(id);
         if (book == null)
@@ -32,14 +32,14 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Book> CreateBook(Book book)
+    public ActionResult<Books> CreateBook(Books book)
     {
         _bookRepository.AddBook(book);
         return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
     }
 
     [HttpPut("{id}")]
-    public IActionResult UpdateBook(int id, Book book)
+    public IActionResult UpdateBook(int id, Books book)
     {
         if (id != book.Id)
         {

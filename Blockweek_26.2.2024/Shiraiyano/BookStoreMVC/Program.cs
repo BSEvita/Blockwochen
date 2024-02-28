@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 // Register HttpClient
 builder.Services.AddHttpClient();
 
-var app = builder.Build();
+var app = builder.Build();  
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

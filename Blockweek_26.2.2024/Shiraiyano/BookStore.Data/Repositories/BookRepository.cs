@@ -14,23 +14,23 @@ namespace BookStore.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public IEnumerable<Books> GetAllBooks()
         {
             return _context.Books.ToList();
         }
 
-        public Book GetBook(int id)
+        public Books GetBook(int id)
         {
             return _context.Books.FirstOrDefault(b => b.Id == id);
         }
 
-        public void AddBook(Book book)
+        public void AddBook(Books book)
         {
             _context.Books.Add(book);
             _context.SaveChanges();
         }
 
-        public void UpdateBook(Book book)
+        public void UpdateBook(Books book)
         {
             var existingBook = _context.Books.Find(book.Id);
             if (existingBook != null)

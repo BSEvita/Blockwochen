@@ -27,7 +27,7 @@ namespace BookStoreMVC.Controllers
             var response = await _httpClient.GetAsync("api/books");
             if (response.IsSuccessStatusCode)
             {
-                var books = await response.Content.ReadFromJsonAsync<IEnumerable<Book>>();
+                var books = await response.Content.ReadFromJsonAsync<IEnumerable<Books>>();
                 return View(books);
             }
             else
@@ -41,7 +41,7 @@ namespace BookStoreMVC.Controllers
             var response = await _httpClient.GetAsync($"api/books/{id}");
             if (response.IsSuccessStatusCode)
             {
-                var book = await response.Content.ReadFromJsonAsync<Book>();
+                var book = await response.Content.ReadFromJsonAsync<Books>();
                 return View(book);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -61,7 +61,7 @@ namespace BookStoreMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Book book)
+        public async Task<IActionResult> Create(Books book)
         {
             var response = await _httpClient.PostAsJsonAsync("api/books", book);
             if (response.IsSuccessStatusCode)
@@ -79,7 +79,7 @@ namespace BookStoreMVC.Controllers
             var response = await _httpClient.GetAsync($"api/books/{id}");
             if (response.IsSuccessStatusCode)
             {
-                var book = await response.Content.ReadFromJsonAsync<Book>();
+                var book = await response.Content.ReadFromJsonAsync<Books>();
                 return View(book);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -94,7 +94,7 @@ namespace BookStoreMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Book book)
+        public async Task<IActionResult> Edit(int id, Books book)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace BookStoreMVC.Controllers
             var response = await _httpClient.GetAsync($"api/books/{id}");
             if (response.IsSuccessStatusCode)
             {
-                var book = await response.Content.ReadFromJsonAsync<Book>();
+                var book = await response.Content.ReadFromJsonAsync<Books>();
                 return View(book);
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
