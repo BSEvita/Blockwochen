@@ -1,25 +1,57 @@
 ﻿using BookStore.Data.Database;
 using BookStore.Data.Interface;
 using BookStore.Data.Models;
-
-namespace BookStore.Data.Repositories;
-
-public class BookRepository : IBookRepository
+using System.Collections.Generic;
+using System.Linq;
+namespace BookStore.Data.Repositories
 {
-    private readonly BookContext context;
-
-    public BookRepository(BookContext context)
+    public class BookRepository : IBookRepository
     {
-        this.context = context;
-    }
+        private readonly BookContext _context;
 
-    public List<Book> GetAllBooks()
-    {
-        return context.books.ToList();
-    }
+        public BookRepository(BookContext context)
+        {
+            _context = context;
+        }
 
-    public Book GetBook(int id)
-    {
-        return context.books.FirstOrDefault(b => b.Id == id) ?? new Book();
+        public IEnumerable<Book> GetAllBooks()
+        {
+            return _context.Books.ToList();
+        }
+
+        public Book GetBook(int id)
+        {
+            return _context.Books.FirstOrDefault(b => b.Id == id);
+        }
+
+        public void AddBook(Book book)
+        {
+            _context.Books.Add(book);
+            _context.SaveChanges();
+        }
+
+        public void UpdateBook(Book book)
+        {
+            var existingBook = _context.Books.Find(book.Id);
+            if (existingBook != null)
+            {
+                existingBook.Title = book.Title;
+                existingBook.Author = book.Author;
+                existingBook.PublicationYear = book.PublicationYear;
+                existingBook.IsAvailable = book.IsAvailable;
+                existingBook.CallNumber = book.CallNumber;
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteBook(int id)
+        {
+            var bookToDelete = _context.Books.Find(id);
+            if (bookToDelete != null)
+            {
+                _context.Books.Remove(bookToDelete);
+                _context.SaveChanges();
+            }
+        }
     }
 }
