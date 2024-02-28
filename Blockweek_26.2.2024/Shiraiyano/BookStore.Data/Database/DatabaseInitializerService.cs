@@ -21,7 +21,7 @@ public class DatabaseInitializerService
     {
         foreach (Book newBook in BookList)
         {
-            context.books.Add(newBook);
+            context.Books.Add(newBook);
         }
 
         context.SaveChanges();
