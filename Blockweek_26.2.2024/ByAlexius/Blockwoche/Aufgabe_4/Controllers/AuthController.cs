@@ -20,7 +20,7 @@ public class AuthController : ControllerBase
         try
         {
             if(await _userRepository.AuthenticateUser(username, password))
-                return Ok("Successfully Authenticated");
+                return Ok("Successfully Authenticated!");
 
             return Unauthorized("Wrong login data!");
         }
