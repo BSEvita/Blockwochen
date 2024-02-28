@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>MVCDing</RootNamespace>
+    <RootNamespace>Aufgabe_3</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
