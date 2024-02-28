@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <form id="myForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+
+            <button type="button" onclick="login()">Login</button>
+            <button type="button" onclick="register()">Register</button>
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        var baseUrl = "https://localhost:7118/";
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var data = {
+                Username: username,
+                Password: password
+            };
+
+            sendRequest(baseUrl + 'api/Login/login', data, function (response) {
+                if (response.status === 200) {
+                    window.location.href = "/book";
+                } else {
+                    displayError(response.responseText);
+                }
+            });
+        }
+
+        function register() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var data = {
+                Username: username,
+                Password: password
+            };
+
+            sendRequest(baseUrl + 'api/Login/register', data, function (response) {
+                if (response.status === 200) {
+                    window.location.href = "/book";
+                } else {
+                    displayError(response.responseText);
+                }
+            });
+        }
+
+        function sendRequest(url, data, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    callback(xhr);
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        }
+
+        function displayError(errorMessage) {
+            document.getElementById("errorMessage").textContent = errorMessage;
+        }
+    </script>
+</body>
+</html>
