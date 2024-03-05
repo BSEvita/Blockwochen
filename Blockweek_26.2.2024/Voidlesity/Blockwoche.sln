@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Tutorial", "LINQ_Tutorial\LINQ_Tutorial.csproj", "{9ABC3D2B-8904-4EF7-AF7E-079506D6A87D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAPI", "BookAPI\BookAPI.csproj", "{D2145A58-DE49-426B-AA2A-BA381AB58771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookAPI.Data", "BookAPI.Data\BookAPI.Data.csproj", "{996E6F1C-7CF4-46C1-B52F-553DF07FDF8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookClient", "BookClient\BookClient.csproj", "{CC13B2A9-63EA-48CE-85B9-D654E861AD98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ABC3D2B-8904-4EF7-AF7E-079506D6A87D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABC3D2B-8904-4EF7-AF7E-079506D6A87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABC3D2B-8904-4EF7-AF7E-079506D6A87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABC3D2B-8904-4EF7-AF7E-079506D6A87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2145A58-DE49-426B-AA2A-BA381AB58771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2145A58-DE49-426B-AA2A-BA381AB58771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2145A58-DE49-426B-AA2A-BA381AB58771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2145A58-DE49-426B-AA2A-BA381AB58771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996E6F1C-7CF4-46C1-B52F-553DF07FDF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996E6F1C-7CF4-46C1-B52F-553DF07FDF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996E6F1C-7CF4-46C1-B52F-553DF07FDF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996E6F1C-7CF4-46C1-B52F-553DF07FDF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC13B2A9-63EA-48CE-85B9-D654E861AD98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC13B2A9-63EA-48CE-85B9-D654E861AD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
