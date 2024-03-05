@@ -346,3 +346,158 @@ Das hat den Grund das man bei nicht so komplexen Aufgaben das mit `ActionResult<
 komplexeren sachen wie in dem fall, was wir jetzt gerade haben ist, `ActionResult<>` recht nützlich da wir damit dann eine 
 überprüfung machen können und dann, auch wenn da etwas nicht klappt oder nicht gefunden wird das dann auch dementsprechend 
 unsere Fehlermeldung zurückkommt.
+
+
+Wenn das ganze funktioniert hat, dann können wir die API weider Starten und dann das, was wir gerade Programmiert haben ausprobieren.
+Wie schon gesagt, wenn wir `/api/books/` eingeben dann bekommen wir alle Daten wir angegeben haben zurück. Allerdings, 
+wenn wir Beispiel `/api/books/4` eingeben dann bekommen wir die Daten von nur einem Buch, und zwar den wessen ID wir 
+angegeben haben.
+
+### Dynamisieren des Codes
+
+**Als Erstes was bedeutet Dynamisch?** 
+
+Dynamisch ist immer etwas, was sich jederzeit ändert ohne etwas am Quellcode z.B. zu ändern. 
+Ab hier implementieren wir eine Struktur das die Bücher aus der Datenbank herausliest und dann verarbeitet und anzeigt.
+
+Ab hier erstellen wir ein neues Projekt. Man wird sich sicher fragen, warum ein neues Projekt? Es ist so das es immer eine gute Idee ist die UI von der gesamten Logik zu trennen laut dem YouTuber wo er bei einem Kommentar das beantwortet.
+
+> [...] before creating the BookStore.Data project with its interfaces,[...] the API was already working... why did you have to create it then?[...]
+
+> Thank you for your comment. It’s good to separate the UI from the business logic. Data and business logic should be in its own layer
+
+Um ein neues Projekt zu erstellen in dem aktuellen Projekt, was wir gerade haben, machen wir, ganz oben bei dem `Solutions Explorer` wo am anfang steht `Solution` ein Rechtsklick und dann auf `Hinzufügen > Neues Projekt`.
+Dann soll sich ein neues Fenster Auswählen und hier suchst du nach class und wählst dann das aus wo als Titel `Class Library (.NET Core)` steht. Dann klickst du auf next und nennst die Klasse `BookStore.Data` und klickst dann auf `Create`
+
+Jetzt solltest du ein neues Projekt sehen in deinem Solutions Explorer mit dem Namen `BookStore.Data`. Nun öffnest du dieses Projekt und löschst erstmal die Standardklasse namens `Class1.css`
+
+Nun erstellen wir drei neue Verzeichnisse. Einmal `Interface`, `Models` und `Repositories`. Jetzt können wir bei dem Projekt den wir vorher hatten (ich nenne es ab hier mal Projekt 1) im `Models` Verzeichnis die Klasse `Book.cs` Kopieren und in das neue Projekt (Ich nenne das ab hier jetzt Projekt 2) in den `Models` Ordner rein.
+
+> **Wichtig**
+> 
+> Beachte das du in der `Book.cs` Klasse in Projekt 2 auch den Namespace von `Web_API.Models` zu `BookStore.Data.Models` umbenennst.
+{style="warning"}
+
+Nachdem du das gemacht hast, kannst du in Projekt 1 auch dann in der `Book.cs` Datei die Klasse `Book` auch Auskommentieren oder löschen.
+
+**Erstellung des Interfaces**
+
+Jetzt erstellen wir in Projekt 2 ein Interface. Dies kann man machen, indem man bei Projekt 2 bei dem interface Ordner Rechtklick drückt und dann auf Neues Item hinzufügen klickt. Dann sollte sich wieder ein neues Fenster öffnen und da wählst du dann Interface aus und benennst es nach IBookRepository.cs. Sollte das erfolgreich gewesen sein sollte sich wieder eine neue Datei geöffnet haben mit dem folgenden Inhalt:
+
+```c#
+[...]
+
+namespace BookStore.Data.Interfaces
+{
+    interface IBookRepository
+    {
+    
+    }
+}
+```
+
+Damit das Interface auch von überall aus Zugreifbar ist, müssen wir die Datei Public machen. Das sieht dann so aus:
+
+```c#
+[...]
+public interface IBookRepository
+[...]
+```
+
+Damit die API mit der Klasse auch Interagieren kann und auch die Bücher abrufen kann ändern wir den Code noch wie folgt:
+
+```c#
+public interface IBookRepository
+{
+    List<Book> GetAllBooks();
+    Book GetBook(int id);
+}
+```
+> **Warnung**
+> 
+> Solltest du Fehlernachrichten bekommen bei `books` dann Ignoriere die. Die werden im Laufe der Dokumentation dann gefixt.
+{style="warning"}
+
+Damit auch auf die Models zugegriffen werden kann, müssen wir das Model dann auch mit einbinden. Dazu Schreibt man einfach 
+ganz oben in der Datei `using BookStore.Data.Models;`.
+
+Als Nächstes erstellen, wir in dem Repositories Ordner eine Klasse mit dem Namen `BookRepository` die dann mit dem 
+Interface interagiert. Der plan den wir gerade verfolgen ist diese. Wir haben einmal Projekt 1. Projekt 1 ist einfach nur
+die API was die ganzen Daten von Projekt 2 empfängt und dann auch ausgibt. Einfach gesagt der Empfänger und Ausgeber.
+
+Projekt 2 hingegen verarbeitet die Daten, die es erhält und sendet diese dann an Projekt 1 weiter und Projekt 1 gibt diese 
+dann dem UI also dem Endbenutzer weiter.
+
+Sobald die Klasse erstellt wurde, werden wir wieder mit der Standard Datei begrüßt. Hier müssen wir dann einfach wieder die Klasse `public` machen wie schon bei dem IBookrepositorie gemacht wurde.
+
+```c#
+[...]
+namespace BookStore.Data.Repositories {
+    public class BookRepository : IBookRepository 
+    {
+        
+    }
+}
+```
+
+Sobald das gemacht wurde geben wir der Klasse auch unseren IBookRepository interface mit. Als nächstes müssen wir dann auch noch die Methoden hinzufügen die auch wichtig sind damit wir mit dieser Datei Abschließen können.
+hier können wir dann einfach den Code aus der BookController.cs Datei rein Kopieren. Das ganze sieht dann ungefähr so aus:
+
+```C#
+    public List<Book> books = new List<Book>() {
+        new Book {Id = 1, Title = "The Girl on the Train", Author = "Hawkins, Paula",PublicationYear = 2015,isAvailable = false, CallNumber = "F HAWKI}
+        new Book {Id = 2, Title = "Rogue Lawyer", Author = "Grisham, John", PublicationYear = 2015, CallNumber = "F GRISH", IsAvailable = false}
+        new Book {Id = 3, Title = "After You", Author = "Moyes, Jojo", PublicationYear = 2015, CallNumber = "F MOYES", IsAvailable = false}
+        new Book {Id = 4, Title = "All the Light We Cannot See", Author = "Doerr, Anthony", PublicationYear = 2014, IsAvailable = false, CallNumber = "F DOERR"}
+        new Book {Id = 5, Title = "The Girls", Author = "Cline, Emma", PublicationYear = 2016, CallNumber = "F CLINE", IsAvailable = false}
+        new Book {Id = 6, Title = "The Martian", Author = "Weir, Andy", PublicationYear = 2011, CallNumber = "SF WEIR", IsAvailable = false}
+        new Book {Id = 7, Title = "Me Before You", Author = "Moyes, Jojo", PublicationYear = 2012, CallNumber = "F MOYES", IsAvailable = false}
+        new Book {Id = 8, Title = "Alexander Hamilton", Author = "Chernow, Ron", PublicationYear = 2004, CallNumber = "B HAMILTO A", IsAvailable = false}
+        new Book {Id = 9, Title = "Before the Fall", Author = "Hawley, Noah"m PublicationYear = 2016, CallNumber = "F HAWLE", IsAvailable = false}
+    };
+    [HttpGet]
+    public ActionResult<IEnumberable<Book>> GetAllBooks()
+    {
+        return books;
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Book> GetBook(int id)
+    {
+        var book = books.FirstOrDefault(x => x.Id == id);
+        if(book == null)
+        {
+            return NotFound();
+        }
+    }
+```
+Solltest du bei `FirstOrDefault` einen fehler bekommen dann musst du `using System.Linq;` ganz oben in der Datei hinzufügen. 
+
+Und jetzt haben wir auch das Logic Model erreicht. 
+
+```mermaid
+sequenceDiagram
+    UI->>+Controller: request
+    Controller->>+Logic Module: 
+    Logic Module->>+Controller: 
+    Controller->>+UI:  
+```
+
+Jetzt Navigieren wir in Projekt 1 zu der booksController.cs Datei und Löschen erstmal den Teil raus wo die ganzen Bücher 
+drinnen stehen. Dann müssen wir Projekt 2 mit Projekt 1 Verknüpfen damit die miteinander kommunizieren können. Das kann 
+man machen, indem man bei Projekt 1 bei Dependencies Rechtsklick macht und dann auf `Add Project Reference`. 
+Dann sollte sich noch ein Fenster öffnen. In diesem Fenster klickt man dann in den Weißen Viereck rein und klickt dann 
+auf Fertig. Sollte das nicht geklappt haben und die auswahl im Weißen Viereck ist nicht mehr drinnen dann musst du bei 
+Projekt 2 bei Dependencies rechtsklick machen und dort dann auf `Add Project Reference` und dann dort den Haken wegmachen 
+und dann sollte das bei Projekt 1 dann auch gehen.
+
+Nun können wir den `books` und `Book` Fehlern nach gehen. Um die Fehler zu fixen, müssen wir dann einfach nur ganz oben 
+bei den jeweiligen Dateien `using BookStore.Data.Models;` Hinzufügen. Mit diesem fix ist dann der Fehler mit `Book` gefixt. 
+
+Um den Fehler von den `books` zu fixen, müssen wir folgende Zeile über dem [HttpGet] hinzufügen:
+
+```c#
+private BookRepository books = new BookRepository();
+```
+als Nächstes müssen wir bei `books` überall `getAllBooks()` Hinzufügen. Und anstatt `var book = books.FirstOrDefault(x => x.Id == id);` 
+machen wir dann `var book = books.GetBook(id);`
