@@ -91,7 +91,7 @@ Jetzt sollte sich ein neues Fenster geöffnet haben dies sieht wie folgt aus:
 
 ![Visual Studio Code Editor - ValuesController.cs Standard Datei](img_7.png)
 
-In dem Tutorial wird erklärt das man etwas von ihn hinein Kopieren sollte. Allerdings gibt es dazu keine Referenz oder code zum kopieren somit Tippe ich das von selbst ab.
+In dem Tutorial wird erklärt das man etwas von ihm hinein Kopieren sollte. Allerdings gibt es dazu keine Referenz oder code zum Kopieren somit Tippe ich das von selbst ab.
 
 ```c#
 using Microsoft.AspNetCore.Http;
@@ -135,7 +135,7 @@ zum aktuellen Zeitpunkt verläuft das so:
 
 ```mermaid
 sequenceDiagram
-    UI->>+Controller: request (/api/values)
+    UI->>+Controller: request (/api/values) 
     Controller->>+UI: 
     
 ```
@@ -228,6 +228,8 @@ namespace Web_API.Models
 
 Um den Controller `Books` zu erstellen, muss man hier wieder bei dem `Controllers` Ordner rechtsklick machen und dann auf Hinzufügen > Controller. Dann öffnet sich wieder ein Fenster. In diesem Fenster wählen wir dann links wieder API aus und nehmen `API Controller - Empty`, klicken auf Hinzufügen und nun müssen wir es unten bei Name `BooksController` nennen.
 
+![Visual Studio - New Element Window](img_11.png)
+
 Nun sollte sich eine wieder eine neue Datei Öffnen und drinnen steht folgendes:
 
 ```c#
@@ -275,6 +277,7 @@ public class BooksController : ControllerBase
 }
 [...]
 ```
+![Visual Studio Code Editor - BooksController Static Template Data](img_12.png)
 
 > **Info**
 > 
@@ -307,7 +310,7 @@ Diese sieht dann so aus:
 [...]
 ```
 
-Der was der Code macht ist wie folgt. Sobald man im Link `/api/books` eingibt wird der Folgende Code ausgeführt:
+Das was, der Code macht, ist wie folgt. Sobald man im Link `/api/books` eingibt, wird der folgende Code ausgeführt:
 
 ```c#
     [HttpGet]
@@ -335,7 +338,7 @@ allerdings wenn man `/api/books/1` zum Beispiel in die URL eingibt, dann wird de
 ```
 
 aufgrund dessen das `("{id}")` in `[HttpGet("{id}")]` steht weiß das Programm das nach dem `books/` in der URL noch etwas folgt. In diesem Fall ist es eine ID.
-`GetBook(int id)` sagt einfach nur das die Klasse einen Integer braucht und diese Integer Nummer, die dann da übergeben wird ist dann in der Variable `id` gespeichert. 
+`GetBook(int id)` sagt einfach nur das die Klasse einen Integer braucht und diese Integer Nummer, die dann da übergeben wird, ist dann in der Variable `id` gespeichert. 
 Aufgrund dessen das darüber `[HttpGet("{id}")]` steht, wird Automatisch der Klasse die `id` übergeben von dem Link.
 In der Klasse wird dann in der `books` Klasse abgefragt ob, es so einen Eintrag in der `Id` existiert und wenn nicht, soll ein `404 Not Found` fehler zurückgegeben werden.
 
@@ -366,12 +369,24 @@ Ab hier erstellen wir ein neues Projekt. Man wird sich sicher fragen, warum ein 
 
 > Thank you for your comment. It’s good to separate the UI from the business logic. Data and business logic should be in its own layer
 
-Um ein neues Projekt zu erstellen in dem aktuellen Projekt, was wir gerade haben, machen wir, ganz oben bei dem `Solutions Explorer` wo am anfang steht `Solution` ein Rechtsklick und dann auf `Hinzufügen > Neues Projekt`.
-Dann soll sich ein neues Fenster Auswählen und hier suchst du nach class und wählst dann das aus wo als Titel `Class Library (.NET Core)` steht. Dann klickst du auf next und nennst die Klasse `BookStore.Data` und klickst dann auf `Create`
+Um ein neues Projekt zu erstellen in dem aktuellen Projekt, was wir gerade haben, machen wir, ganz oben bei dem `Projektmappen-Explorer` wo am anfang steht `Projektmappe` ein Rechtsklick und dann auf `Hinzufügen > Neues Projekt`.
+Dann soll sich ein neues Fenster Auswählen und hier suchst du nach class und wählst dann das aus wo als Titel `Klassenbibliothek (.NET Framework)` steht. Dann klickst du auf `Weiter` und nennst die Klasse `BookStore.Data` und klickst dann auf `Erstellen`
+
+![Visual Studio - New Project Window Class Library .NET Core](img_13.png)
+
+![Visual Studio - New Project Window Class Library .NET Core Naming](img_14.png)
 
 Jetzt solltest du ein neues Projekt sehen in deinem Solutions Explorer mit dem Namen `BookStore.Data`. Nun öffnest du dieses Projekt und löschst erstmal die Standardklasse namens `Class1.css`
 
-Nun erstellen wir drei neue Verzeichnisse. Einmal `Interface`, `Models` und `Repositories`. Jetzt können wir bei dem Projekt den wir vorher hatten (ich nenne es ab hier mal Projekt 1) im `Models` Verzeichnis die Klasse `Book.cs` Kopieren und in das neue Projekt (Ich nenne das ab hier jetzt Projekt 2) in den `Models` Ordner rein.
+![Visual Studio - Project Explorer Window BookStore.Data](img_15.png)
+
+Nun erstellen wir drei neue Verzeichnisse. Einmal `Interfaces`, `Models` und `Repositories`.
+
+![Visual Studio - Project Explorer Window BookStore.Data default folder creation](img_16.png)
+
+Jetzt können wir bei dem Projekt den wir vorher hatten (ich nenne es ab hier mal Projekt 1) im `Models` Verzeichnis die Klasse `Book.cs` Kopieren und in das neue Projekt (Ich nenne das ab hier jetzt Projekt 2) in den `Models` Ordner rein.
+
+![Visual Studio - Book.cs File in Project 2](img_17.png)
 
 > **Wichtig**
 > 
@@ -382,7 +397,11 @@ Nachdem du das gemacht hast, kannst du in Projekt 1 auch dann in der `Book.cs` D
 
 **Erstellung des Interfaces**
 
-Jetzt erstellen wir in Projekt 2 ein Interface. Dies kann man machen, indem man bei Projekt 2 bei dem interface Ordner Rechtklick drückt und dann auf Neues Item hinzufügen klickt. Dann sollte sich wieder ein neues Fenster öffnen und da wählst du dann Interface aus und benennst es nach IBookRepository.cs. Sollte das erfolgreich gewesen sein sollte sich wieder eine neue Datei geöffnet haben mit dem folgenden Inhalt:
+Jetzt erstellen wir in Projekt 2 ein Interface. Dies kann man machen, indem man bei Projekt 2 bei dem interface Ordner Rechtsklick drückt und dann auf `Neues Element hinzufügen` klickt. Dann sollte sich wieder ein neues Fenster öffnen und da wählst du dann `Schnittstelle` aus und benennst es nach IBookRepository.cs. Sollte das erfolgreich gewesen sein sollte sich wieder eine neue Datei geöffnet haben mit dem folgenden Inhalt:
+
+Solltest du nur folgendes sehen dann Klicke unten auf `Alle Vorlagen anzeigen`.
+
+![](img_18.png)
 
 ```c#
 [...]
@@ -421,14 +440,18 @@ public interface IBookRepository
 Damit auch auf die Models zugegriffen werden kann, müssen wir das Model dann auch mit einbinden. Dazu Schreibt man einfach 
 ganz oben in der Datei `using BookStore.Data.Models;`.
 
-Als Nächstes erstellen, wir in dem Repositories Ordner eine Klasse mit dem Namen `BookRepository` die dann mit dem 
-Interface interagiert. Der plan den wir gerade verfolgen ist diese. Wir haben einmal Projekt 1. Projekt 1 ist einfach nur
+![Visual Studio Code Editor - BookStore.Data.Interfaces IBookRepository.cs File](img_19.png)
+
+Als Nächstes erstellen, wir in dem Repositories Ordner eine Klasse mit dem Namen `BookRepository.cs` die dann mit dem 
+Interface interagiert. 
+
+Der plan den wir gerade verfolgen ist diese. Wir haben einmal Projekt 1. Projekt 1 ist einfach nur
 die API was die ganzen Daten von Projekt 2 empfängt und dann auch ausgibt. Einfach gesagt der Empfänger und Ausgeber.
 
 Projekt 2 hingegen verarbeitet die Daten, die es erhält und sendet diese dann an Projekt 1 weiter und Projekt 1 gibt diese 
 dann dem UI also dem Endbenutzer weiter.
 
-Sobald die Klasse erstellt wurde, werden wir wieder mit der Standard Datei begrüßt. Hier müssen wir dann einfach wieder die Klasse `public` machen wie schon bei dem IBookrepositorie gemacht wurde.
+Sobald die Klasse erstellt wurde, werden wir wieder mit der Standard Datei begrüßt. Hier müssen wir dann einfach wieder die Klasse `public` machen wie schon bei der `IBookrepositorie.cs` Datei gemacht wurde.
 
 ```c#
 [...]
@@ -440,37 +463,15 @@ namespace BookStore.Data.Repositories {
 }
 ```
 
-Sobald das gemacht wurde geben wir der Klasse auch unseren IBookRepository interface mit. Als nächstes müssen wir dann auch noch die Methoden hinzufügen die auch wichtig sind damit wir mit dieser Datei Abschließen können.
+Sobald das gemacht wurde geben wir der Klasse auch unseren IBookRepository interface mit. Als Nächstes müssen wir dann auch noch die Methoden hinzufügen, die auch wichtig sind damit wir mit dieser Datei Abschließen können.
 hier können wir dann einfach den Code aus der BookController.cs Datei rein Kopieren. Das ganze sieht dann ungefähr so aus:
 
-```C#
-    public List<Book> books = new List<Book>() {
-        new Book {Id = 1, Title = "The Girl on the Train", Author = "Hawkins, Paula",PublicationYear = 2015,isAvailable = false, CallNumber = "F HAWKI}
-        new Book {Id = 2, Title = "Rogue Lawyer", Author = "Grisham, John", PublicationYear = 2015, CallNumber = "F GRISH", IsAvailable = false}
-        new Book {Id = 3, Title = "After You", Author = "Moyes, Jojo", PublicationYear = 2015, CallNumber = "F MOYES", IsAvailable = false}
-        new Book {Id = 4, Title = "All the Light We Cannot See", Author = "Doerr, Anthony", PublicationYear = 2014, IsAvailable = false, CallNumber = "F DOERR"}
-        new Book {Id = 5, Title = "The Girls", Author = "Cline, Emma", PublicationYear = 2016, CallNumber = "F CLINE", IsAvailable = false}
-        new Book {Id = 6, Title = "The Martian", Author = "Weir, Andy", PublicationYear = 2011, CallNumber = "SF WEIR", IsAvailable = false}
-        new Book {Id = 7, Title = "Me Before You", Author = "Moyes, Jojo", PublicationYear = 2012, CallNumber = "F MOYES", IsAvailable = false}
-        new Book {Id = 8, Title = "Alexander Hamilton", Author = "Chernow, Ron", PublicationYear = 2004, CallNumber = "B HAMILTO A", IsAvailable = false}
-        new Book {Id = 9, Title = "Before the Fall", Author = "Hawley, Noah"m PublicationYear = 2016, CallNumber = "F HAWLE", IsAvailable = false}
-    };
-    [HttpGet]
-    public ActionResult<IEnumberable<Book>> GetAllBooks()
-    {
-        return books;
-    }
+Jetzt können wir bei dem rot unterstrichenen Text mit der Maus darüber gehen und dann sollte dir Angezeigt werden unten `mögliche Korrekturen Anzeigen`. Hier klickst du drauf und dann noch auf `Schnittstelle Implementieren`. So werden die Klassen dann Automatisch für dich erstellt.
 
-    [HttpGet("{id}")]
-    public ActionResult<Book> GetBook(int id)
-    {
-        var book = books.FirstOrDefault(x => x.Id == id);
-        if(book == null)
-        {
-            return NotFound();
-        }
-    }
-```
+Am Ende sieht das dann so aus:
+
+![](img_21.png)
+
 Solltest du bei `FirstOrDefault` einen fehler bekommen dann musst du `using System.Linq;` ganz oben in der Datei hinzufügen. 
 
 Und jetzt haben wir auch das Logic Model erreicht. 
@@ -483,12 +484,16 @@ sequenceDiagram
     Controller->>+UI:  
 ```
 
-Jetzt Navigieren wir in Projekt 1 zu der booksController.cs Datei und Löschen erstmal den Teil raus wo die ganzen Bücher 
+Jetzt Navigieren wir in Projekt 1 zu der BooksController.cs Datei und Löschen erstmal den Teil raus wo die ganzen Bücher 
 drinnen stehen. Dann müssen wir Projekt 2 mit Projekt 1 Verknüpfen damit die miteinander kommunizieren können. Das kann 
-man machen, indem man bei Projekt 1 bei Dependencies Rechtsklick macht und dann auf `Add Project Reference`. 
+man machen, indem man bei Projekt 1 bei `Abhängigkeiten` Rechtsklick macht und dann auf `Projektverweis hinzufügen`. 
 Dann sollte sich noch ein Fenster öffnen. In diesem Fenster klickt man dann in den Weißen Viereck rein und klickt dann 
-auf Fertig. Sollte das nicht geklappt haben und die auswahl im Weißen Viereck ist nicht mehr drinnen dann musst du bei 
-Projekt 2 bei Dependencies rechtsklick machen und dort dann auf `Add Project Reference` und dann dort den Haken wegmachen 
+auf Fertig. 
+
+![Visual Studio - Verweis Manager](img_20.png)
+
+Sollte das nicht geklappt haben und die auswahl im Weißen Viereck ist nicht mehr drinnen dann musst du bei 
+Projekt 2 bei Dependencies rechtsklick machen und dort dann auf `Projektverweis hinzufügen` und dann dort den Haken wegmachen 
 und dann sollte das bei Projekt 1 dann auch gehen.
 
 Nun können wir den `books` und `Book` Fehlern nach gehen. Um die Fehler zu fixen, müssen wir dann einfach nur ganz oben 
@@ -499,5 +504,17 @@ Um den Fehler von den `books` zu fixen, müssen wir folgende Zeile über dem [Ht
 ```c#
 private BookRepository books = new BookRepository();
 ```
-als Nächstes müssen wir bei `books` überall `getAllBooks()` Hinzufügen. Und anstatt `var book = books.FirstOrDefault(x => x.Id == id);` 
+als Nächstes müssen wir bei `books`, `getAllBooks()` Hinzufügen. Und anstatt `var book = books.FirstOrDefault(x => x.Id == id);` 
 machen wir dann `var book = books.GetBook(id);`
+
+Nun können wir das Programm wieder starten, indem wir auf den Grünen Pfeil klicken. 
+
+> Solltest du Fehler bekommen, überprüfe, ob du dei der `BooksController.cs` Datei `using BookStoreAPI.Models;` entfernt hast.
+
+Nun kann man das Projekt Starten und dann sollte folgende Antwort kommen im Browser, sobald man `/api/books` eingibt.
+
+![](img_22.png)
+
+und folgendes bei `/api/books/4`:
+
+![img_23.png](img_23.png)
