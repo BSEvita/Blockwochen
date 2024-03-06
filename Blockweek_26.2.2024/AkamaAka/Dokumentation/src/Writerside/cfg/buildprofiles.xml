@@ -5,8 +5,7 @@
     </variables>
     <build-profile instance="hi"/>
     <footer>
-        <copyright>Akama Aka 2024 - All right reserved</copyright>
+        <copyright>Akama Aka 2024 - All rights reserved</copyright>
         <social type="blog" href="https://github.com/akama-aka"/>
-
     </footer>
 </buildprofiles>
