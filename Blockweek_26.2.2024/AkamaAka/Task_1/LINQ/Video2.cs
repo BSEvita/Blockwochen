@@ -7,7 +7,7 @@ namespace LINQTutorial
 {
     class Video2
     {
-        static void Main(string[] args)
+        static void MainVideo2(string[] args)
         {
             string[] names = { "Peter", "Günter", "Manfred", "Uwe" };
             var linqTest = from name in names
