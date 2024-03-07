@@ -9,6 +9,9 @@
         <toc-element topic="Tutorials.md">
             <toc-element topic="Aufgabe-1.md"/>
             <toc-element topic="Aufgabe-2.md"/>
+            <toc-element topic="Aufgabe-3.md"/>
+            <toc-element topic="Aufgabe-4.md"/>
         </toc-element>
     </toc-element>
+    <toc-element topic="Schlusssatz.md"/>
 </instance-profile>
