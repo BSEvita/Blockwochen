@@ -203,3 +203,9 @@ var informatikStudenten = from Student
 
 Wie man sieht, muss man die einzelnen `where` abfragen dann in einer `()` geben und mit `&&` trennen. Sollte man ein oder 
 gebrauchen dann muss man anstatt `&&`, `||` machen.
+
+
+Ab hier referendiere ich auf die folgenden Videos. Ist eh schnelle rund besser erklärt ;-;. (ist ja nichts anderes)
+
+https://www.youtube.com/watch?v=IUgebK3MHKo&list=PL_pqkvxZ6ho0FX6Ro3noCmwQ3ix5Cdu_D&index=3
+
