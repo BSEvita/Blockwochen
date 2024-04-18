@@ -1,0 +1,11 @@
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+
+    </variables>
+    <build-profile instance="hi"/>
+    <footer>
+        <copyright>Akama Aka 2024 - All rights reserved</copyright>
+        <social type="blog" href="https://github.com/akama-aka"/>
+    </footer>
+</buildprofiles>
