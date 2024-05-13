@@ -22,4 +22,21 @@ public class BookRepository : IBookRepository
     {
         return _context.books.FirstOrDefault(b => b.Id == id) ?? new Book();
     }
+
+    public void CreateBook(Book book)
+    {
+        book.Id = null;
+        _context.books.Add(book);
+        _context.SaveChanges();
+    }
+
+    public void Delete(int id)
+    {
+        Book? book = _context.books.FirstOrDefault(b => b.Id == id);
+        if (book == null)
+            return;
+        
+        _context.books.Remove(book);
+        _context.SaveChanges();
+    }
 }

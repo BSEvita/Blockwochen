@@ -14,12 +14,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BookContext>(options =>
 {
-    options.UseInMemoryDatabase("BooksDatabase");
+    options.UseSqlServer("Server=localhost;Database=master;User Id=sa;Password=admin1234!;Trusted_Connection=False;Encrypt=False;", b => b.MigrationsAssembly("Aufgabe_2"));
 });
 
 builder.Services.AddDbContext<UserContext>(options =>
 {
-    options.UseInMemoryDatabase("UserDatabase");
+    options.UseSqlServer("Server=localhost;Database=master;User Id=sa;Password=admin1234!;Trusted_Connection=False;Encrypt=False;", b => b.MigrationsAssembly("Aufgabe_2"));
 });
 
 builder.Services.AddScoped<DatabaseInitializerService>();

@@ -6,4 +6,7 @@ public interface IBookRepository
 {
     List<Book> GetAllBooks();
     Book GetBook(int id);
+
+    void CreateBook(Book book);
+    void Delete(int id);
 }
