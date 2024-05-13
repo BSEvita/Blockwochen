@@ -15,12 +15,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BookContext>(options =>
 {
-    options.UseInMemoryDatabase("BooksDatabase");
+    options.UseSqlServer("Data Source=DESKTOP-EA42TBA\\SQLEXPRESS;Initial Catalog=BookStoreDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 });
 
 builder.Services.AddDbContext<UserContext>(options =>
 {
-    options.UseInMemoryDatabase("UserDatabase");
+    options.UseSqlServer("Data Source=DESKTOP-EA42TBA\\SQLEXPRESS;Initial Catalog=BookStoreDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 });
 
 builder.Services.AddScoped<DatabaseInitializerService>();

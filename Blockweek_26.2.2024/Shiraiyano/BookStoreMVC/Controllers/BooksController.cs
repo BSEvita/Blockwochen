@@ -19,7 +19,7 @@ namespace BookStoreMVC.Controllers
         public BooksController(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("https://localhost:7124/");
+            _httpClient.BaseAddress = new Uri("http://localhost:5153/");
         }
 
         public async Task<IActionResult> Index()
