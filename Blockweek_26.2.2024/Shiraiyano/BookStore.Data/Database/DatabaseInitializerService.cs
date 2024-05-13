@@ -6,7 +6,7 @@ namespace BookStore.Data.Database;
 public class DatabaseInitializerService
 {
     private readonly BookContext context;
-
+ 
     public DatabaseInitializerService(BookContext context)
     {
         this.context = context;
