@@ -1,0 +1,6 @@
+@peakToxic.API_HostAddress = http://localhost:5016
+
+GET {{peakToxic.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
